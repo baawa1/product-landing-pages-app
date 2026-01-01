@@ -65,23 +65,53 @@ export default function MegirWatchPage() {
 
   const price = calculatePrice()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
     const fullName = formData.get('fullName')
     const phone = formData.get('phone')
-    const email = formData.get('email') || 'Not provided'
+    const email = formData.get('email') || ''
     const state = formData.get('state')
     const address = formData.get('address')
     const color = formData.get('color')
 
-    const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
+    // Prepare order data
+    const orderData = {
+      full_name: fullName,
+      phone: phone,
+      email: email,
+      state: state,
+      address: address,
+      product_name: 'MEGIR Chronograph Watch',
+      color: color,
+      quantity: quantity,
+      price: pricePerUnit,
+      total_price: price.total,
+      discount: price.discount
+    }
+
+    try {
+      // Save order to database
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData)
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to save order')
+      }
+
+      // Create WhatsApp message
+      const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
 
 👤 *Customer Details:*
 Name: ${fullName}
 Phone: ${phone}
-Email: ${email}
+Email: ${email || 'Not provided'}
 
 📍 *Delivery Info:*
 State: ${state}
@@ -97,8 +127,40 @@ Free Gift: Premium Cufflinks ✓
 
 I'm ready to complete my order. Please send payment details.`
 
-    const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-    window.open(whatsappURL, '_blank')
+      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
+
+      // Redirect to thank you page with order details
+      const thankYouURL = `/thank-you?product=MEGIR+Chronograph+Watch&color=${encodeURIComponent(color as string)}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+
+      window.location.href = thankYouURL
+
+    } catch (error) {
+      console.error('Error submitting order:', error)
+      // Fallback to direct WhatsApp if database fails
+      const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
+
+👤 *Customer Details:*
+Name: ${fullName}
+Phone: ${phone}
+Email: ${email || 'Not provided'}
+
+📍 *Delivery Info:*
+State: ${state}
+Address: ${address}
+
+⌚ *Order Details:*
+Product: MEGIR Chronograph Watch
+Color: ${color}
+Quantity: ${quantity}
+Free Gift: Premium Cufflinks ✓
+
+💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ''} + Delivery*
+
+I'm ready to complete my order. Please send payment details.`
+
+      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
+      window.open(whatsappURL, '_blank')
+    }
   }
 
   const toggleFaq = (index: number) => {
