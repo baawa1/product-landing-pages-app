@@ -16,7 +16,8 @@ import {
   Star,
   ChevronDown,
   Store,
-  Phone
+  Phone,
+  Mail
 } from "lucide-react"
 
 export default function MegirWatchPage() {
@@ -195,7 +196,7 @@ I'm ready to complete my order. Please send payment details.`
 
           <div className="mt-10 max-w-2xl mx-auto p-8 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl border border-primary/20 text-center">
             <p className="text-lg">
-              <strong>Good news.</strong> The MEGIR Chronograph solves all of this at a price that won't break your account.
+              <strong>Good news.</strong> The MEGIR Chronograph solves all of this at a price that won&apos;t break your account.
             </p>
           </div>
         </div>
@@ -291,15 +292,14 @@ I'm ready to complete my order. Please send payment details.`
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Choose Your <span className="text-primary">Color</span>
           </h2>
-          <p className="text-muted-foreground mb-8">5 Bold Colors. Pick the one that matches your style.</p>
+          <p className="text-muted-foreground mb-8">4 Bold Colors. Pick the one that matches your style.</p>
 
           <div className="flex justify-center gap-5 flex-wrap mb-10">
             {[
               { name: 'Navy Blue', color: '#1B3A5F' },
               { name: 'Classic Black', color: '#1A1A1A' },
               { name: 'Pure White', color: '#F5F5F5' },
-              { name: 'Teal', color: '#40E0D0' },
-              { name: 'Army Green', color: '#6B8E6B' }
+              { name: 'Teal', color: '#40E0D0' }
             ].map((option) => (
               <div key={option.name} className="flex flex-col items-center gap-2.5">
                 <button
@@ -323,7 +323,7 @@ I'm ready to complete my order. Please send payment details.`
               <img src="/products/megir/MEGIR Chronograph Watch 17.jpeg" alt="Pure White MEGIR watch in box" className="w-full h-full object-cover" />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 18.jpeg" alt="Army Green MEGIR watch in box" className="w-full h-full object-cover" />
+              <img src="/products/megir/MEGIR Chronograph Watch 18.jpeg" alt="Teal MEGIR watch in box" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -550,7 +550,7 @@ I'm ready to complete my order. Please send payment details.`
               <Card key={i} className="relative">
                 <CardContent className="pt-6">
                   <div className="text-7xl font-serif text-primary/20 absolute top-2.5 left-5 leading-none select-none">
-                    "
+                    &ldquo;
                   </div>
                   <p className="text-muted-foreground mb-5 relative z-10 leading-relaxed">
                     {testimonial.text}
@@ -586,7 +586,7 @@ I'm ready to complete my order. Please send payment details.`
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Our Promise To You</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                We stand behind every watch we sell. If it stops working within 1 year, we'll repair or replace it - no questions asked.
+                We stand behind every watch we sell. If it stops working within 1 year, we&apos;ll repair or replace it - no questions asked.
               </p>
               <ul className="text-left max-w-md mx-auto space-y-3">
                 {[
@@ -653,21 +653,99 @@ I'm ready to complete my order. Please send payment details.`
 
       {/* Store Section */}
       <section className="py-16 px-5 bg-muted/30">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10">
-            Visit Our <span className="text-primary">Physical Store</span>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Visit Our <span className="text-primary">Physical Store</span> in Abeokuta
           </h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            We&apos;re not just online - come see our watches in person, try them on, and experience our quality firsthand
+          </p>
 
-          <Card className="max-w-lg mx-auto">
-            <CardContent className="pt-8">
-              <div className="w-[70px] h-[70px] bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-5">
-                <Store className="w-8 h-8 text-primary-foreground" />
+          {/* Store Images */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <img src="/Store full building picture.jpeg" alt="BaaWA Accessories store building in Abeokuta" className="w-full h-full object-cover aspect-video" />
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <img src="/Store front with bill board.jpg" alt="BaaWA store front with billboard" className="w-full h-full object-cover aspect-video" />
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <img src="/Baawa store table.png" alt="BaaWA store display table" className="w-full h-full object-cover aspect-video" />
+            </div>
+          </div>
+
+          {/* Store Videos */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              >
+                <source src="/Store shelf.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="bg-muted/50 p-3 text-center">
+                <p className="text-sm font-semibold">Inside our store - Product displays</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">BaaWA Accessories</h3>
-              <p className="text-primary font-semibold mb-2">📍 Abeokuta, Ogun State, Nigeria</p>
-              <p className="text-sm text-muted-foreground mb-2">Walk in anytime to see and try our watches before buying.</p>
-              <p className="text-sm text-muted-foreground mb-1">📞 Call/WhatsApp: <strong className="text-foreground">+234-806-260-5012</strong></p>
-              <p className="text-sm text-muted-foreground">📧 Email: <strong className="text-foreground">Sales@baawa.ng</strong></p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              >
+                <source src="/Store table.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="bg-muted/50 p-3 text-center">
+                <p className="text-sm font-semibold">Live footage from our store</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Store Contact Card */}
+          <Card className="max-w-2xl mx-auto border-2 border-primary/30">
+            <CardContent className="pt-8">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="text-center md:text-left">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4">
+                    <Store className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">BaaWA Accessories</h3>
+                  <p className="text-primary font-semibold mb-3">📍 Abeokuta, Ogun State, Nigeria</p>
+                  <p className="text-sm text-muted-foreground mb-4">Walk in anytime to see and try our watches before buying.</p>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                    <Phone className="w-5 h-5 text-primary shrink-0" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Call/WhatsApp</p>
+                      <p className="font-semibold">+234-806-260-5012</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                    <Mail className="w-5 h-5 text-primary shrink-0" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Email</p>
+                      <p className="font-semibold">Sales@baawa.ng</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-primary/10 rounded-lg border border-primary/30">
+                    <MapPin className="w-5 h-5 text-primary shrink-0" />
+                    <div>
+                      <p className="text-xs text-primary font-semibold">Open Daily</p>
+                      <p className="font-semibold text-sm">Visit us anytime!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -734,7 +812,7 @@ I'm ready to complete my order. Please send payment details.`
           <Card className="max-w-lg mx-auto border-2 border-primary">
             <CardHeader>
               <CardTitle className="text-2xl md:text-3xl font-bold text-center">Order Your Watch Now</CardTitle>
-              <CardDescription className="text-center">Fill the form below. We'll confirm via WhatsApp.</CardDescription>
+              <CardDescription className="text-center">Fill the form below. We&apos;ll confirm via WhatsApp.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -823,7 +901,6 @@ I'm ready to complete my order. Please send payment details.`
                     <option value="Classic Black">Classic Black</option>
                     <option value="Pure White">Pure White</option>
                     <option value="Teal">Teal</option>
-                    <option value="Army Green">Army Green</option>
                   </select>
                 </div>
 
