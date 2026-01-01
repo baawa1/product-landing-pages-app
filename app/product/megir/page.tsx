@@ -166,8 +166,11 @@ I'm ready to complete my order. Please send payment details.`
 
           {/* CTA Button */}
           <a href="#order-form" onClick={scrollToOrderForm}>
-            <Button size="lg" className="w-full max-w-lg text-base md:text-lg font-bold uppercase tracking-wide mb-3 py-6 md:py-7">
-              Order Now on WhatsApp →
+            <Button size="lg" className="w-full max-w-lg text-sm md:text-base font-bold mb-3 py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
+              <span className="flex items-center justify-center gap-2">
+                <Phone className="w-5 h-5" />
+                Order Now on WhatsApp
+              </span>
             </Button>
           </a>
           <p className="text-sm text-muted-foreground">Pay via Bank Transfer • Delivery in 2-5 Days</p>
@@ -993,8 +996,11 @@ I'm ready to complete my order. Please send payment details.`
                   </CardContent>
                 </Card>
 
-                <Button type="submit" size="lg" className="w-full text-base md:text-lg font-bold uppercase tracking-wide py-6 md:py-7">
-                  Complete Order on WhatsApp →
+                <Button type="submit" size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                  <span className="flex items-center justify-center gap-2">
+                    <Phone className="w-5 h-5" />
+                    Complete Order on WhatsApp
+                  </span>
                 </Button>
 
                 <div className="text-center p-4 bg-destructive/5 border border-destructive/30 rounded-lg">
@@ -1018,8 +1024,11 @@ I'm ready to complete my order. Please send payment details.`
             Stop wearing cheap watches that embarrass you. Get a timepiece that commands respect.
           </p>
           <a href="#order-form" onClick={scrollToOrderForm}>
-            <Button size="lg" className="text-base md:text-lg font-bold py-6 md:py-7 px-8">
-              Order Now - ₦57,000 + Free Gift
+            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-6 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all">
+              <span className="flex items-center justify-center gap-2">
+                <Phone className="w-5 h-5" />
+                Order Now - ₦57,000 + Free Gift
+              </span>
             </Button>
           </a>
         </div>
