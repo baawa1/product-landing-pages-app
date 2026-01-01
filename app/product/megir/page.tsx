@@ -23,14 +23,31 @@ import {
 export default function MegirWatchPage() {
   const [quantity, setQuantity] = useState(1)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
+  const [selectedColor, setSelectedColor] = useState<string>('Navy Blue')
 
   const pricePerUnit = 57000
+
+  const colorOptions = [
+    { name: 'Navy Blue', color: '#1B3A5F', images: ['15', '3'] },
+    { name: 'Classic Black', color: '#1A1A1A', images: ['18', '4'] },
+    { name: 'Pure White', color: '#F5F5F5', images: ['16', '1'] },
+    { name: 'Teal', color: '#40E0D0', images: ['17', '2'] }
+  ]
 
   const scrollToOrderForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const orderForm = document.getElementById('order-form')
     if (orderForm) {
       orderForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
+  const handleColorSelect = (colorName: string) => {
+    setSelectedColor(colorName)
+    // Auto-select in order form dropdown
+    const colorSelect = document.getElementById('color') as HTMLSelectElement
+    if (colorSelect) {
+      colorSelect.value = colorName
     }
   }
 
@@ -295,36 +312,58 @@ I'm ready to complete my order. Please send payment details.`
           <p className="text-muted-foreground mb-8">4 Bold Colors. Pick the one that matches your style.</p>
 
           <div className="flex justify-center gap-5 flex-wrap mb-10">
-            {[
-              { name: 'Navy Blue', color: '#1B3A5F' },
-              { name: 'Classic Black', color: '#1A1A1A' },
-              { name: 'Pure White', color: '#F5F5F5' },
-              { name: 'Teal', color: '#40E0D0' }
-            ].map((option) => (
+            {colorOptions.map((option) => (
               <div key={option.name} className="flex flex-col items-center gap-2.5">
                 <button
-                  className="w-12 h-12 rounded-full border-2 border-border hover:border-primary hover:scale-110 transition-all"
+                  onClick={() => handleColorSelect(option.name)}
+                  className={`w-16 h-16 md:w-14 md:h-14 rounded-full border-4 transition-all relative ${
+                    selectedColor === option.name
+                      ? 'border-primary scale-110 shadow-lg'
+                      : 'border-border hover:border-primary/50 hover:scale-105'
+                  }`}
                   style={{ backgroundColor: option.color }}
                   aria-label={option.name}
-                />
-                <span className="text-xs text-muted-foreground">{option.name}</span>
+                >
+                  {selectedColor === option.name && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <CheckCircle2 className="w-6 h-6 text-white drop-shadow-lg" fill="currentColor" />
+                    </div>
+                  )}
+                </button>
+                <span className={`text-xs transition-all ${
+                  selectedColor === option.name
+                    ? 'text-primary font-bold'
+                    : 'text-muted-foreground'
+                }`}>
+                  {option.name}
+                </span>
               </div>
             ))}
           </div>
 
           <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-            <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 15.jpeg" alt="Navy Blue MEGIR watch in box" className="w-full h-full object-cover" />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 16.jpeg" alt="Classic Black MEGIR watch in box" className="w-full h-full object-cover" />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 17.jpeg" alt="Pure White MEGIR watch in box" className="w-full h-full object-cover" />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 18.jpeg" alt="Teal MEGIR watch in box" className="w-full h-full object-cover" />
-            </div>
+            {colorOptions.map((option) => (
+              <div
+                key={option.name}
+                className={`aspect-square rounded-xl overflow-hidden transition-all cursor-pointer relative ${
+                  selectedColor === option.name
+                    ? 'border-4 border-primary shadow-2xl scale-105'
+                    : 'border border-border hover:border-primary/50 hover:scale-102'
+                }`}
+                onClick={() => handleColorSelect(option.name)}
+              >
+                <img
+                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.jpeg`}
+                  alt={`${option.name} MEGIR watch in box`}
+                  className="w-full h-full object-cover"
+                />
+                {selectedColor === option.name && (
+                  <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    Selected
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -888,6 +927,8 @@ I'm ready to complete my order. Please send payment details.`
                   <select
                     id="color"
                     name="color"
+                    value={selectedColor}
+                    onChange={(e) => setSelectedColor(e.target.value)}
                     required
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
                     style={{
@@ -896,11 +937,9 @@ I'm ready to complete my order. Please send payment details.`
                       backgroundPosition: 'right 16px center'
                     }}
                   >
-                    <option value="">Select color</option>
-                    <option value="Navy Blue">Navy Blue</option>
-                    <option value="Classic Black">Classic Black</option>
-                    <option value="Pure White">Pure White</option>
-                    <option value="Teal">Teal</option>
+                    {colorOptions.map((option) => (
+                      <option key={option.name} value={option.name}>{option.name}</option>
+                    ))}
                   </select>
                 </div>
 
