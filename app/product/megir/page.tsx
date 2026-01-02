@@ -405,12 +405,12 @@ I'm ready to complete my order. Please send payment details.`
           </h2>
           <p className="text-muted-foreground mb-8">4 Bold Colors. Pick the one that matches your style.</p>
 
-          <div className="flex justify-center gap-5 flex-wrap mb-10">
+          <div className="grid grid-cols-4 gap-2 md:gap-5 max-w-xl mx-auto mb-10">
             {colorOptions.map((option) => (
-              <div key={option.name} className="flex flex-col items-center gap-2.5">
+              <div key={option.name} className="flex flex-col items-center gap-1.5 md:gap-2.5">
                 <button
                   onClick={() => handleColorSelect(option.name)}
-                  className={`w-16 h-16 md:w-14 md:h-14 rounded-full border-4 transition-all relative ${
+                  className={`w-14 h-14 md:w-20 md:h-20 rounded-full border-3 md:border-4 transition-all relative ${
                     selectedColor === option.name
                       ? 'border-primary scale-110 shadow-lg'
                       : 'border-border hover:border-primary/50 hover:scale-105'
@@ -420,11 +420,11 @@ I'm ready to complete my order. Please send payment details.`
                 >
                   {selectedColor === option.name && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6 text-white drop-shadow-lg" fill="currentColor" />
+                      <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-white drop-shadow-lg" fill="currentColor" />
                     </div>
                   )}
                 </button>
-                <span className={`text-xs transition-all ${
+                <span className={`text-[10px] md:text-sm transition-all text-center ${
                   selectedColor === option.name
                     ? 'text-primary font-bold'
                     : 'text-muted-foreground'
@@ -1124,10 +1124,11 @@ I'm ready to complete my order. Please send payment details.`
             Stop wearing cheap watches that embarrass you. Get a timepiece that commands respect.
           </p>
           <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
-            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-6 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
+            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-4 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
               <span className="flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" />
-                Order Now - ₦57,000 + Free Gift
+                <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="hidden sm:inline">Order Now - ₦57,000 + Free Gift</span>
+                <span className="sm:hidden">Order - ₦57k + Gift</span>
               </span>
             </Button>
           </a>
@@ -1137,13 +1138,11 @@ I'm ready to complete my order. Please send payment details.`
       {/* Footer */}
       <footer className="py-10 px-5 bg-muted/30 border-t border-border text-center">
         <div className="max-w-3xl mx-auto">
-          <div className="text-2xl font-bold text-primary mb-4">BaaWA Accessories</div>
-          <div className="flex justify-center gap-6 mb-5 flex-wrap text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">About Us</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Shipping Info</a>
-          </div>
+          <img
+            src="/logo/baawa-logo-brand-color.png"
+            alt="BaaWA Accessories"
+            className="h-8 md:h-10 mx-auto mb-6"
+          />
           <p className="text-sm text-muted-foreground mb-2">
             WhatsApp: <a href="https://wa.me/2348062605012" className="text-primary hover:underline">+234-806-260-5012</a>
           </p>
@@ -1151,7 +1150,7 @@ I'm ready to complete my order. Please send payment details.`
             Email: <a href="mailto:Sales@baawa.ng" className="text-primary hover:underline">Sales@baawa.ng</a>
           </p>
           <p className="text-sm text-muted-foreground mb-5">📍 Abeokuta, Ogun State, Nigeria</p>
-          <p className="text-xs text-muted-foreground">© 2025 BaaWA Accessories. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} BaaWA Accessories. All rights reserved.</p>
         </div>
       </footer>
 
