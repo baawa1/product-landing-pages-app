@@ -14,7 +14,6 @@ function ThankYouContent() {
   const color = searchParams.get('color') || ''
   const quantity = searchParams.get('quantity') || '1'
   const total = searchParams.get('total') || ''
-  const phone = searchParams.get('phone') || ''
   const whatsappUrl = searchParams.get('whatsapp') || ''
 
   useEffect(() => {
@@ -228,8 +227,11 @@ export default function ThankYouPage() {
 // Type declarations for analytics
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag?: (...args: any[]) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fbq?: (...args: any[]) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer?: any[]
   }
 }

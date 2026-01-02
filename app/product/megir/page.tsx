@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import {
@@ -17,13 +17,17 @@ import {
   ChevronDown,
   Store,
   Phone,
-  Mail
+  Mail,
+  Loader2,
+  ShoppingCart
 } from "lucide-react"
 
 export default function MegirWatchPage() {
   const [quantity, setQuantity] = useState(1)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [selectedColor, setSelectedColor] = useState<string>('Navy Blue')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showFloatingButton, setShowFloatingButton] = useState(false)
 
   const pricePerUnit = 57000
 
@@ -65,8 +69,29 @@ export default function MegirWatchPage() {
 
   const price = calculatePrice()
 
+  // Handle scroll for floating button visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('section')
+      const orderForm = document.getElementById('order-form')
+
+      if (heroSection && orderForm) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom
+        const formTop = orderForm.getBoundingClientRect().top
+
+        // Show button when scrolled past hero, hide when at order form
+        setShowFloatingButton(heroBottom < 0 && formTop > 100)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSubmitting(true)
+
     const formData = new FormData(e.currentTarget)
 
     const fullName = formData.get('fullName')
@@ -137,8 +162,9 @@ I'm ready to complete my order. Please send payment details.`
 
       window.location.href = thankYouURL
 
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error submitting order:', error)
+      setIsSubmitting(false)
       // Fallback to direct WhatsApp if database fails
       const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
 
@@ -230,8 +256,8 @@ I'm ready to complete my order. Please send payment details.`
           </Card>
 
           {/* CTA Button */}
-          <a href="#order-form" onClick={scrollToOrderForm}>
-            <Button size="lg" className="w-full max-w-lg text-sm md:text-base font-bold mb-3 py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
+            <Button size="lg" className="w-full max-w-lg text-sm md:text-base font-bold mb-3 py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
               <span className="flex items-center justify-center gap-2">
                 <Phone className="w-5 h-5" />
                 Order Now on WhatsApp
@@ -1061,10 +1087,19 @@ I'm ready to complete my order. Please send payment details.`
                   </CardContent>
                 </Card>
 
-                <Button type="submit" size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full text-sm md:text-base font-bold py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
                   <span className="flex items-center justify-center gap-2">
-                    <Phone className="w-5 h-5" />
-                    Complete Order on WhatsApp
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Processing Order...
+                      </>
+                    ) : (
+                      <>
+                        <Phone className="w-5 h-5" />
+                        Complete Order on WhatsApp
+                      </>
+                    )}
                   </span>
                 </Button>
 
@@ -1088,8 +1123,8 @@ I'm ready to complete my order. Please send payment details.`
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
             Stop wearing cheap watches that embarrass you. Get a timepiece that commands respect.
           </p>
-          <a href="#order-form" onClick={scrollToOrderForm}>
-            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-6 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
+            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-6 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
               <span className="flex items-center justify-center gap-2">
                 <Phone className="w-5 h-5" />
                 Order Now - ₦57,000 + Free Gift
@@ -1120,16 +1155,21 @@ I'm ready to complete my order. Please send payment details.`
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/2348062605012"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-15 h-15 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-50"
-        aria-label="Contact on WhatsApp"
-      >
-        <Phone className="w-8 h-8 text-white" />
-      </a>
+      {/* Floating Order Button - Stuck to Bottom */}
+      {showFloatingButton && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-t border-border shadow-2xl animate-in slide-in-from-bottom">
+          <div className="max-w-4xl mx-auto px-5 py-4">
+            <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer block">
+              <Button size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
+                <span className="flex items-center justify-center gap-2">
+                  <ShoppingCart className="w-5 h-5" />
+                  Order Now - {price.display} {price.discount && `(${price.discount})`}
+                </span>
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

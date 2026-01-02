@@ -50,12 +50,12 @@ export async function POST(request: NextRequest) {
       message: 'Order created successfully'
     })
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error processing order:', error)
     return NextResponse.json(
       {
         error: 'Failed to process order',
-        message: error?.message || 'Unknown error'
+        message: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     )
