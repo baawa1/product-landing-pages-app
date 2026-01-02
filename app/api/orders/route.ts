@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     const orderData: Order = {
       full_name: body.full_name,
       phone: body.phone,
-      email: body.email || null,
+      email: body.email && body.email.trim() !== '' ? body.email : null,
       state: body.state,
       address: body.address,
       product_name: body.product_name,
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       quantity: parseInt(body.quantity),
       price: parseFloat(body.price),
       total_price: parseFloat(body.total_price),
-      discount: body.discount || null,
+      discount: body.discount && body.discount.trim() !== '' ? body.discount : null,
       status: 'pending'
     }
 
@@ -50,10 +50,13 @@ export async function POST(request: NextRequest) {
       message: 'Order created successfully'
     })
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error processing order:', error)
     return NextResponse.json(
-      { error: 'Failed to process order', details: error },
+      {
+        error: 'Failed to process order',
+        message: error?.message || 'Unknown error'
+      },
       { status: 500 }
     )
   }

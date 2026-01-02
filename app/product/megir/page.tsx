@@ -101,8 +101,11 @@ export default function MegirWatchPage() {
         body: JSON.stringify(orderData)
       })
 
+      const result = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to save order')
+        console.error('Failed to save order:', result)
+        // Continue to WhatsApp even if database fails
       }
 
       // Create WhatsApp message
@@ -134,7 +137,7 @@ I'm ready to complete my order. Please send payment details.`
 
       window.location.href = thankYouURL
 
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting order:', error)
       // Fallback to direct WhatsApp if database fails
       const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*

@@ -2,12 +2,24 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder-service-key'
 
+// Client for browser/client-side operations
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Admin client for server-side operations (bypasses RLS)
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false
+  }
+})
 
 // Check if Supabase is configured
 export const isSupabaseConfigured = () => {
-  return process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  return !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+         !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
+         !!process.env.SUPABASE_SERVICE_ROLE_KEY
 }
 
 // Order type definition
@@ -28,9 +40,9 @@ export interface Order {
   status?: 'pending' | 'confirmed' | 'shipped' | 'delivered'
 }
 
-// Function to create a new order
+// Function to create a new order (uses admin client to bypass RLS)
 export async function createOrder(orderData: Order) {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('orders')
     .insert([{
       ...orderData,

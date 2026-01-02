@@ -56,18 +56,26 @@ This guide will help you set up Supabase for storing orders from your product la
 ## 4. Configure Environment Variables
 
 1. In your project root, create a file named `.env.local`
-2. Add your Supabase credentials:
+2. Go to **Project Settings → API** in Supabase and copy:
+   - **Project URL**
+   - **anon public** key
+   - **service_role secret** key (this is different from anon key!)
+
+3. Add your Supabase credentials to `.env.local`:
 
 ```env
 # Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=your_project_url_here
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_public_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 ```
 
-3. Replace `your_project_url_here` and `your_anon_key_here` with the values from step 3
-4. Save the file
+4. Replace the placeholder values with your actual keys from step 2
+5. Save the file
 
-**IMPORTANT**: Never commit `.env.local` to GitHub! It's already in `.gitignore`.
+**IMPORTANT**:
+- Never commit `.env.local` to GitHub! It's already in `.gitignore`.
+- The `service_role` key bypasses RLS and should NEVER be exposed to the client - keep it secret!
 
 ## 5. Set Up Row Level Security (RLS)
 
