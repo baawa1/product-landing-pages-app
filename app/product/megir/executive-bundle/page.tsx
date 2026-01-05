@@ -1,99 +1,163 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import {
-  Gift,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import {
   Shield,
   MapPin,
-  Lock,
   Clock,
   Cloud,
   Moon,
   CheckCircle2,
   X,
-  Star,
   ChevronDown,
-  Store,
-  Phone,
-  Mail,
   Loader2,
-  ShoppingCart,
   Award,
-  Package
-} from "lucide-react"
+} from "lucide-react";
 
 export default function ExecutiveBundlePage() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null)
-  const [selectedColor, setSelectedColor] = useState<string>('Navy Blue')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showFloatingButton, setShowFloatingButton] = useState(false)
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>("Navy Blue");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
 
-  const bundlePrice = 79000
-  const originalValue = 148000
+  const bundlePrice = 79000;
 
   const colorOptions = [
-    { name: 'Navy Blue', color: '#1B3A5F', images: ['15', '3'] },
-    { name: 'Classic Black', color: '#1A1A1A', images: ['18', '4'] },
-    { name: 'Pure White', color: '#F5F5F5', images: ['16', '1'] },
-    { name: 'Teal', color: '#40E0D0', images: ['17', '2'] }
-  ]
+    { name: "Navy Blue", color: "#1B3A5F", images: ["15", "3"] },
+    { name: "Classic Black", color: "#1A1A1A", images: ["18", "4"] },
+    { name: "Pure White", color: "#F5F5F5", images: ["16", "1"] },
+    { name: "Teal", color: "#40E0D0", images: ["17", "2"] },
+  ];
 
   const bundleItems = [
-    { name: 'MEGIR Executive Chronograph Watch', value: 65000, description: 'Japanese Quartz movement, working chronograph, stainless steel case, weather-proof silicone strap' },
-    { name: 'Premium Leather Slim Bifold Wallet', value: 20000, description: 'Genuine leather bifold wallet for the modern executive' },
-    { name: 'Executive Metal Pen', value: 12000, description: 'Weighted metal pen perfect for signing important documents' },
-    { name: 'Watch Care & Maintenance Kit', value: 8000, description: 'Microfiber cloth, mini screwdriver set, velvet travel pouch' },
-    { name: '"Power Presence" Digital Style Guide', value: 15000, description: 'Learn how to dress for authority and control first impressions' },
-    { name: 'Extra Silicone Strap (Your Choice)', value: 10000, description: 'Alternative strap in your choice of color for variety' },
-    { name: 'Premium Cufflinks Set', value: 8000, description: 'Brushed metal cufflinks for formal occasions' },
-    { name: 'Extended 2-Year Warranty', value: 10000, description: 'Free repair or replacement for any manufacturing issues' }
-  ]
+    {
+      name: "MEGIR Executive Chronograph Watch",
+      value: 65000,
+      description:
+        "Japanese Quartz movement. Working chronograph. Stainless steel case. Weather-proof silicone strap.",
+    },
+    {
+      name: "Premium Leather Slim Bifold Wallet",
+      value: 20000,
+      description:
+        "Your watch makes the first impression. Your wallet makes the second. Genuine leather bifold.",
+    },
+    {
+      name: "Executive Metal Pen",
+      value: 12000,
+      description:
+        'Weighted metal pen that says "I pay attention to details." Makes signing contracts feel like a power move.',
+    },
+    {
+      name: "Watch Care & Maintenance Kit",
+      value: 8000,
+      description:
+        "Premium microfiber cloth, mini screwdriver set, and velvet travel pouch.",
+    },
+    {
+      name: '"Power Presence" Digital Style Guide',
+      value: 15000,
+      description:
+        "How to dress for authority, match accessories, and control first impressions.",
+    },
+    {
+      name: "Extra Silicone Strap (Your Choice)",
+      value: 10000,
+      description: "One watch. Two looks. Swap in under 2 minutes.",
+    },
+    {
+      name: "Premium Cufflinks Set",
+      value: 8000,
+      description:
+        "The finishing touch for formal occasions. Brushed metal matches your MEGIR.",
+    },
+    {
+      name: "Extended 2-Year Warranty",
+      value: 10000,
+      description:
+        "If your watch stops working, we repair or replace it. No questions asked.",
+    },
+  ];
+
+  const faqItems = [
+    {
+      question: "Is the chronograph actually working or just for show?",
+      answer:
+        "All 3 subdials function. You can time events, track elapsed minutes, and check the date. We're happy to demonstrate via WhatsApp video call before you buy.",
+    },
+    {
+      question: "How long does delivery take?",
+      answer:
+        "Lagos: 1-2 business days. Abuja/Port Harcourt: 2-3 days. Other states: 3-5 days. We'll send tracking information once shipped.",
+    },
+    {
+      question: "What if I don't like it when it arrives?",
+      answer:
+        "We send photos and videos of your exact order before shipping. You approve before we send. If there's any damage during shipping, we replace it free within 48 hours.",
+    },
+    {
+      question: "Is this a real physical store or just online?",
+      answer:
+        "We have a physical store in Abeokuta, Ogun State. You're welcome to visit, or we can do a WhatsApp video call so you can see our shop and products in real time.",
+    },
+    {
+      question: "What does the 2-year warranty cover?",
+      answer:
+        "Any manufacturing defect: movement issues, strap problems, case damage from normal use. We'll repair or replace free of charge. Accidental damage (drops, water damage) is not covered.",
+    },
+  ];
 
   const scrollToOrderForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    const orderForm = document.getElementById('order-form')
+    e.preventDefault();
+    const orderForm = document.getElementById("order-form");
     if (orderForm) {
-      orderForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      orderForm.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
+  };
 
   const handleColorSelect = (colorName: string) => {
-    setSelectedColor(colorName)
-    const colorSelect = document.getElementById('color') as HTMLSelectElement
+    setSelectedColor(colorName);
+    const colorSelect = document.getElementById("color") as HTMLSelectElement;
     if (colorSelect) {
-      colorSelect.value = colorName
+      colorSelect.value = colorName;
     }
-  }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.querySelector('section')
-      const orderForm = document.getElementById('order-form')
+      const heroSection = document.querySelector("section");
+      const orderForm = document.getElementById("order-form");
 
       if (heroSection && orderForm) {
-        const heroBottom = heroSection.getBoundingClientRect().bottom
-        const formTop = orderForm.getBoundingClientRect().top
-        setShowFloatingButton(heroBottom < 0 && formTop > 100)
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        const formTop = orderForm.getBoundingClientRect().top;
+        setShowFloatingButton(heroBottom < 0 && formTop > 100);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget)
-    const fullName = formData.get('fullName')
-    const phone = formData.get('phone')
-    const email = formData.get('email') || ''
-    const state = formData.get('state')
-    const address = formData.get('address')
-    const color = formData.get('color')
+    const formData = new FormData(e.currentTarget);
+    const fullName = formData.get("fullName");
+    const phone = formData.get("phone");
+    const email = formData.get("email") || "";
+    const state = formData.get("state");
+    const address = formData.get("address");
+    const color = formData.get("color");
 
     const orderData = {
       full_name: fullName,
@@ -101,24 +165,24 @@ export default function ExecutiveBundlePage() {
       email: email,
       state: state,
       address: address,
-      product_name: 'MEGIR Executive Bundle (8 Items)',
+      product_name: "MEGIR Executive Bundle (8 Items)",
       color: color,
       quantity: 1,
       price: bundlePrice,
       total_price: bundlePrice,
-      discount: '47% OFF'
-    }
+      discount: "47% OFF",
+    };
 
     try {
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData)
-      })
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData),
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (!response.ok) {
-        console.error('Failed to save order:', result)
+        console.error("Failed to save order:", result);
       }
 
       const message = `🛍️ *NEW ORDER - MEGIR EXECUTIVE BUNDLE*
@@ -126,7 +190,7 @@ export default function ExecutiveBundlePage() {
 👤 *Customer Details:*
 Name: ${fullName}
 Phone: ${phone}
-Email: ${email || 'Not provided'}
+Email: ${email || "Not provided"}
 
 📍 *Delivery Info:*
 State: ${state}
@@ -145,22 +209,27 @@ Product: MEGIR Executive Bundle (8 Items)
 
 💰 *Total: ₦79,000 (47% OFF - Save ₦69,000!) + Delivery*
 
-I'm ready to complete my order. Please send payment details.`
+I'm ready to complete my order. Please send payment details.`;
 
-      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      const thankYouURL = `/thank-you?product=MEGIR+Executive+Bundle&color=${encodeURIComponent(color as string)}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(
+        message
+      )}`;
+      const thankYouURL = `/thank-you?product=MEGIR+Executive+Bundle&color=${encodeURIComponent(
+        color as string
+      )}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(
+        whatsappURL
+      )}`;
 
-      window.location.href = thankYouURL
-
+      window.location.href = thankYouURL;
     } catch (error) {
-      console.error('Error submitting order:', error)
-      setIsSubmitting(false)
+      console.error("Error submitting order:", error);
+      setIsSubmitting(false);
       const message = `🛍️ *NEW ORDER - MEGIR EXECUTIVE BUNDLE*
 
 👤 *Customer Details:*
 Name: ${fullName}
 Phone: ${phone}
-Email: ${email || 'Not provided'}
+Email: ${email || "Not provided"}
 
 📍 *Delivery Info:*
 State: ${state}
@@ -172,95 +241,116 @@ Watch Color: ${color}
 
 💰 *Total: ₦79,000 (47% OFF) + Delivery*
 
-I'm ready to complete my order. Please send payment details.`
+I'm ready to complete my order. Please send payment details.`;
 
-      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      window.open(whatsappURL, '_blank')
+      const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(whatsappURL, "_blank");
     }
-  }
+  };
 
   const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index)
-  }
+    setActiveFaq(activeFaq === index ? null : index);
+  };
 
   return (
     <div className="min-h-screen">
       {/* Urgency Banner */}
-      <div className="bg-destructive text-primary-foreground text-center py-3 px-5 font-semibold text-sm">
-        <span className="animate-pulse">⚡ Only 47 Executive Bundles Remaining - Limited Stock!</span>
+      <div className="bg-destructive text-destructive-foreground text-center py-3 px-5 font-semibold text-sm">
+        <span className="animate-pulse">
+          ⚡ <strong>47 Executive Bundles</strong> remaining at this price.
+          Limited bonus stock.
+        </span>
       </div>
 
       {/* Hero Section */}
-      <section className="py-10 md:py-16 px-5 text-center bg-gradient-to-b from-muted/30 to-background relative">
-        <div className="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent pointer-events-none" />
+      <section className="py-10 md:py-16 px-5 bg-foreground text-background relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          }}
+        />
 
-        <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-block bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
-            Executive Bundle
-          </div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Pricing Column - second on mobile, first on desktop */}
+            <div className="text-center md:text-left order-2 md:order-1">
+              <div className="inline-block bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
+                Executive Bundle
+              </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-            Stop Wearing Watches That <span className="text-destructive">Embarrass You</span>
-          </h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                Stop Wearing Watches That{" "}
+                <span className="text-primary">Embarrass You</span>
+              </h1>
 
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            The executive timepiece Nigerian professionals are switching to — without paying Rolex prices.
-          </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                The executive timepiece Nigerian professionals are switching to,
+                without paying Rolex prices.
+              </p>
 
-          {/* Video Container */}
-          <div className="max-w-md mx-auto mb-8 rounded-2xl overflow-hidden border border-border shadow-lg">
-            <div className="relative bg-black" style={{ aspectRatio: '464/624' }}>
-              <video
-                className="absolute inset-0 w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              >
-                <source src="/products/megir/MEGIR Chronograph Watch 19.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-
-          {/* Price Section */}
-          <Card className="max-w-lg mx-auto mb-5">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
-                <span className="text-4xl font-bold text-primary">₦79,000</span>
-                <span className="bg-destructive/10 text-destructive px-3 py-1.5 rounded-md text-sm font-bold">
-                  SAVE ₦69,000
+              {/* Price Box */}
+              <div className="bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
+                <p className="text-muted-foreground line-through text-sm">
+                  Total Value: ₦148,000
+                </p>
+                <p className="text-4xl font-bold text-primary my-2">₦79,000</p>
+                <span className="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+                  Save ₦69,000 Today
                 </span>
               </div>
 
-              <div className="pt-4 border-t border-border text-center">
-                <p className="text-primary font-semibold mb-2">
-                  <Package className="w-5 h-5 inline mr-2" />
-                  Complete 8-Item Executive Bundle
-                </p>
-                <p className="text-sm text-muted-foreground">Everything you need to command respect</p>
-              </div>
-            </CardContent>
-          </Card>
+              <a
+                href="#order-form"
+                onClick={scrollToOrderForm}
+                className="cursor-pointer block"
+              >
+                <Button
+                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
+                >
+                  Claim Your Executive Bundle
+                </Button>
+              </a>
+            </div>
 
-          {/* CTA Button */}
-          <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
-            <Button size="lg" className="w-full max-w-lg text-sm md:text-base font-bold mb-3 py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
-              <span className="flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" />
-                Order Executive Bundle Now
-              </span>
-            </Button>
-          </a>
-          <p className="text-sm text-muted-foreground">Pay via Bank Transfer • Delivery in 2-5 Days</p>
+            {/* Media Column - first on mobile, second on desktop */}
+            <div className="space-y-4 order-1 md:order-2">
+              {/* Hero Image */}
+              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+                <img
+                  src="/products/megir/MEGIR Chronograph Watch 11.jpeg"
+                  alt="MEGIR Executive Chronograph - Classic Black"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+
+              {/* Hero Video */}
+              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+                <video
+                  className="w-full h-auto"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source
+                    src="/products/megir/MEGIR Chronograph Watch 19.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
 
           {/* Trust Badges */}
-          <div className="flex justify-center gap-6 md:gap-8 mt-8 flex-wrap text-sm text-muted-foreground">
+          <div className="flex justify-center gap-6 md:gap-8 mt-10 flex-wrap text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
-              2 Year Warranty
+              2-Year Warranty
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-primary" />
@@ -268,124 +358,289 @@ I'm ready to complete my order. Please send payment details.`
             </div>
             <div className="flex items-center gap-2">
               <Award className="w-5 h-5 text-primary" />
-              8 Premium Items
+              Secure Bank Transfer
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-16 px-5 bg-muted/30">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Sound <span className="text-primary">Familiar?</span>
-          </h2>
-
-          <div className="space-y-5 max-w-2xl mx-auto">
-            {[
-              "Your watch stopped working after 2-3 months and you're back to square one",
-              "That leather strap cracked from Lagos heat and harmattan dust",
-              "You can't justify spending ₦500,000 on a watch right now",
-              "You've been scammed before buying \"original\" watches online"
-            ].map((problem, i) => (
-              <div key={i} className="flex items-start gap-4 p-5 bg-destructive/5 border-l-4 border-destructive rounded-r-xl">
-                <X className="w-6 h-6 text-destructive shrink-0 mt-0.5" />
-                <p className="text-muted-foreground">{problem}</p>
-              </div>
-            ))}
+      {/* Problem Agitation Section */}
+      <section className="py-16 px-5">
+        <div className="max-w-2xl mx-auto">
+          <div className="prose prose-lg mx-auto text-center">
+            <p className="text-xl">You know that moment.</p>
+            <p className="text-lg text-muted-foreground">
+              You're in a meeting. Or at a networking event. Maybe an owambe
+              where you need to impress.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              And you notice someone glance at your wrist.
+            </p>
           </div>
 
-          <div className="mt-10 max-w-2xl mx-auto p-8 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl border border-primary/20 text-center">
-            <p className="text-lg">
-              <strong>We understand.</strong> That&apos;s exactly why we created the Executive Bundle — everything you need to look and feel successful, without breaking the bank.
+          {/* Contrast Image - Damaged vs Premium */}
+          <div className="my-8 grid grid-cols-2 gap-4">
+            <div className="rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
+              <img
+                src="/products/megir/damaged watch.jpg"
+                alt="Damaged cheap watch"
+                className="w-full h-full object-cover aspect-square"
+              />
+              <p className="text-center text-sm text-destructive py-2 bg-destructive/5 font-medium">
+                Before
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+                alt="MEGIR Premium Watch"
+                className="w-full h-full object-cover aspect-square"
+              />
+              <p className="text-center text-sm text-primary py-2 bg-primary/5 font-medium">
+                After
+              </p>
+            </div>
+          </div>
+
+          <div className="prose prose-lg mx-auto text-center">
+            <p className="text-lg text-muted-foreground">
+              Suddenly you're conscious of it. That cheap-looking watch. The one
+              that stopped keeping accurate time two months ago. The scratched
+              face. The cracked strap.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              You paid ₦15,000 for it.{" "}
+              <em className="text-primary">And it shows.</em>
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Meanwhile, the man across the table (the one everyone seems to
+              respect before he even speaks) has a timepiece that catches the
+              light just right. Bold. Sophisticated. Confident.
+            </p>
+          </div>
+
+          {/* Lifestyle Image */}
+          <div className="my-8 rounded-xl overflow-hidden border border-border shadow-lg">
+            <img
+              src="/products/megir/MEGIR Chronograph Watch life style image 1.jpeg"
+              alt="Professional man wearing MEGIR watch"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
+          <div className="prose prose-lg mx-auto text-center">
+            <p className="text-lg text-muted-foreground">
+              <em className="text-primary">
+                "That's probably a ₦500,000 Rolex. I can't afford that."
+              </em>
+            </p>
+          </div>
+
+          {/* Highlight Box */}
+          <div className="bg-primary text-primary-foreground rounded-xl p-6 text-center my-10">
+            <p className="text-lg font-medium">
+              Here's what he knows that you don't:{" "}
+              <strong>He didn't pay anywhere close to ₦500,000.</strong>
             </p>
           </div>
         </div>
       </section>
 
-      {/* Product Introduction */}
-      <section className="py-16 px-5">
-        <div className="max-w-4xl mx-auto">
+      {/* Pain Points Section */}
+      <section className="py-16 px-5 bg-muted/30">
+        <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Introducing the MEGIR <span className="text-primary">Executive Chronograph</span>
+            Sound <span className="text-primary">Familiar?</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Get the premium watch look for a fraction of the price. Plus 7 essential accessories to complete your executive image.
+          <p className="text-center text-muted-foreground mb-10">
+            These are the frustrations Nigerian professionals deal with every
+            day.
           </p>
 
-          {/* Image Gallery */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 8.jpeg" alt="MEGIR Executive Chronograph" className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 7.jpeg" alt="MEGIR Chronograph detail" className="w-full h-full object-cover" />
-            </div>
+          {/* Damaged Watch Close-up */}
+          <div className="max-w-sm mx-auto mb-8 rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
+            <img
+              src="/products/megir/damaged watch 2.webp"
+              alt="Close-up of damaged watch"
+              className="w-full h-auto object-cover"
+            />
           </div>
 
-          {/* Features */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="space-y-4">
             {[
-              {
-                icon: Clock,
-                title: "Working Chronograph",
-                description: "All 3 subdials actually work. Time events, track hours, and check dates."
-              },
-              {
-                icon: Cloud,
-                title: "Weather-Proof Strap",
-                description: "Silicone strap handles heat, humidity, and sweat without cracking."
-              },
-              {
-                icon: Moon,
-                title: "Luminous Hands",
-                description: "Check time in the dark. Perfect for early mornings or late nights."
-              },
-              {
-                icon: Shield,
-                title: "Stainless Steel Case",
-                description: "Scratch-resistant. Durable. Built to last beyond your expectations."
-              }
-            ].map((feature, i) => (
-              <Card key={i} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="w-15 h-15 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-5">
-                    <feature.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-lg font-bold mb-2.5">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+              "Your 'affordable' watch stops working after 2-3 months (again)",
+              "Lagos humidity and harmattan dust have destroyed every leather strap you've owned",
+              "You can't afford ₦500k for a Rolex, but you're tired of looking cheap",
+              "You've been scammed buying 'original' watches online before",
+            ].map((problem, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-4 p-5 bg-background border border-border rounded-xl shadow-sm"
+              >
+                <X className="w-6 h-6 text-destructive shrink-0 mt-0.5" />
+                <p className="text-muted-foreground">{problem}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bundle Value Stack */}
-      <section className="py-16 px-5 bg-muted/30">
+      {/* Product Introduction */}
+      <section className="py-16 px-5 bg-foreground text-background">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            What&apos;s Inside The <span className="text-primary">Executive Bundle</span>
+            Introducing the MEGIR{" "}
+            <span className="text-primary">Executive Chronograph</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10">8 premium items that complete your professional image</p>
+          <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+            The timepiece Nigerian professionals are quietly switching to,
+            because it looks like ₦500,000 but costs a fraction of that.
+          </p>
 
+          {/* All 4 Colors Grid */}
+          <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((num) => (
+              <div
+                key={num}
+                className="rounded-xl overflow-hidden border border-border shadow-lg"
+              >
+                <img
+                  src={`/products/megir/MEGIR Chronograph Watch ${num}.jpeg`}
+                  alt={`MEGIR Chronograph color variant ${num}`}
+                  className="w-full h-full object-cover aspect-square"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Clock,
+                title: "Working Chronograph",
+                description:
+                  "All 3 subdials actually function. Time events, track hours, and check dates, not just printed circles like cheap watches.",
+                image: "/products/megir/MEGIR Chronograph Watch 7.jpeg",
+                imageAlt: "MEGIR chronograph close-up",
+              },
+              {
+                icon: Cloud,
+                title: "Weather-Proof Strap",
+                description:
+                  "Medical-grade silicone handles Lagos humidity, harmattan dust, heat, and sweat without cracking or getting sticky.",
+                image: "/products/megir/MEGIR Chronograph Watch 6.jpeg",
+                imageAlt: "MEGIR watch on wrist showing strap",
+              },
+              {
+                icon: Moon,
+                title: "Luminous Hands",
+                description:
+                  "Check time in the dark. Perfect for early morning runs, late-night meetings, or NEPA moments.",
+                image: "/products/megir/MEGIR Chronograph Watch 10.jpeg",
+                imageAlt: "MEGIR teal watch showing luminous features",
+              },
+              {
+                icon: Shield,
+                title: "Stainless Steel Case",
+                description:
+                  "Brushed stainless steel resists scratches and daily wear. This is real metal, not painted plastic pretending to be premium.",
+                image: "/products/megir/MEGIR Chronograph Watch 8.jpeg",
+                imageAlt: "MEGIR watch features explanation",
+              },
+            ].map((feature, i) => (
+              <Card
+                key={i}
+                className="bg-background/5 border-border text-background"
+              >
+                <CardContent className="pt-6">
+                  {/* Feature Image */}
+                  <div className="rounded-lg overflow-hidden mb-4">
+                    <img
+                      src={feature.image}
+                      alt={feature.imageAlt}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Chronograph Demo Video */}
+          <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-lg">
+            <video
+              className="w-full h-auto"
+              controls
+              playsInline
+              poster="/products/megir/MEGIR Chronograph Watch 11.jpeg"
+            >
+              <source
+                src="/products/megir/MEGIR Chronograph Watch 20.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <p className="text-center text-sm text-muted-foreground py-3 bg-background/10">
+              Watch the chronograph in action
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Stack / Bundle Section */}
+      <section className="py-16 px-5">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            The <span className="text-primary">Executive Bundle</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-10">
+            Everything you need to walk into any room with confidence.
+          </p>
+
+          {/* Bundle Watches in Boxes Grid */}
+          <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[15, 16, 17, 18].map((num) => (
+              <div
+                key={num}
+                className="rounded-xl overflow-hidden border border-border shadow-lg"
+              >
+                <img
+                  src={`/products/megir/MEGIR Chronograph Watch ${num}.jpeg`}
+                  alt="MEGIR watch in premium box"
+                  className="w-full h-full object-cover aspect-square"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Value Items */}
           <div className="space-y-4 max-w-2xl mx-auto">
             {bundleItems.map((item, i) => (
-              <Card key={i} className="hover:shadow-lg transition-shadow">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                          <span className="text-primary font-bold text-sm">{i + 1}</span>
+                  <div className="flex items-start gap-4">
+                    <div>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-7 h-7 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                            {i + 1}
+                          </span>
+                          <h4 className="font-bold text-sm md:text-base">
+                            {item.name}
+                          </h4>
                         </div>
-                        <h4 className="font-bold text-sm md:text-base">{item.name}</h4>
+                        <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                          ₦{item.value.toLocaleString()} value
+                        </span>
                       </div>
-                      <p className="text-sm text-muted-foreground ml-10">{item.description}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-sm font-bold text-primary">₦{item.value.toLocaleString()}</p>
-                      <p className="text-xs text-muted-foreground">Value</p>
+                      <p className="text-sm text-muted-foreground">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -393,19 +648,44 @@ I'm ready to complete my order. Please send payment details.`
             ))}
           </div>
 
+          {/* Unboxing Video */}
+          <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-lg">
+            <video className="w-full h-auto" controls playsInline>
+              <source
+                src="/products/megir/MEGIR Chronograph Watch 21.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <p className="text-center text-sm text-muted-foreground py-3 bg-muted/30">
+              Unbox your premium MEGIR watch
+            </p>
+          </div>
+
           {/* Total Value Box */}
-          <Card className="max-w-2xl mx-auto mt-8 border-2 border-primary">
-            <CardContent className="pt-6">
-              <div className="text-center mb-4">
-                <p className="text-sm text-muted-foreground mb-2">Total Value If Bought Separately</p>
-                <p className="text-3xl font-bold line-through text-muted-foreground mb-2">₦148,000</p>
-                <p className="text-sm text-muted-foreground mb-4">Your Executive Bundle Price Today</p>
-                <p className="text-5xl font-bold text-primary mb-2">₦79,000</p>
-                <p className="text-xl font-semibold text-green-600">You Save ₦69,000 (47% OFF!)</p>
-              </div>
-              <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer block mt-6">
-                <Button size="lg" className="w-full font-bold">
-                  Claim Your Executive Bundle Now
+          <Card className="max-w-2xl mx-auto mt-10 bg-foreground text-background border-0">
+            <CardContent className="pt-8 text-center">
+              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">
+                Total Bundle Value
+              </p>
+              <p className="text-2xl text-muted-foreground line-through mb-1">
+                ₦148,000
+              </p>
+              <p className="text-5xl font-bold text-primary mb-6">₦79,000</p>
+              <p className="text-lg mb-6">
+                Your investment today:{" "}
+                <span className="text-primary font-bold text-3xl">₦79,000</span>
+              </p>
+              <a
+                href="#order-form"
+                onClick={scrollToOrderForm}
+                className="cursor-pointer block"
+              >
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 px-10 rounded-full"
+                >
+                  Claim Your Bundle Now
                 </Button>
               </a>
             </CardContent>
@@ -413,93 +693,33 @@ I'm ready to complete my order. Please send payment details.`
         </div>
       </section>
 
-      {/* Color Options */}
-      <section className="py-16 px-5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Choose Your Watch <span className="text-primary">Color</span>
-          </h2>
-          <p className="text-muted-foreground mb-8">4 Bold Colors. Pick the one that matches your style.</p>
-
-          <div className="grid grid-cols-4 gap-2 md:gap-5 max-w-xl mx-auto mb-10">
-            {colorOptions.map((option) => (
-              <div key={option.name} className="flex flex-col items-center gap-1.5 md:gap-2.5">
-                <button
-                  onClick={() => handleColorSelect(option.name)}
-                  className={`w-14 h-14 md:w-20 md:h-20 rounded-full border-3 md:border-4 transition-all relative ${
-                    selectedColor === option.name
-                      ? 'border-primary scale-110 shadow-lg'
-                      : 'border-border hover:border-primary/50 hover:scale-105'
-                  }`}
-                  style={{ backgroundColor: option.color }}
-                  aria-label={option.name}
-                >
-                  {selectedColor === option.name && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-white drop-shadow-lg" fill="currentColor" />
-                    </div>
-                  )}
-                </button>
-                <span className={`text-[10px] md:text-sm transition-all text-center ${
-                  selectedColor === option.name
-                    ? 'text-primary font-bold'
-                    : 'text-muted-foreground'
-                }`}>
-                  {option.name}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-            {colorOptions.map((option) => (
-              <div
-                key={option.name}
-                className={`aspect-square rounded-xl overflow-hidden transition-all cursor-pointer relative ${
-                  selectedColor === option.name
-                    ? 'border-4 border-primary shadow-2xl scale-105'
-                    : 'border border-border hover:border-primary/50 hover:scale-102'
-                }`}
-                onClick={() => handleColorSelect(option.name)}
-              >
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.jpeg`}
-                  alt={`${option.name} MEGIR watch`}
-                  className="w-full h-full object-cover"
-                />
-                {selectedColor === option.name && (
-                  <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    Selected
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Guarantee Section */}
       <section className="py-16 px-5 bg-muted/30">
-        <div className="max-w-3xl mx-auto">
-          <Card className="max-w-2xl mx-auto bg-gradient-to-br from-green-500/5 to-transparent border-2 border-green-600/30">
+        <div className="max-w-xl mx-auto">
+          <Card className="border-2 border-primary">
             <CardContent className="pt-10 text-center">
-              <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-10 h-10 text-white" />
+              <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-10 h-10 text-primary-foreground" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Our "Respect Guaranteed" Promise</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                We stand behind every Executive Bundle. If you&apos;re not completely satisfied, we make it right.
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                Our "Respect Guaranteed" Promise
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                If your watch stops working within 2 years (for ANY
+                manufacturing reason) we'll repair or replace it. Free.
               </p>
-              <ul className="text-left max-w-md mx-auto space-y-3">
+
+              <ul className="text-left space-y-3 max-w-md mx-auto">
                 {[
-                  "Physical store you can visit in Abeokuta - we're real people, not ghosts",
-                  "WhatsApp video call anytime - see your watch before you pay",
-                  "Pre-shipment photo confirmation - know exactly what you're getting",
-                  "48-hour damage protection - any shipping damage, we replace it free",
-                  "2-year extended warranty - free repair or replacement"
+                  "Physical Store Verification: Visit us anytime in Abeokuta",
+                  "WhatsApp Video Call: See your exact watch before paying",
+                  "Pre-Shipment Confirmation: Approve photos before we ship",
+                  "48-Hour Damage Protection: Free replacement if damaged",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    </span>
                     <span className="text-sm">{item}</span>
                   </li>
                 ))}
@@ -510,54 +730,57 @@ I'm ready to complete my order. Please send payment details.`
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 px-5">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            What <span className="text-primary">Customers</span> Say
+      <section className="py-16 px-5 bg-foreground text-background">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            What Nigerian <span className="text-primary">Professionals</span>{" "}
+            Say
           </h2>
+          <p className="text-center text-muted-foreground mb-10">
+            Real customers. Real results. Real respect.
+          </p>
 
-          <div className="space-y-6 max-w-2xl mx-auto">
+          <div className="space-y-6">
             {[
               {
-                text: "I bought the Executive Bundle and wow! The watch alone is worth it, but the wallet and pen? Chef's kiss. My colleagues keep asking where I got everything.",
-                author: "Tunde A.",
+                text: "I was skeptical. Very skeptical. Another online store promising quality? In Nigeria? But I took the chance because they have a physical store. The watch arrived exactly as pictured. Better, actually. Now I have colleagues asking where I got it.",
+                author: "Adebayo O.",
                 location: "Lagos",
-                initials: "TA"
+                initials: "AO",
               },
               {
-                text: "Skeptical at first, but BaaWA delivered! Everything came in perfect condition. The 2-year warranty gives me peace of mind. Already recommended to my brother.",
-                author: "Ibrahim K.",
+                text: "Bought the white one for my husband's birthday. The packaging impressed me first. Then my husband's face when he opened it. He's worn it every day since. Already planning to get him the black one.",
+                author: "Funke E.",
                 location: "Abuja",
-                initials: "IK"
+                initials: "FE",
               },
               {
-                text: "Got this as a gift for my husband. He's been wearing the watch daily for 6 months now - still perfect! The bundle extras were a pleasant surprise.",
-                author: "Chioma N.",
+                text: "I've bought 3 'chronograph' watches before. All had fake subdials. This MEGIR? All three subdials work. I use the stopwatch for gym sessions. My friends keep thinking it cost ₦200k+.",
+                author: "Chukwuemeka E.",
                 location: "Port Harcourt",
-                initials: "CN"
-              }
+                initials: "CE",
+              },
             ].map((testimonial, i) => (
-              <Card key={i} className="relative">
+              <Card key={i} className="bg-background/5 border-border">
                 <CardContent className="pt-6">
-                  <div className="text-7xl font-serif text-primary/20 absolute top-2.5 left-5 leading-none select-none">
-                    &ldquo;
-                  </div>
-                  <p className="text-muted-foreground mb-5 relative z-10 leading-relaxed">
-                    {testimonial.text}
+                  <p className="text-muted-foreground mb-5 leading-relaxed italic">
+                    "{testimonial.text}"
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center font-bold text-primary-foreground">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-lg font-bold text-primary-foreground">
                       {testimonial.initials}
                     </div>
-                    <div>
-                      <h5 className="font-semibold text-sm">{testimonial.author}</h5>
-                      <p className="text-xs text-muted-foreground">{testimonial.location}</p>
-                      <div className="flex gap-1 mt-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-3.5 h-3.5 fill-primary text-primary" />
-                        ))}
-                      </div>
+                    <div className="grow">
+                      <h5 className="font-semibold text-sm">
+                        {testimonial.author}
+                      </h5>
+                      <p className="text-xs text-muted-foreground">
+                        {testimonial.location}
+                      </p>
                     </div>
+                    <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
+                      Verified Buyer
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -566,75 +789,126 @@ I'm ready to complete my order. Please send payment details.`
         </div>
       </section>
 
-      {/* Store Section */}
-      <section className="py-16 px-5 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
+      {/* Physical Store Section */}
+      <section className="py-16 px-5">
+        <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Visit Our <span className="text-primary">Physical Store</span> in Abeokuta
+            Visit Our <span className="text-primary">Physical Store</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            We&apos;re not just online - come see our products in person and experience our quality firsthand
+          <p className="text-center text-muted-foreground mb-10">
+            We're not hiding behind a PO Box. Come see us in Abeokuta.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {/* Store Photos Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Store full building picture.jpeg" alt="BaaWA store building" className="w-full h-full object-cover aspect-video" />
+              <img
+                src="/Store full building picture.jpeg"
+                alt="BaaWA store building"
+                className="w-full h-full object-cover aspect-video"
+              />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Store front with bill board.jpg" alt="BaaWA store front" className="w-full h-full object-cover aspect-video" />
+              <img
+                src="/Store front with bill board.jpg"
+                alt="BaaWA store front with billboard"
+                className="w-full h-full object-cover aspect-video"
+              />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Baawa store table.png" alt="BaaWA store display" className="w-full h-full object-cover aspect-video" />
+              <img
+                src="/Baawa store table.png"
+                alt="BaaWA store display table"
+                className="w-full h-full object-cover aspect-video"
+              />
             </div>
           </div>
 
-          <Card className="max-w-2xl mx-auto border-2 border-primary/30">
-            <CardContent className="pt-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="text-center md:text-left">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4">
-                    <Store className="w-8 h-8 text-primary-foreground" />
+          {/* Contact Info */}
+          <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+            <Card className="text-center">
+              <CardContent className="pt-5">
+                <div className="text-2xl mb-2">📍</div>
+                <p className="font-semibold text-sm">Location</p>
+                <p className="text-xs text-muted-foreground">
+                  Abeokuta, Ogun State
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-5">
+                <div className="text-2xl mb-2">📱</div>
+                <p className="font-semibold text-sm">WhatsApp</p>
+                <p className="text-xs text-primary">+234-806-260-5012</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-5">
+                <div className="text-2xl mb-2">✉️</div>
+                <p className="font-semibold text-sm">Email</p>
+                <p className="text-xs text-primary">Sales@baawa.ng</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 px-5 bg-muted/30">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Frequently Asked <span className="text-primary">Questions</span>
+          </h2>
+
+          <div className="space-y-3">
+            {faqItems.map((item, index) => (
+              <Card key={index} className="overflow-hidden">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full p-5 flex justify-between items-center gap-4 text-left font-semibold hover:bg-muted/50 transition-colors"
+                >
+                  <span>{item.question}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-primary transition-transform shrink-0 ${
+                      activeFaq === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {activeFaq === index && (
+                  <div className="px-5 pb-5 text-muted-foreground text-sm leading-relaxed">
+                    {item.answer}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">BaaWA Accessories</h3>
-                  <p className="text-primary font-semibold mb-3">📍 Abeokuta, Ogun State, Nigeria</p>
-                  <p className="text-sm text-muted-foreground mb-4">Visit anytime to see our products before buying.</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-                    <Phone className="w-5 h-5 text-primary shrink-0" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Call/WhatsApp</p>
-                      <p className="font-semibold">+234-806-260-5012</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-                    <Mail className="w-5 h-5 text-primary shrink-0" />
-                    <div>
-                      <p className="text-xs text-muted-foreground">Email</p>
-                      <p className="font-semibold">Sales@baawa.ng</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                )}
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Order Form Section */}
-      <section id="order-form" className="py-16 px-5 bg-gradient-to-b from-muted/30 to-background relative">
-        <div className="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent pointer-events-none" />
-
-        <div className="max-w-3xl mx-auto relative z-10">
-          <Card className="max-w-lg mx-auto border-2 border-primary">
-            <CardHeader>
-              <CardTitle className="text-2xl md:text-3xl font-bold text-center">Order Your Executive Bundle</CardTitle>
-              <CardDescription className="text-center">Fill the form below. We&apos;ll confirm via WhatsApp.</CardDescription>
+      <section
+        id="order-form"
+        className="py-16 px-5 bg-linear-to-br from-primary to-primary/80"
+      >
+        <div className="max-w-lg mx-auto">
+          <Card className="shadow-2xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl md:text-3xl font-bold">
+                Claim Your Executive Bundle
+              </CardTitle>
+              <CardDescription>
+                Fill out the form. We'll confirm via WhatsApp within 1 hour.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="fullName" className="block mb-2 font-semibold text-sm">Full Name *</label>
+                  <label
+                    htmlFor="fullName"
+                    className="block mb-2 font-semibold text-sm"
+                  >
+                    Full Name *
+                  </label>
                   <input
                     type="text"
                     id="fullName"
@@ -646,19 +920,29 @@ I'm ready to complete my order. Please send payment details.`
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block mb-2 font-semibold text-sm">WhatsApp Number *</label>
+                  <label
+                    htmlFor="phone"
+                    className="block mb-2 font-semibold text-sm"
+                  >
+                    WhatsApp Number *
+                  </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="e.g., 08012345678"
+                    placeholder="e.g. 08012345678"
                     required
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block mb-2 font-semibold text-sm">Email Address</label>
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 font-semibold text-sm"
+                  >
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -669,7 +953,12 @@ I'm ready to complete my order. Please send payment details.`
                 </div>
 
                 <div>
-                  <label htmlFor="state" className="block mb-2 font-semibold text-sm">Delivery State *</label>
+                  <label
+                    htmlFor="state"
+                    className="block mb-2 font-semibold text-sm"
+                  >
+                    Delivery State *
+                  </label>
                   <select
                     id="state"
                     name="state"
@@ -677,96 +966,161 @@ I'm ready to complete my order. Please send payment details.`
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'right 16px center'
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 16px center",
                     }}
                   >
                     <option value="">Select your state</option>
-                    {['Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'FCT - Abuja', 'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'].map(state => (
-                      <option key={state} value={state}>{state}</option>
+                    {[
+                      "Abia",
+                      "Adamawa",
+                      "Akwa Ibom",
+                      "Anambra",
+                      "Bauchi",
+                      "Bayelsa",
+                      "Benue",
+                      "Borno",
+                      "Cross River",
+                      "Delta",
+                      "Ebonyi",
+                      "Edo",
+                      "Ekiti",
+                      "Enugu",
+                      "FCT - Abuja",
+                      "Gombe",
+                      "Imo",
+                      "Jigawa",
+                      "Kaduna",
+                      "Kano",
+                      "Katsina",
+                      "Kebbi",
+                      "Kogi",
+                      "Kwara",
+                      "Lagos",
+                      "Nasarawa",
+                      "Niger",
+                      "Ogun",
+                      "Ondo",
+                      "Osun",
+                      "Oyo",
+                      "Plateau",
+                      "Rivers",
+                      "Sokoto",
+                      "Taraba",
+                      "Yobe",
+                      "Zamfara",
+                    ].map((state) => (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="address" className="block mb-2 font-semibold text-sm">Delivery Address *</label>
-                  <textarea
+                  <label
+                    htmlFor="address"
+                    className="block mb-2 font-semibold text-sm"
+                  >
+                    Delivery Address *
+                  </label>
+                  <input
+                    type="text"
                     id="address"
                     name="address"
-                    rows={2}
-                    placeholder="Enter your full delivery address"
+                    placeholder="Full delivery address"
                     required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="color" className="block mb-2 font-semibold text-sm">Watch Color *</label>
-                  <select
+                  <label className="block mb-2 font-semibold text-sm">
+                    Watch Color *
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {colorOptions.map((option) => (
+                      <button
+                        key={option.name}
+                        type="button"
+                        onClick={() => handleColorSelect(option.name)}
+                        className={`flex items-center gap-3 p-3 border-2 rounded-lg transition-all ${
+                          selectedColor === option.name
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        <div
+                          className="w-10 h-10 rounded-lg border border-border"
+                          style={{ backgroundColor: option.color }}
+                        />
+                        <span className="text-sm font-medium">
+                          {option.name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                  <input
+                    type="hidden"
                     id="color"
                     name="color"
                     value={selectedColor}
-                    onChange={(e) => setSelectedColor(e.target.value)}
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'right 16px center'
-                    }}
-                  >
-                    {colorOptions.map((option) => (
-                      <option key={option.name} value={option.name}>{option.name}</option>
-                    ))}
-                  </select>
+                  />
                 </div>
 
-                <Card>
-                  <CardContent className="pt-5 space-y-3">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Bundle Price</span>
-                      <span className="font-semibold">₦79,000</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Total Value</span>
-                      <span className="font-semibold line-through">₦148,000</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">You Save</span>
-                      <span className="font-semibold text-green-600">₦69,000 (47%)</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Delivery</span>
-                      <span className="font-semibold">Calculated after</span>
-                    </div>
-                    <div className="flex justify-between pt-3 border-t border-border">
-                      <span className="font-bold">Total</span>
-                      <span className="font-bold text-lg text-primary">₦79,000 + Delivery</span>
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Order Summary */}
+                <div className="bg-muted rounded-xl p-5">
+                  <div className="flex justify-between py-2 text-sm">
+                    <span>Executive Bundle (8 Items)</span>
+                    <span>₦148,000 value</span>
+                  </div>
+                  <div className="flex justify-between py-2 text-sm text-green-600">
+                    <span>Bundle Discount</span>
+                    <span>- ₦69,000</span>
+                  </div>
+                  <div className="flex justify-between pt-4 mt-2 border-t border-border font-bold text-lg">
+                    <span>Your Total</span>
+                    <span className="text-primary">₦79,000 + Delivery</span>
+                  </div>
+                </div>
 
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full text-sm md:text-base font-bold py-5 md:py-7 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
-                  <span className="flex items-center justify-center gap-2">
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Processing Order...
-                      </>
-                    ) : (
-                      <>
-                        <Phone className="w-5 h-5" />
-                        Complete Order on WhatsApp
-                      </>
-                    )}
-                  </span>
+                {/* Trust Seals Placeholders */}
+                <div className="flex justify-center gap-3 flex-wrap">
+                  {[
+                    "Secure Payment",
+                    "2-Year Warranty",
+                    "Physical Store",
+                    "1000+ Customers",
+                  ].map((seal) => (
+                    <div
+                      key={seal}
+                      className="w-16 h-16 bg-muted border border-dashed border-muted-foreground/30 rounded-lg flex items-center justify-center text-[8px] text-center text-muted-foreground p-1"
+                    >
+                      {seal} Badge
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-xl"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Processing...
+                    </span>
+                  ) : (
+                    "Complete Order on WhatsApp"
+                  )}
                 </Button>
 
-                <div className="text-center p-4 bg-destructive/5 border border-destructive/30 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">⚠️ Important:</strong> Payment confirms your order. We do NOT offer Pay on Delivery. Bank transfer details will be sent via WhatsApp.
-                  </p>
-                </div>
+                <p className="text-center text-sm text-muted-foreground">
+                  ⚠️ <strong>Important:</strong> Bank transfer confirms your
+                  order. We do NOT offer Pay on Delivery.
+                </p>
               </form>
             </CardContent>
           </Card>
@@ -774,59 +1128,72 @@ I'm ready to complete my order. Please send payment details.`
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 px-5 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="py-16 px-5 bg-foreground text-background text-center relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="/products/megir/MEGIR Chronograph Watch life style image 1.jpeg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="max-w-xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            One Year From Today, You&apos;ll <span className="text-primary">Thank Yourself</span>
+            One Year From Today...
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            For investing in quality. For choosing respect. For getting the Executive Bundle.
+          <p className="text-muted-foreground mb-8 text-lg">
+            You'll either be the same man wearing the same forgettable watch...
+            or the one who walks into rooms with quiet confidence.
           </p>
-          <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
-            <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-4 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
-              <span className="flex items-center justify-center gap-2">
-                <Package className="w-5 h-5" />
-                Get Executive Bundle - ₦79,000
-              </span>
+          <a
+            href="#order-form"
+            onClick={scrollToOrderForm}
+            className="cursor-pointer inline-block"
+          >
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 px-10 rounded-full"
+            >
+              Claim Your Executive Bundle — ₦79,000
             </Button>
           </a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-10 px-5 bg-muted/30 border-t border-border text-center">
-        <div className="max-w-3xl mx-auto">
-          <img
-            src="/logo/baawa-logo-brand-color.png"
-            alt="BaaWA Accessories"
-            className="h-8 md:h-10 mx-auto mb-6"
-          />
-          <p className="text-sm text-muted-foreground mb-2">
-            WhatsApp: <a href="https://wa.me/2348062605012" className="text-primary hover:underline">+234-806-260-5012</a>
-          </p>
-          <p className="text-sm text-muted-foreground mb-2">
-            Email: <a href="mailto:Sales@baawa.ng" className="text-primary hover:underline">Sales@baawa.ng</a>
-          </p>
-          <p className="text-sm text-muted-foreground mb-5">📍 Abeokuta, Ogun State, Nigeria</p>
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} BaaWA Accessories. All rights reserved.</p>
-        </div>
+      <footer className="py-10 px-5 bg-foreground text-center">
+        <p className="text-2xl font-bold text-primary mb-5">
+          BaaWA Accessories
+        </p>
+        <p className="text-muted-foreground text-sm">
+          📍 Abeokuta, Ogun State, Nigeria
+        </p>
+        <p className="text-muted-foreground text-sm mt-5">
+          © {new Date().getFullYear()} BaaWA Accessories. All rights reserved.
+        </p>
       </footer>
 
       {/* Floating Order Button */}
       {showFloatingButton && (
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-t border-border shadow-2xl animate-in slide-in-from-bottom">
-          <div className="max-w-4xl mx-auto px-5 py-4">
-            <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer block">
-              <Button size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
-                <span className="flex items-center justify-center gap-2">
-                  <ShoppingCart className="w-5 h-5" />
-                  Order Bundle - ₦79,000 (Save ₦69k!)
-                </span>
+          <div className="max-w-4xl mx-auto px-5 py-4 flex justify-between items-center">
+            <div className="text-sm">
+              <span className="text-muted-foreground">Executive Bundle</span>
+              <strong className="block text-lg">₦79,000</strong>
+            </div>
+            <a
+              href="#order-form"
+              onClick={scrollToOrderForm}
+              className="cursor-pointer"
+            >
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6">
+                Order Now
               </Button>
             </a>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
