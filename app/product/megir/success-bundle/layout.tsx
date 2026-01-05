@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function SuccessBundleLayout({
+export default function MegirLayout({
   children,
 }: {
   children: React.ReactNode
