@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGIR Perfect Gift Bundle | The Gift He'll Never Forget</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #722F37;
+            --burgundy-light: #8B4049;
+            --burgundy-dark: #5A252C;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --charcoal: #2D2D2D;
+            --white: #FFFFFF;
+            --text-dark: #2D2D2D;
+            --text-light: #6B6B6B;
+            --success: #4A7C59;
+            --shadow-sm: 0 2px 8px rgba(114, 47, 55, 0.08);
+            --shadow-md: 0 4px 20px rgba(114, 47, 55, 0.12);
+            --shadow-lg: 0 8px 40px rgba(114, 47, 55, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(165deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            color: var(--white);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--cream), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .occasion-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--gold-light);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 9vw, 56px);
+            margin-bottom: 20px;
+            color: var(--white);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            max-width: 480px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* Gift Visual Placeholder */
+        .hero-gift-visual {
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 60px 30px;
+            max-width: 400px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-gift-visual span {
+            display: block;
+            color: var(--gold-light);
+            font-size: 14px;
+        }
+
+        .price-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 350px;
+            margin: 0 auto 30px;
+        }
+
+        .price-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+        }
+
+        .price-original {
+            font-size: 16px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+        }
+
+        .price-current {
+            font-size: 46px;
+            font-weight: 700;
+            color: var(--gold-light);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--charcoal);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(201, 169, 98, 0.4);
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(201, 169, 98, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            box-shadow: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        /* Trust line */
+        .trust-line {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 35px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            flex-wrap: wrap;
+        }
+
+        .trust-line span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 70px 20px;
+        }
+
+        .section-cream {
+            background: var(--cream-dark);
+        }
+
+        .section-burgundy {
+            background: var(--burgundy);
+            color: var(--white);
+        }
+
+        .section-title {
+            font-size: clamp(30px, 7vw, 42px);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 50px;
+        }
+
+        .section-burgundy .section-subtitle {
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* Empathy Section */
+        .empathy-text {
+            font-size: 19px;
+            line-height: 2;
+            max-width: 580px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .empathy-text p {
+            margin-bottom: 25px;
+        }
+
+        .empathy-text em {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--burgundy);
+        }
+
+        .solution-box {
+            background: var(--burgundy);
+            color: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 500px;
+        }
+
+        .solution-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* What's Different Section */
+        .difference-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .difference-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .difference-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--burgundy);
+        }
+
+        .difference-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Gift Benefits */
+        .benefits-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: start;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--burgundy-light), var(--burgundy));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 22px;
+        }
+
+        .benefit-content h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--burgundy);
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .benefit-content p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Value Stack */
+        .value-item {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--gold), var(--burgundy));
+        }
+
+        .value-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--burgundy);
+        }
+
+        .value-header {
+            margin-bottom: 12px;
+            padding-right: 50px;
+        }
+
+        .value-title {
+            font-size: 20px;
+            color: var(--burgundy);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .value-price {
+            font-size: 13px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .value-description {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Highlight Value Item */
+        .value-item.highlight {
+            background: linear-gradient(135deg, var(--burgundy), var(--burgundy-dark));
+            color: white;
+        }
+
+        .value-item.highlight::before {
+            background: var(--gold);
+        }
+
+        .value-item.highlight .value-number {
+            background: rgba(255,255,255,0.2);
+            color: var(--gold-light);
+        }
+
+        .value-item.highlight .value-title {
+            color: var(--white);
+        }
+
+        .value-item.highlight .value-price {
+            color: var(--gold-light);
+        }
+
+        .value-item.highlight .value-description {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Total Box */
+        .total-box {
+            background: white;
+            border: 3px solid var(--burgundy);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .total-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .total-value {
+            font-size: 22px;
+            text-decoration: line-through;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .total-price {
+            font-size: 52px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--burgundy);
+            margin-bottom: 15px;
+        }
+
+        .total-tagline {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        /* Guarantee */
+        .guarantee-grid {
+            display: grid;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .guarantee-item {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .guarantee-check {
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .guarantee-check svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--burgundy-dark);
+        }
+
+        .guarantee-text {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            color: var(--cream-dark);
+            line-height: 1;
+        }
+
+        .testimonial-quote {
+            font-size: 17px;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--burgundy-light), var(--burgundy));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 18px;
+        }
+
+        .author-info {
+            flex-grow: 1;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .author-context {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .testimonial-occasion {
+            display: inline-block;
+            background: var(--cream);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--burgundy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Occasions */
+        .occasions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .occasion-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .occasion-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .occasion-emoji {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .occasion-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 22px 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            color: var(--burgundy);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 0 25px 22px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Order Form */
+        .order-section {
+            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+            padding: 70px 20px;
+        }
+
+        .order-form-wrapper {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 35px;
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header h3 {
+            font-size: 30px;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            border: 2px solid #E8E0D8;
+            border-radius: 12px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            background: var(--cream);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            background: white;
+        }
+
+        .form-input::placeholder {
+            color: #A0A0A0;
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Relationship Pills */
+        .relationship-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .relationship-pill {
+            padding: 10px 18px;
+            border: 2px solid #E8E0D8;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .relationship-pill:hover {
+            border-color: var(--burgundy-light);
+        }
+
+        .relationship-pill.selected {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+            color: white;
+        }
+
+        /* Color Options */
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .color-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border: 2px solid #E8E0D8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .color-option:hover {
+            border-color: var(--burgundy-light);
+        }
+
+        .color-option.selected {
+            border-color: var(--burgundy);
+            background: rgba(114, 47, 55, 0.05);
+        }
+
+        .color-swatch {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+
+        .color-swatch.navy { background: #1E3A5F; }
+        .color-swatch.black { background: #1A1A1A; }
+        .color-swatch.white { background: #F5F5F5; border-color: #ccc; }
+        .color-swatch.teal { background: #008080; }
+
+        .color-info {
+            flex-grow: 1;
+        }
+
+        .color-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .color-note {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .summary-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--burgundy);
+            margin-bottom: 15px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .summary-item.included {
+            color: var(--success);
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 2px solid #E8E0D8;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .summary-total .price {
+            color: var(--burgundy);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--burgundy), var(--burgundy-dark));
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(114, 47, 55, 0.4);
+        }
+
+        .form-reassurance {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .form-reassurance strong {
+            color: var(--burgundy);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: clamp(28px, 6vw, 40px);
+            color: var(--burgundy);
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .final-cta p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 450px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--burgundy-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-info {
+            font-size: 13px;
+        }
+
+        .sticky-info strong {
+            font-size: 20px;
+            color: var(--burgundy);
+            display: block;
+        }
+
+        .sticky-button {
+            background: var(--burgundy);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Image Placeholders */
+        .image-placeholder {
+            background: rgba(114, 47, 55, 0.08);
+            border: 2px dashed var(--burgundy-light);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .image-placeholder .label {
+            background: var(--burgundy);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-placeholder .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: 5px;
+        }
+
+        .image-placeholder .specs {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 20px 70px;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .color-options {
+                grid-template-columns: 1fr;
+            }
+
+            .occasions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .order-form-wrapper {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <span class="occasion-badge">🎁 Perfect For His Special Day</span>
+                
+                <h1>The Gift He'll Never Forget</h1>
+                
+                <p class="hero-subtitle">A stunning timepiece, beautifully wrapped, with a personal message from you — delivered to your door, ready to give.</p>
+
+                <!-- Gift Visual Placeholder -->
+                <div class="hero-gift-visual">
+                    <span>📷 IMAGE: Beautifully wrapped gift package</span>
+                    <span style="margin-top: 10px; font-size: 12px; opacity: 0.7;">Ribbon, tissue, wax seal visible</span>
+                </div>
+                
+                <div class="price-box">
+                    <div class="price-label">Complete Gift Bundle</div>
+                    <div class="price-original">Value: ₦99,000+</div>
+                    <div class="price-current">₦69,000</div>
+                    <div class="price-note">Ready to give. No wrapping needed.</div>
+                </div>
+                
+                <a href="#order-form" class="cta-button">Order His Gift Now</a>
+                
+                <div class="trust-line">
+                    <span>✓ Video preview before shipping</span>
+                    <span>✓ 1-year warranty</span>
+                    <span>✓ 7-day exchange</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empathy Section -->
+    <section class="section">
+        <div class="container">
+            <div class="empathy-text">
+                <p>Let's be honest.</p>
+                <p><em>Shopping for him is hard.</em></p>
+                <p>He says "I don't need anything" but you know he deserves something special. You browse online for hours. Nothing feels right.</p>
+                <p>You've given clothes he never wore. Gadgets that collected dust. Gift cards that felt... impersonal.</p>
+                <p>This year, you want different. You want to see his face light up.</p>
+                
+                <div class="solution-box">
+                    <p>That gift exists.<br>And you just found it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes This Different -->
+    <section class="section section-cream">
+        <div class="container">
+            <h2 class="section-title">This Isn't Just a Watch</h2>
+            <p class="section-subtitle">It's a complete gift experience — ready the moment it arrives.</p>
+            
+            <div class="difference-card">
+                <div class="difference-icon">🎁</div>
+                <h3>Ready to Give, Right Out of the Box</h3>
+                <p>Most gifts require work — wrapping paper, hunting for a card, hoping it looks presentable. Not this one. The Perfect Gift Bundle arrives at YOUR door completely ready to hand to HIM. Premium wrapping. Ribbon and tissue. A handwritten card with YOUR message. All you do is smile when he opens it.</p>
+            </div>
+
+            <!-- Image Placeholder -->
+            <div class="image-placeholder">
+                <span class="label">High Priority Image</span>
+                <div class="title">Unboxing Sequence</div>
+                <div class="specs">Wrapped → Opening → Revealed watch + accessories</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why He'll Love It -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why He'll Love This Watch</h2>
+            <p class="section-subtitle">Thoughtful details that show you understand him.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚙️</div>
+                    <div class="benefit-content">
+                        <h4>Working Chronograph</h4>
+                        <p>All 3 subdials actually function — he can time workouts, track meetings, feel like he's wearing a serious instrument. Men notice these details.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌡️</div>
+                    <div class="benefit-content">
+                        <h4>Built for Nigerian Weather</h4>
+                        <p>The silicone strap handles humidity and heat without cracking like leather. A practical choice that shows you understand his daily life.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <div class="benefit-content">
+                        <h4>Luminous Hands</h4>
+                        <p>He can check time during early mornings or late nights without reaching for his phone. Thoughtful touches like this make a gift feel special.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-content">
+                        <h4>Built to Last</h4>
+                        <p>Stainless steel case, Japanese movement — this watch will still look great a year from now. He'll be thanking you for a long time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Stack -->
+    <section class="section section-cream" id="whats-included">
+        <div class="container">
+            <h2 class="section-title">Everything Included</h2>
+            <p class="section-subtitle">A complete luxury gift experience.</p>
+
+            <!-- Bundle Flat Lay Placeholder -->
+            <div class="image-placeholder" style="background: rgba(114,47,55,0.12); border-color: var(--burgundy);">
+                <span class="label" style="background: #C62828;">Critical Image</span>
+                <div class="title">Complete Bundle Flat-Lay</div>
+                <div class="specs">Watch, cufflinks, cologne, wrapped package, card — all visible</div>
+            </div>
+            
+            <div class="value-item">
+                <span class="value-number">1</span>
+                <div class="value-header">
+                    <h3 class="value-title">MEGIR Chronograph Watch in Gift Box</h3>
+                    <div class="value-price">₦65,000 value</div>
+                </div>
+                <p class="value-description">The star of the show. Bold design, working chronograph, stainless steel case. Choose from 4 colors — Navy Blue is our most popular for gifts.</p>
+            </div>
+            
+            <div class="value-item highlight">
+                <span class="value-number">2</span>
+                <div class="value-header">
+                    <h3 class="value-title">Luxury Gift Wrapping</h3>
+                    <div class="value-price">₦5,000 value</div>
+                </div>
+                <p class="value-description">Premium paper, satin ribbon, tissue paper, wax seal. When he sees this package, he'll know something special is inside. No wrapping stress for you.</p>
+            </div>
+            
+            <div class="value-item highlight">
+                <span class="value-number">3</span>
+                <div class="value-header">
+                    <h3 class="value-title">Handwritten Personalized Card</h3>
+                    <div class="value-price">₦3,000 value</div>
+                </div>
+                <p class="value-description">Tell him how you feel — in YOUR words. We write it by hand on a premium card. Personal. Meaningful. Impossible to forget.</p>
+            </div>
+            
+            <div class="value-item">
+                <span class="value-number">4</span>
+                <div class="value-header">
+                    <h3 class="value-title">Premium Cufflinks Set</h3>
+                    <div class="value-price">₦10,000 value</div>
+                </div>
+                <p class="value-description">Brushed metal finish in velvet-lined box. For weddings, owambes, important meetings — elevates the gift from "nice watch" to "complete gentleman's set."</p>
+            </div>
+            
+            <div class="value-item">
+                <span class="value-number">5</span>
+                <div class="value-header">
+                    <h3 class="value-title">Designer-Style Cologne Sample</h3>
+                    <div class="value-price">₦8,000 value</div>
+                </div>
+                <p class="value-description">A 10ml sample of sophisticated men's fragrance. The unexpected luxury touch that makes him think "She really thought about this."</p>
+            </div>
+            
+            <div class="value-item highlight">
+                <span class="value-number">6</span>
+                <div class="value-header">
+                    <h3 class="value-title">Pre-Delivery Video Confirmation</h3>
+                    <div class="value-price">Priceless</div>
+                </div>
+                <p class="value-description">See exactly what he'll receive BEFORE we ship. The watch, the wrapped package, your card — you approve it, then we send. Complete peace of mind.</p>
+            </div>
+            
+            <div class="value-item">
+                <span class="value-number">7</span>
+                <div class="value-header">
+                    <h3 class="value-title">1-Year Warranty + 7-Day Exchange</h3>
+                    <div class="value-price">₦8,000 value</div>
+                </div>
+                <p class="value-description">If anything goes wrong, we fix it. If he'd prefer a different color, let us know within 7 days — we'll swap it. Zero risk.</p>
+            </div>
+            
+            <div class="total-box">
+                <div class="total-label">Total Gift Value</div>
+                <div class="total-value">₦99,000+</div>
+                <div class="total-price">₦69,000</div>
+                <div class="total-tagline">The easiest "wow" gift you'll ever give.</div>
+                <a href="#order-form" class="cta-button">Order His Gift Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="section section-burgundy">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our "Perfect Gift" Promise</h2>
+            <p class="section-subtitle">We've removed all the risk from gift-giving.</p>
+            
+            <div class="guarantee-grid">
+                <div class="guarantee-item">
+                    <span class="guarantee-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                    <span class="guarantee-text"><strong>Video Preview</strong> — See exactly what he'll receive before we ship</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                    <span class="guarantee-text"><strong>7-Day Color Exchange</strong> — He'd prefer black? We'll swap it free</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                    <span class="guarantee-text"><strong>1-Year Warranty</strong> — Any manufacturing issue, we fix or replace</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                    <span class="guarantee-text"><strong>Physical Store</strong> — Real business in Abeokuta you can visit or video call</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What Other Women Say</h2>
+            <p class="section-subtitle">Real gift-givers. Real reactions.</p>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">I was nervous ordering a gift online, but the video they sent before shipping made me feel so much better. When my husband opened it on his birthday, his face just lit up. He keeps telling people about the watch AND the way it was wrapped. I looked like a gift-giving genius. 😂</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CA</div>
+                    <div class="author-info">
+                        <div class="author-name">Chidinma A.</div>
+                        <div class="author-context">Lagos</div>
+                    </div>
+                    <span class="testimonial-occasion">Husband's 40th</span>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">I've bought my boyfriend so many things he never uses. This watch? He wears it every single day. He's already asked me to get him the black one next. The cufflinks were a nice surprise too — he wore them to his sister's wedding.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">BO</div>
+                    <div class="author-info">
+                        <div class="author-name">Blessing O.</div>
+                        <div class="author-context">Abuja</div>
+                    </div>
+                    <span class="testimonial-occasion">Boyfriend's Promotion</span>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">I didn't have time to shop properly for Father's Day. Found this, ordered it, and it arrived beautifully wrapped with the card message I wrote. My dad was so touched. He said it was the most thoughtful gift he's received in years.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AN</div>
+                    <div class="author-info">
+                        <div class="author-name">Adaeze N.</div>
+                        <div class="author-context">Port Harcourt</div>
+                    </div>
+                    <span class="testimonial-occasion">Father's Day</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfect Occasions -->
+    <section class="section section-cream">
+        <div class="container">
+            <h2 class="section-title">Perfect For These Moments</h2>
+            
+            <div class="occasions-grid">
+                <div class="occasion-card">
+                    <div class="occasion-emoji">🎂</div>
+                    <div class="occasion-name">Birthday</div>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-emoji">💍</div>
+                    <div class="occasion-name">Anniversary</div>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-emoji">❤️</div>
+                    <div class="occasion-name">Valentine's Day</div>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-emoji">🎄</div>
+                    <div class="occasion-name">Christmas</div>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-emoji">👔</div>
+                    <div class="occasion-name">Father's Day</div>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-emoji">🎉</div>
+                    <div class="occasion-name">Promotion</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Questions Gift-Givers Ask</h2>
+            
+            <div class="faq-item active">
+                <div class="faq-question">What if I don't know his wrist size?</div>
+                <div class="faq-answer">No worries — the silicone strap is adjustable and fits most wrist sizes (16-22cm). The pin buckle allows for precise fitting. This is NOT a bracelet-style watch that requires exact sizing.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if he doesn't like the color I choose?</div>
+                <div class="faq-answer">We offer a 7-day color exchange. If he'd prefer a different color, contact us within 7 days of delivery and we'll arrange a swap. No hassle.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I write the card message?</div>
+                <div class="faq-answer">After you place your order, you'll receive a WhatsApp message asking for your personalized card text. Just tell us what you want to say — we'll write it by hand on a premium card.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will it arrive in time?</div>
+                <div class="faq-answer">Lagos: 1-2 days. Abuja/Port Harcourt: 2-3 days. Other states: 3-5 days. For guaranteed delivery by a specific date, order at least 5 days in advance.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I send it directly to him?</div>
+                <div class="faq-answer">Absolutely! Just enter HIS address as the delivery address. We'll make sure the thank-you card for you isn't visible to him — only the gift and his personalized card.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="order-section" id="order-form">
+        <div class="container">
+            <div class="order-form-wrapper">
+                <div class="form-header">
+                    <h3>Order His Perfect Gift</h3>
+                    <p>We'll confirm your card message via WhatsApp.</p>
+                </div>
+                
+                <form action="#" method="POST" id="giftForm">
+                    <div class="form-group">
+                        <label class="form-label">His Name (for the card) *</label>
+                        <input type="text" class="form-input" placeholder="e.g. Chukwudi" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Relationship *</label>
+                        <div class="relationship-options">
+                            <span class="relationship-pill selected">Husband</span>
+                            <span class="relationship-pill">Boyfriend</span>
+                            <span class="relationship-pill">Fiancé</span>
+                            <span class="relationship-pill">Father</span>
+                            <span class="relationship-pill">Brother</span>
+                            <span class="relationship-pill">Friend</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">His Watch Color *</label>
+                        <div class="color-options">
+                            <div class="color-option selected">
+                                <span class="color-swatch navy"></span>
+                                <div class="color-info">
+                                    <div class="color-name">Navy Blue</div>
+                                    <div class="color-note">Most popular for gifts</div>
+                                </div>
+                            </div>
+                            <div class="color-option">
+                                <span class="color-swatch black"></span>
+                                <div class="color-info">
+                                    <div class="color-name">Classic Black</div>
+                                    <div class="color-note">Versatile choice</div>
+                                </div>
+                            </div>
+                            <div class="color-option">
+                                <span class="color-swatch white"></span>
+                                <div class="color-info">
+                                    <div class="color-name">Pure White</div>
+                                    <div class="color-note">Bold statement</div>
+                                </div>
+                            </div>
+                            <div class="color-option">
+                                <span class="color-swatch teal"></span>
+                                <div class="color-info">
+                                    <div class="color-name">Teal</div>
+                                    <div class="color-note">Unique & stylish</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Special Occasion</label>
+                        <select class="form-input">
+                            <option value="">Select occasion</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="valentines">Valentine's Day</option>
+                            <option value="christmas">Christmas</option>
+                            <option value="fathers-day">Father's Day</option>
+                            <option value="promotion">Promotion / New Job</option>
+                            <option value="just-because">Just Because</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">When should he receive it? *</label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Full Name *</label>
+                        <input type="text" class="form-input" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your WhatsApp Number *</label>
+                        <input type="tel" class="form-input" placeholder="e.g. 08012345678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Delivery Address *</label>
+                        <input type="text" class="form-input" placeholder="Your address or his (if sending directly)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Delivery State *</label>
+                        <select class="form-input" required>
+                            <option value="">Select state</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Abuja">FCT - Abuja</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Oyo">Oyo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Card Message (optional — we'll confirm via WhatsApp)</label>
+                        <textarea class="form-input" placeholder="e.g. Happy Birthday my love! You deserve the world. — Your wife"></textarea>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-title">Your Order</div>
+                        <div class="summary-item">MEGIR Chronograph Watch</div>
+                        <div class="summary-item included">✓ Luxury Gift Wrapping</div>
+                        <div class="summary-item included">✓ Handwritten Personal Card</div>
+                        <div class="summary-item included">✓ Premium Cufflinks Set</div>
+                        <div class="summary-item included">✓ Cologne Sample</div>
+                        <div class="summary-item included">✓ Video Preview Before Shipping</div>
+                        <div class="summary-item included">✓ 1-Year Warranty</div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span class="price">₦69,000 + Delivery</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Complete Order on WhatsApp</button>
+                    
+                    <div class="form-reassurance">
+                        <strong>What happens next:</strong> We'll WhatsApp you to confirm your card message and show you a video preview of the complete gift before shipping. Bank transfer details sent via WhatsApp.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>This Is the Year You Give<br>the Perfect Gift</h2>
+            <p>No more guessing. No more settling. Just his smile when he opens it.</p>
+            <a href="#order-form" class="cta-button">Order His Gift — ₦69,000</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">BaaWA Accessories</div>
+        <p>📍 Abeokuta, Ogun State | WhatsApp: +234-806-260-5012</p>
+        <p style="margin-top: 15px; opacity: 0.7;">© 2026 BaaWA Accessories. All rights reserved.</p>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-info">
+            <span>Perfect Gift Bundle</span>
+            <strong>₦69,000</strong>
+        </div>
+        <a href="#order-form" class="sticky-button">Order Now</a>
+    </div>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Color Option Selection
+        document.querySelectorAll('.color-options').forEach(optionGroup => {
+            optionGroup.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    optionGroup.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+        });
+
+        // Relationship Pill Selection
+        document.querySelectorAll('.relationship-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.relationship-pill').forEach(p => p.classList.remove('selected'));
+                pill.classList.add('selected');
+            });
+        });
+
+        // Sticky CTA visibility
+        const stickyCta = document.getElementById('stickyCta');
+        const orderForm = document.getElementById('order-form');
+
+        window.addEventListener('scroll', () => {
+            const formRect = orderForm.getBoundingClientRect();
+            if (window.scrollY > 600 && formRect.top > window.innerHeight) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Form submission to WhatsApp
+        document.getElementById('giftForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const hisName = this.querySelector('input[placeholder="e.g. Chukwudi"]').value;
+            const relationship = document.querySelector('.relationship-pill.selected').textContent;
+            const watchColor = document.querySelector('.color-options .color-option.selected .color-name').textContent;
+            const yourName = this.querySelector('input[placeholder="Your name"]').value;
+            const phone = this.querySelector('input[placeholder="e.g. 08012345678"]').value;
+            const address = this.querySelector('input[placeholder*="address"]').value;
+            const cardMessage = this.querySelector('textarea').value;
+            
+            const message = `*NEW PERFECT GIFT BUNDLE ORDER*%0A%0A*Gift Recipient:* ${hisName}%0A*Relationship:* ${relationship}%0A*Watch Color:* ${watchColor}%0A%0A*Your Name:* ${yourName}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Card Message:* ${cardMessage || '(To be confirmed)'}%0A%0A*Bundle:* Perfect Gift Bundle (₦69,000)`;
+            
+            window.open(`https://wa.me/2348062605012?text=${message}`, '_blank');
+        });
+    </script>
+
+</body>
+</html>

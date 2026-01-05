@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGIR Executive Bundle | Visual Placement Guide Version</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --gold-dark: #9A7B3C;
+            --charcoal: #1A1A1A;
+            --charcoal-light: #2D2D2D;
+            --white: #FFFFFF;
+            --off-white: #F8F6F3;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --success: #2E7D32;
+            --danger: #C62828;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.16);
+            --placeholder-bg: #E8F4E8;
+            --placeholder-border: #4CAF50;
+            --video-bg: #E3F2FD;
+            --video-border: #2196F3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--off-white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Image/Video Placeholder Styles */
+        .image-placeholder {
+            background: var(--placeholder-bg);
+            border: 3px dashed var(--placeholder-border);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .video-placeholder {
+            background: var(--video-bg);
+            border: 3px dashed var(--video-border);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .placeholder-label {
+            display: inline-block;
+            background: var(--placeholder-border);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .video-placeholder .placeholder-label {
+            background: var(--video-border);
+        }
+
+        .placeholder-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .placeholder-specs {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .placeholder-purpose {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 10px;
+        }
+
+        .priority-high {
+            border-color: #C62828;
+            background: #FFEBEE;
+        }
+
+        .priority-high .placeholder-label {
+            background: #C62828;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+            color: var(--white);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--charcoal);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 8vw, 48px);
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .price-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            max-width: 380px;
+            margin: 0 auto 30px;
+        }
+
+        .price-original {
+            font-size: 16px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+        }
+
+        .price-current {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-savings {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--charcoal);
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(201, 169, 98, 0.4);
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(201, 169, 98, 0.5);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .trust-badge svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 70px 20px;
+        }
+
+        .section-dark {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .section-gold {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+            color: var(--charcoal);
+        }
+
+        .section-title {
+            font-size: clamp(28px, 6vw, 38px);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 45px;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .section-dark .image-placeholder,
+        .section-dark .video-placeholder {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .section-dark .placeholder-label {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .section-dark .placeholder-title,
+        .section-dark .placeholder-specs,
+        .section-dark .placeholder-purpose {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Problem Section */
+        .problem-text {
+            font-size: 19px;
+            line-height: 1.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-text p {
+            margin-bottom: 25px;
+        }
+
+        .problem-text em {
+            color: var(--gold-dark);
+            font-style: italic;
+        }
+
+        .problem-text strong {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--gold);
+            color: var(--charcoal);
+            padding: 25px 30px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        /* Pain Points */
+        .pain-points {
+            list-style: none;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .pain-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pain-icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            color: var(--danger);
+        }
+
+        .pain-text {
+            font-size: 16px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .feature-image-area {
+            background: rgba(255,255,255,0.05);
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .feature-image-label {
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--charcoal);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+        }
+
+        /* Value Stack */
+        .value-item {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--gold);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        @media (max-width: 500px) {
+            .value-item {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-image-area {
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .value-content {
+            flex-grow: 1;
+        }
+
+        .value-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .value-number {
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            color: var(--charcoal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .value-title {
+            flex-grow: 1;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .value-price {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold-dark);
+            white-space: nowrap;
+        }
+
+        .value-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Total Value Box */
+        .total-value-box {
+            background: var(--charcoal);
+            color: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .total-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10px;
+        }
+
+        .total-amount {
+            font-size: 48px;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .total-amount .strikethrough {
+            font-size: 24px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .your-price {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .your-price span {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* Guarantee Section */
+        .guarantee-box {
+            background: white;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .guarantee-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .guarantee-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--charcoal);
+        }
+
+        .guarantee-title {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .guarantee-list {
+            list-style: none;
+            text-align: left;
+            max-width: 400px;
+            margin: 25px auto 0;
+        }
+
+        .guarantee-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+        }
+
+        .guarantee-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: white;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-quote {
+            font-size: 17px;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--gold);
+            text-align: center;
+            padding: 5px;
+        }
+
+        .author-info {
+            flex-grow: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .author-location {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .verified-badge {
+            font-size: 11px;
+            background: var(--success);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        /* Store Gallery */
+        .store-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .store-gallery .image-placeholder {
+            margin: 0;
+            padding: 40px 15px;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 22px 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 0 25px 22px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Order Form */
+        .order-form-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-title {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 18px;
+            font-size: 16px;
+            border: 2px solid #E5E5E5;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .color-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 2px solid #E5E5E5;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover {
+            border-color: var(--gold);
+        }
+
+        .color-option.selected {
+            border-color: var(--gold);
+            background: rgba(201, 169, 98, 0.08);
+        }
+
+        .color-thumb {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: #999;
+            text-align: center;
+        }
+
+        .color-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .order-summary {
+            background: var(--off-white);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .summary-row.total {
+            border-top: 2px solid #ddd;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .summary-row.total .price {
+            color: var(--gold-dark);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .submit-button:hover {
+            background: var(--gold-dark);
+        }
+
+        .trust-seals {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-seal {
+            width: 60px;
+            height: 60px;
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: #999;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .form-notice {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Legend */
+        .legend {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            font-size: 12px;
+            max-width: 200px;
+        }
+
+        .legend h4 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px dashed;
+        }
+
+        .legend-color.image {
+            background: var(--placeholder-bg);
+            border-color: var(--placeholder-border);
+        }
+
+        .legend-color.video {
+            background: var(--video-bg);
+            border-color: var(--video-border);
+        }
+
+        .legend-color.critical {
+            background: #FFEBEE;
+            border-color: #C62828;
+        }
+
+        @media (max-width: 600px) {
+            .legend {
+                position: static;
+                margin: 20px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Legend -->
+    <div class="legend">
+        <h4>Visual Placement Guide</h4>
+        <div class="legend-item">
+            <div class="legend-color image"></div>
+            <span>Image Placement</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color video"></div>
+            <span>Video Placement</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color critical"></div>
+            <span>HIGH PRIORITY</span>
+        </div>
+    </div>
+
+    <!-- Urgency Banner -->
+    <div style="background: #C62828; color: white; padding: 15px 20px; text-align: center; font-size: 15px; font-weight: 500;">
+        ⚡ <strong>47 Executive Bundles</strong> remaining at this price. Limited bonus stock.
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container" style="max-width: 900px;">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <span class="badge">Executive Bundle</span>
+                    <h1>Stop Wearing Watches That <span>Embarrass You</span></h1>
+                    <p class="hero-subtitle">The executive timepiece Nigerian professionals are switching to — without paying Rolex prices.</p>
+                    
+                    <div class="price-box">
+                        <div class="price-original">Total Value: ₦148,000</div>
+                        <div class="price-current">₦79,000</div>
+                        <span class="price-savings">Save ₦69,000 Today</span>
+                    </div>
+                    
+                    <a href="#order-form" class="cta-button">Claim Your Executive Bundle</a>
+                </div>
+
+                <div>
+                    <!-- HERO IMAGE -->
+                    <div class="image-placeholder" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+                        <span class="placeholder-label" style="background: var(--gold); color: var(--charcoal);">IMAGE 1A</span>
+                        <div class="placeholder-title" style="color: white;">Hero Product Shot</div>
+                        <div class="placeholder-specs" style="color: rgba(255,255,255,0.7);">600x600px • Watch on wrist • Dramatic lighting</div>
+                        <div class="placeholder-purpose" style="color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2);">PURPOSE: Instant desire — "That looks expensive"</div>
+                    </div>
+
+                    <!-- OPTIONAL: HERO VIDEO LOOP -->
+                    <div class="video-placeholder" style="background: rgba(33,150,243,0.1); border-color: rgba(255,255,255,0.3); padding: 15px;">
+                        <span class="placeholder-label">VIDEO 1B (Optional)</span>
+                        <div class="placeholder-title" style="color: white;">Hero Background Loop</div>
+                        <div class="placeholder-specs" style="color: rgba(255,255,255,0.7);">5-8s loop • Slow rotation • Autoplay muted</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    2-Year Warranty
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    Physical Store in Abeokuta
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/></svg>
+                    Secure Bank Transfer
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Agitation -->
+    <section class="section">
+        <div class="container">
+            <div class="problem-text">
+                <p>You know that moment.</p>
+                <p>You're in a meeting. Or at a networking event. Maybe an owambe where you need to impress.</p>
+                <p>And you notice someone glance at your wrist.</p>
+
+                <!-- CONTRAST IMAGE -->
+                <div class="image-placeholder">
+                    <span class="placeholder-label">IMAGE 2A</span>
+                    <div class="placeholder-title">Contrast Shot: Cheap vs Premium</div>
+                    <div class="placeholder-specs">800x400px • Split image • LEFT: Damaged watch / RIGHT: MEGIR</div>
+                    <div class="placeholder-purpose">PURPOSE: Visual proof of the pain — "That's MY current watch"</div>
+                </div>
+
+                <p>Suddenly you're conscious of it. That cheap-looking watch. The one that stopped keeping accurate time two months ago. The scratched face. The cracked strap.</p>
+                <p>You paid ₦15,000 for it. <em>And it shows.</em></p>
+                <p>Meanwhile, the man across the table — the one everyone seems to respect before he even speaks — has a timepiece that catches the light just right. Bold. Sophisticated. Confident.</p>
+
+                <!-- LIFESTYLE IMAGE -->
+                <div class="image-placeholder">
+                    <span class="placeholder-label">IMAGE 2B</span>
+                    <div class="placeholder-title">Lifestyle Shot: The Successful Man</div>
+                    <div class="placeholder-specs">800x500px • Nigerian man in professional setting • Watch visible</div>
+                    <div class="placeholder-purpose">PURPOSE: Identity projection — "That could be me"</div>
+                </div>
+
+                <p>You think: <em>"That's probably a ₦500,000 Rolex. I can't afford that."</em></p>
+                
+                <div class="highlight-box">
+                    Here's what he knows that you don't: <strong>He didn't pay anywhere close to ₦500,000.</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Sound Familiar?</h2>
+            <p class="section-subtitle">These are the frustrations Nigerian professionals deal with every day.</p>
+
+            <!-- DAMAGED WATCH CLOSE-UP -->
+            <div class="image-placeholder" style="max-width: 400px; margin: 0 auto 30px;">
+                <span class="placeholder-label">IMAGE 3A</span>
+                <div class="placeholder-title">Close-Up of Damaged Watch</div>
+                <div class="placeholder-specs">400x300px • Cracked strap, foggy face, tarnished metal</div>
+                <div class="placeholder-purpose">PURPOSE: Amplify the pain visually</div>
+            </div>
+            
+            <ul class="pain-points">
+                <li class="pain-point">
+                    <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <span class="pain-text">Your "affordable" watch stops working after 2-3 months — again</span>
+                </li>
+                <li class="pain-point">
+                    <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <span class="pain-text">Lagos humidity and harmattan dust have destroyed every leather strap you've owned</span>
+                </li>
+                <li class="pain-point">
+                    <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <span class="pain-text">You can't afford ₦500k for a Rolex, but you're tired of looking cheap</span>
+                </li>
+                <li class="pain-point">
+                    <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <span class="pain-text">You've been scammed buying "original" watches online before</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Product Introduction -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Introducing the MEGIR Executive Chronograph</h2>
+            <p class="section-subtitle">The timepiece Nigerian professionals are quietly switching to — because it looks like ₦500,000 but costs a fraction of that.</p>
+
+            <!-- ALL COLORS BEAUTY SHOT -->
+            <div class="image-placeholder priority-high" style="background: rgba(198,40,40,0.1); border-color: rgba(255,255,255,0.5);">
+                <span class="placeholder-label" style="background: #C62828;">HIGH PRIORITY - IMAGE 4A</span>
+                <div class="placeholder-title" style="color: white;">All 4 Colors Beauty Shot</div>
+                <div class="placeholder-specs" style="color: rgba(255,255,255,0.7);">1000x600px • All variants together • Dark background • Dramatic lighting</div>
+                <div class="placeholder-purpose" style="color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2);">PURPOSE: Showcase options, create desire for multiple</div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image-area">
+                        <div class="feature-image-label">📷 IMAGE 4B: Chronograph Close-Up</div>
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 5px;">400x300px • 3 subdials visible</div>
+                    </div>
+                    <h3>Working Chronograph</h3>
+                    <p>All 3 subdials actually function. Time events, track hours, and check dates — not just printed circles like cheap watches.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image-area">
+                        <div class="feature-image-label">📷 IMAGE 4C: Weather-Proof Strap</div>
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 5px;">400x300px • Silicone texture + water droplets</div>
+                    </div>
+                    <h3>Weather-Proof Strap</h3>
+                    <p>Medical-grade silicone handles Lagos humidity, harmattan dust, heat, and sweat without cracking or getting sticky.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image-area">
+                        <div class="feature-image-label">📷 IMAGE 4D: Luminous Hands</div>
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 5px;">400x300px • Low-light shot showing glow</div>
+                    </div>
+                    <h3>Luminous Hands</h3>
+                    <p>Check time in the dark — perfect for early morning runs, late-night meetings, or NEPA moments.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image-area">
+                        <div class="feature-image-label">📷 IMAGE 4E: Stainless Steel</div>
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 5px;">400x300px • Angled shot catching light</div>
+                    </div>
+                    <h3>Stainless Steel Case</h3>
+                    <p>Brushed stainless steel resists scratches and daily wear. This is real metal — not painted plastic pretending to be premium.</p>
+                </div>
+            </div>
+
+            <!-- CHRONOGRAPH DEMO VIDEO - CRITICAL -->
+            <div class="video-placeholder priority-high" style="background: rgba(198,40,40,0.15); margin-top: 30px;">
+                <span class="placeholder-label" style="background: #C62828;">🎬 HIGH PRIORITY - VIDEO 4F</span>
+                <div class="placeholder-title">Chronograph Demonstration Video</div>
+                <div class="placeholder-specs">15-20 seconds • Hand pressing button • Subdial moving • PROOF it works</div>
+                <div class="placeholder-purpose">PURPOSE: Destroys #1 objection — "fake chronograph". CRITICAL for conversion.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Stack -->
+    <section class="section" id="value-stack">
+        <div class="container">
+            <h2 class="section-title">The Executive Bundle</h2>
+            <p class="section-subtitle">Everything you need to walk into any room with confidence.</p>
+
+            <!-- BUNDLE FLAT-LAY - CRITICAL -->
+            <div class="image-placeholder priority-high">
+                <span class="placeholder-label" style="background: #C62828;">🔥 HIGHEST PRIORITY - IMAGE 5A</span>
+                <div class="placeholder-title">Complete Bundle Flat-Lay</div>
+                <div class="placeholder-specs">1200x800px • All 8 items laid out beautifully • Dark surface • Overhead shot</div>
+                <div class="placeholder-purpose">PURPOSE: Visual value stacking — "Look at EVERYTHING I'm getting!"</div>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-image-area">📷 Watch<br>Product Shot</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">1</span>
+                        <h3 class="value-title">MEGIR Executive Chronograph Watch</h3>
+                        <span class="value-price">₦65,000 value</span>
+                    </div>
+                    <p class="value-description">Japanese Quartz movement. Working chronograph. Stainless steel case. Weather-proof silicone strap.</p>
+                </div>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-image-area">📷 Wallet<br>Open Interior</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">2</span>
+                        <h3 class="value-title">Premium Leather Slim Bifold Wallet</h3>
+                        <span class="value-price">₦20,000 value</span>
+                    </div>
+                    <p class="value-description">Your watch makes the first impression. Your wallet makes the second. Genuine leather bifold.</p>
+                </div>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-image-area">📷 Pen<br>With Signature</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">3</span>
+                        <h3 class="value-title">Executive Metal Pen</h3>
+                        <span class="value-price">₦12,000 value</span>
+                    </div>
+                    <p class="value-description">Weighted metal pen that says "I pay attention to details." Makes signing contracts feel like a power move.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-image-area">📷 Care Kit<br>Items Spread</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">4</span>
+                        <h3 class="value-title">Watch Care & Maintenance Kit</h3>
+                        <span class="value-price">₦8,000 value</span>
+                    </div>
+                    <p class="value-description">Premium microfiber cloth, mini screwdriver set, and velvet travel pouch.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-image-area">📷 Style Guide<br>On Phone Screen</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">5</span>
+                        <h3 class="value-title">"Power Presence" Digital Style Guide</h3>
+                        <span class="value-price">₦15,000 value</span>
+                    </div>
+                    <p class="value-description">How to dress for authority, match accessories, and control first impressions.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-image-area">📷 Extra Strap<br>Coiled/Swapping</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">6</span>
+                        <h3 class="value-title">Extra Silicone Strap (Your Choice)</h3>
+                        <span class="value-price">₦10,000 value</span>
+                    </div>
+                    <p class="value-description">One watch. Two looks. Swap in under 2 minutes.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-image-area">📷 Cufflinks<br>In Velvet Box</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">7</span>
+                        <h3 class="value-title">Premium Cufflinks Set</h3>
+                        <span class="value-price">₦8,000 value</span>
+                    </div>
+                    <p class="value-description">The finishing touch for formal occasions. Brushed metal matches your MEGIR.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-image-area">📷 Warranty<br>Certificate</div>
+                <div class="value-content">
+                    <div class="value-header">
+                        <span class="value-number">8</span>
+                        <h3 class="value-title">Extended 2-Year Warranty</h3>
+                        <span class="value-price">₦10,000 value</span>
+                    </div>
+                    <p class="value-description">If your watch stops working, we repair or replace it. No questions asked.</p>
+                </div>
+            </div>
+
+            <!-- UNBOXING VIDEO -->
+            <div class="video-placeholder priority-high" style="margin-top: 30px;">
+                <span class="placeholder-label" style="background: #C62828;">🎬 HIGH PRIORITY - VIDEO 5I</span>
+                <div class="placeholder-title">Bundle Unboxing Experience</div>
+                <div class="placeholder-specs">45-60 seconds • Hands opening box • Revealing each item • Upbeat music</div>
+                <div class="placeholder-purpose">PURPOSE: Experience the unboxing before buying. Reduces uncertainty.</div>
+            </div>
+            
+            <div class="total-value-box">
+                <p class="total-label">Total Bundle Value</p>
+                <div class="total-amount">
+                    <span class="strikethrough">₦148,000</span>
+                    ₦79,000
+                </div>
+                <p class="your-price">Your investment today: <span>₦79,000</span></p>
+                <a href="#order-form" class="cta-button">Claim Your Bundle Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                </div>
+                <h3 class="guarantee-title">Our "Respect Guaranteed" Promise</h3>
+                <p>If your watch stops working within 2 years — for ANY manufacturing reason — we'll repair or replace it. Free.</p>
+
+                <!-- WARRANTY CARD IMAGE -->
+                <div class="image-placeholder" style="margin: 20px 0; padding: 20px;">
+                    <span class="placeholder-label">IMAGE 6A</span>
+                    <div class="placeholder-title">Warranty Card / Certificate</div>
+                    <div class="placeholder-specs">400x300px • Physical warranty card • Official looking</div>
+                </div>
+                
+                <ul class="guarantee-list">
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                        Physical Store Verification — Visit us anytime in Abeokuta
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                        WhatsApp Video Call — See your exact watch before paying
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                        Pre-Shipment Confirmation — Approve photos before we ship
+                    </li>
+                    <li>
+                        <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                        48-Hour Damage Protection — Free replacement if damaged
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">What Nigerian Professionals Say</h2>
+            <p class="section-subtitle">Real customers. Real results. Real respect.</p>
+
+            <!-- VIDEO TESTIMONIAL -->
+            <div class="video-placeholder" style="margin-bottom: 30px;">
+                <span class="placeholder-label">🎬 VIDEO 7D</span>
+                <div class="placeholder-title">Video Testimonial</div>
+                <div class="placeholder-specs">30-60 seconds • Real customer talking • Subtitles required</div>
+                <div class="placeholder-purpose">PURPOSE: Video testimonials convert 2-3x better than text</div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">"I was skeptical. Very skeptical. Another online store promising quality? In Nigeria? But I took the chance because they have a physical store. The watch arrived exactly as pictured. Better, actually. Now I have colleagues asking where I got it."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">Real Customer Photo</div>
+                    <div class="author-info">
+                        <div class="author-name">Adebayo O.</div>
+                        <div class="author-location">Lagos</div>
+                    </div>
+                    <span class="verified-badge">Verified Buyer</span>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">"Bought the white one for my husband's birthday. The packaging impressed me first. Then my husband's face when he opened it. He's worn it every day since. Already planning to get him the black one."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">Real Customer Photo</div>
+                    <div class="author-info">
+                        <div class="author-name">Funke E.</div>
+                        <div class="author-location">Abuja</div>
+                    </div>
+                    <span class="verified-badge">Verified Buyer</span>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-quote">"I've bought 3 'chronograph' watches before. All had fake subdials. This MEGIR? All three subdials work. I use the stopwatch for gym sessions. My friends keep thinking it cost ₦200k+."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">Real Customer Photo</div>
+                    <div class="author-info">
+                        <div class="author-name">Chukwuemeka E.</div>
+                        <div class="author-location">Port Harcourt</div>
+                    </div>
+                    <span class="verified-badge">Verified Buyer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Physical Store -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Visit Our Physical Store</h2>
+            <p class="section-subtitle">We're not hiding behind a PO Box. Come see us in Abeokuta.</p>
+
+            <!-- STORE PHOTOS GALLERY - CRITICAL -->
+            <div class="store-gallery">
+                <div class="image-placeholder priority-high">
+                    <span class="placeholder-label" style="background: #C62828;">IMAGE 10A</span>
+                    <div class="placeholder-title">Store Exterior</div>
+                    <div class="placeholder-specs">Signage visible</div>
+                </div>
+                <div class="image-placeholder priority-high">
+                    <span class="placeholder-label" style="background: #C62828;">IMAGE 10B</span>
+                    <div class="placeholder-title">Interior Wide Shot</div>
+                    <div class="placeholder-specs">Display visible</div>
+                </div>
+                <div class="image-placeholder priority-high">
+                    <span class="placeholder-label" style="background: #C62828;">IMAGE 10C</span>
+                    <div class="placeholder-title">Display Case Close-Up</div>
+                    <div class="placeholder-specs">Products visible</div>
+                </div>
+                <div class="image-placeholder priority-high">
+                    <span class="placeholder-label" style="background: #C62828;">IMAGE 10D</span>
+                    <div class="placeholder-title">Staff at Counter</div>
+                    <div class="placeholder-specs">Smiling, professional</div>
+                </div>
+            </div>
+
+            <!-- STORE TOUR VIDEO -->
+            <div class="video-placeholder" style="margin-bottom: 30px;">
+                <span class="placeholder-label">🎬 VIDEO 10E</span>
+                <div class="placeholder-title">Store Tour Video</div>
+                <div class="placeholder-specs">30-45 seconds • Walk-through • Enter from outside • Pan displays</div>
+                <div class="placeholder-purpose">PURPOSE: Virtual store visit. Destroys "online scam" fear.</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 500px; margin: 0 auto;">
+                <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 24px; margin-bottom: 10px;">📍</div>
+                    <div style="font-size: 14px; font-weight: 600;">Location</div>
+                    <div style="font-size: 13px; color: #666;">Abeokuta, Ogun State</div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 24px; margin-bottom: 10px;">📱</div>
+                    <div style="font-size: 14px; font-weight: 600;">WhatsApp</div>
+                    <div style="font-size: 13px; color: var(--gold-dark);">+234-806-260-5012</div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 24px; margin-bottom: 10px;">✉️</div>
+                    <div style="font-size: 14px; font-weight: 600;">Email</div>
+                    <div style="font-size: 13px; color: var(--gold-dark);">Sales@baawa.ng</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="section section-gold" id="order-form">
+        <div class="container">
+            <div class="order-form-wrapper">
+                <h3 class="form-title">Claim Your Executive Bundle</h3>
+                <p class="form-subtitle">Fill out the form. We'll confirm via WhatsApp within 1 hour.</p>
+                
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">WhatsApp Number *</label>
+                        <input type="tel" class="form-input" placeholder="e.g. 08012345678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Delivery State *</label>
+                        <select class="form-input" required>
+                            <option value="">Select your state</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Abuja">FCT - Abuja</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Oyo">Oyo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Delivery Address *</label>
+                        <input type="text" class="form-input" placeholder="Full delivery address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Watch Color * <span style="font-weight: normal; font-size: 12px; color: #888;">(Replace swatches with actual product thumbnails)</span></label>
+                        <div class="color-options">
+                            <div class="color-option selected">
+                                <div class="color-thumb">Navy Blue<br>Product Shot</div>
+                                <span class="color-name">Navy Blue</span>
+                            </div>
+                            <div class="color-option">
+                                <div class="color-thumb">Black<br>Product Shot</div>
+                                <span class="color-name">Classic Black</span>
+                            </div>
+                            <div class="color-option">
+                                <div class="color-thumb">White<br>Product Shot</div>
+                                <span class="color-name">Pure White</span>
+                            </div>
+                            <div class="color-option">
+                                <div class="color-thumb">Teal<br>Product Shot</div>
+                                <span class="color-name">Teal</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Executive Bundle (8 Items)</span>
+                            <span>₦148,000 value</span>
+                        </div>
+                        <div class="summary-row" style="color: var(--success);">
+                            <span>Bundle Discount</span>
+                            <span>- ₦69,000</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Your Total</span>
+                            <span class="price">₦79,000 + Delivery</span>
+                        </div>
+                    </div>
+
+                    <!-- TRUST SEALS -->
+                    <div class="trust-seals">
+                        <div class="trust-seal">Secure Payment Badge</div>
+                        <div class="trust-seal">2-Year Warranty Badge</div>
+                        <div class="trust-seal">Physical Store Badge</div>
+                        <div class="trust-seal">1000+ Customers Badge</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Complete Order on WhatsApp</button>
+                    
+                    <p class="form-notice">
+                        ⚠️ <strong>Important:</strong> Bank transfer confirms your order. We do NOT offer Pay on Delivery.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section section-dark" style="text-align: center; position: relative;">
+        <!-- ASPIRATIONAL CLOSING SHOT -->
+        <div class="image-placeholder" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); margin-bottom: 30px;">
+            <span class="placeholder-label" style="background: var(--gold); color: var(--charcoal);">IMAGE 12A - Background</span>
+            <div class="placeholder-title" style="color: white;">Aspirational Closing Shot</div>
+            <div class="placeholder-specs" style="color: rgba(255,255,255,0.7);">1200x600px • Man walking confidently • Watch visible • Cinematic mood</div>
+            <div class="placeholder-purpose" style="color: rgba(255,255,255,0.5);">PURPOSE: Future pacing — "This is you after you order"</div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">One Year From Today...</h2>
+            <p style="max-width: 500px; margin: 0 auto 30px; color: rgba(255,255,255,0.8); font-size: 18px;">
+                You'll either be the same man wearing the same forgettable watch... or the one who walks into rooms with quiet confidence.
+            </p>
+            <a href="#order-form" class="cta-button">Claim Your Executive Bundle — ₦79,000</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">BaaWA Accessories</div>
+        <p>📍 Abeokuta, Ogun State, Nigeria</p>
+        <p style="margin-top: 20px;">© 2026 BaaWA Accessories. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Color Option Selection
+        document.querySelectorAll('.color-options').forEach(optionGroup => {
+            optionGroup.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    optionGroup.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

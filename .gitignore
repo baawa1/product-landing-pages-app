@@ -179,3 +179,6 @@ next-env.d.ts
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 >>>>>>> ad4dfc12904827164ca12bfb695c933e3b5c1223
+
+# Auto Claude data directory
+.auto-claude/
