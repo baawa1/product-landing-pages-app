@@ -274,9 +274,9 @@ I'm ready to complete my order. Please send payment details.`;
         />
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Pricing Column - second on mobile, first on desktop */}
-            <div className="text-center md:text-left order-2 md:order-1">
+          <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8 md:items-center">
+            {/* Title and Description */}
+            <div className="text-center md:text-left">
               <div className="inline-block bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
                 Executive Bundle
               </div>
@@ -291,8 +291,8 @@ I'm ready to complete my order. Please send payment details.`;
                 without paying Rolex prices.
               </p>
 
-              {/* Price Box */}
-              <div className="bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
+              {/* Price Box - Desktop only */}
+              <div className="hidden md:block bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
                 <p className="text-muted-foreground line-through text-sm">
                   Total Value: ₦148,000
                 </p>
@@ -305,7 +305,7 @@ I'm ready to complete my order. Please send payment details.`;
               <a
                 href="#order-form"
                 onClick={scrollToOrderForm}
-                className="cursor-pointer block"
+                className="cursor-pointer hidden md:block"
               >
                 <Button
                   size="lg"
@@ -316,34 +316,46 @@ I'm ready to complete my order. Please send payment details.`;
               </a>
             </div>
 
-            {/* Media Column - first on mobile, second on desktop */}
-            <div className="space-y-4 order-1 md:order-2">
-              {/* Hero Image */}
-              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-                <img
-                  src="/products/megir/MEGIR Chronograph Watch 11.jpeg"
-                  alt="MEGIR Executive Chronograph - Classic Black"
-                  className="w-full h-auto object-cover"
+            {/* Hero Video */}
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <video
+                className="w-full h-auto"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source
+                  src="/products/megir/MEGIR Chronograph Watch 19.mp4"
+                  type="video/mp4"
                 />
-              </div>
-
-              {/* Hero Video */}
-              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-                <video
-                  className="w-full h-auto"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source
-                    src="/products/megir/MEGIR Chronograph Watch 19.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+                Your browser does not support the video tag.
+              </video>
             </div>
+
+            {/* Price Box - Mobile only */}
+            <div className="md:hidden bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
+              <p className="text-muted-foreground line-through text-sm">
+                Total Value: ₦148,000
+              </p>
+              <p className="text-4xl font-bold text-primary my-2">₦79,000</p>
+              <span className="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+                Save ₦69,000 Today
+              </span>
+            </div>
+
+            <a
+              href="#order-form"
+              onClick={scrollToOrderForm}
+              className="cursor-pointer block md:hidden"
+            >
+              <Button
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
+              >
+                Claim Your Executive Bundle
+              </Button>
+            </a>
           </div>
 
           {/* Trust Badges */}
