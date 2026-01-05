@@ -533,15 +533,23 @@ I'm ready to complete my order. Please send payment details.`;
                 title: "Working Chronograph",
                 description:
                   "All 3 subdials actually function. Time events, track hours, and check dates, not just printed circles like cheap watches.",
-                image: "/products/megir/MEGIR Chronograph Watch 7.jpeg",
+                image: "/products/megir/MEGIR Chronograph Watch 6.jpeg",
                 imageAlt: "MEGIR chronograph close-up",
+              },
+              {
+                icon: Shield,
+                title: "Stainless Steel Case",
+                description:
+                  "Brushed stainless steel resists scratches and daily wear. This is real metal, not painted plastic pretending to be premium.",
+                image: "/products/megir/MEGIR Chronograph Watch 7.jpeg",
+                imageAlt: "MEGIR watch features explanation",
               },
               {
                 icon: Cloud,
                 title: "Weather-Proof Strap",
                 description:
                   "Medical-grade silicone handles Lagos humidity, harmattan dust, heat, and sweat without cracking or getting sticky.",
-                image: "/products/megir/MEGIR Chronograph Watch 6.jpeg",
+                image: "/products/megir/MEGIR Chronograph Watch waterproof.gif",
                 imageAlt: "MEGIR watch on wrist showing strap",
               },
               {
@@ -549,16 +557,8 @@ I'm ready to complete my order. Please send payment details.`;
                 title: "Luminous Hands",
                 description:
                   "Check time in the dark. Perfect for early morning runs, late-night meetings, or NEPA moments.",
-                image: "/products/megir/MEGIR Chronograph Watch 10.jpeg",
+                image: "/products/megir/MEGIR Chronograph Watch luminous.gif",
                 imageAlt: "MEGIR teal watch showing luminous features",
-              },
-              {
-                icon: Shield,
-                title: "Stainless Steel Case",
-                description:
-                  "Brushed stainless steel resists scratches and daily wear. This is real metal, not painted plastic pretending to be premium.",
-                image: "/products/megir/MEGIR Chronograph Watch 8.jpeg",
-                imageAlt: "MEGIR watch features explanation",
               },
             ].map((feature, i) => (
               <Card
