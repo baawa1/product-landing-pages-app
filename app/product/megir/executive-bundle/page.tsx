@@ -20,6 +20,7 @@ import {
   ChevronDown,
   Loader2,
   Award,
+  Gift,
 } from "lucide-react";
 
 export default function ExecutiveBundlePage() {
@@ -291,16 +292,23 @@ I'm ready to complete my order. Please send payment details.`;
                 without paying Rolex prices.
               </p>
 
-              {/* Price Box - Desktop only */}
-              <div className="hidden md:block bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
-                <p className="text-muted-foreground line-through text-sm">
-                  Total Value: ₦148,000
-                </p>
-                <p className="text-4xl font-bold text-primary my-2">₦79,000</p>
-                <span className="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
-                  Save ₦69,000 Today
-                </span>
-              </div>
+              {/* Price Card - Desktop only */}
+              <Card className="hidden md:block mb-6 bg-background/5 border-primary/30">
+                <CardContent className="pt-6">
+                  <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
+                    <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
+                    <span className="text-4xl font-bold text-primary">₦79,000</span>
+                    <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
+                      SAVE ₦69,000
+                    </span>
+                  </div>
+
+                  <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
+                    <Gift className="w-6 h-6" />
+                    7 Premium Bonuses Included (Worth ₦83,000)
+                  </div>
+                </CardContent>
+              </Card>
 
               <a
                 href="#order-form"
@@ -333,16 +341,23 @@ I'm ready to complete my order. Please send payment details.`;
               </video>
             </div>
 
-            {/* Price Box - Mobile only */}
-            <div className="md:hidden bg-background/5 border border-primary/30 rounded-2xl p-6 mb-6">
-              <p className="text-muted-foreground line-through text-sm">
-                Total Value: ₦148,000
-              </p>
-              <p className="text-4xl font-bold text-primary my-2">₦79,000</p>
-              <span className="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">
-                Save ₦69,000 Today
-              </span>
-            </div>
+            {/* Price Card - Mobile only */}
+            <Card className="md:hidden mb-6 bg-background/5 border-primary/30">
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
+                  <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
+                  <span className="text-4xl font-bold text-primary">₦79,000</span>
+                  <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
+                    SAVE ₦69,000
+                  </span>
+                </div>
+
+                <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
+                  <Gift className="w-6 h-6" />
+                  7 Premium Bonuses Included (Worth ₦83,000)
+                </div>
+              </CardContent>
+            </Card>
 
             <a
               href="#order-form"
