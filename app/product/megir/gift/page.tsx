@@ -42,7 +42,7 @@ export default function GiftBundlePage() {
 
   const relationships = ['Husband', 'Boyfriend', 'Fiancé', 'Father', 'Brother', 'Friend']
 
-  const bundleItems = [
+  const bundleItems: Array<{ name: string; value: number; description: string; highlighted: boolean; priceless?: boolean }> = [
     { name: 'MEGIR Executive Chronograph Watch', value: 65000, description: 'Japanese Quartz movement, working chronograph, stainless steel case, weather-proof silicone strap', highlighted: false },
     { name: 'Premium Leather Slim Bifold Wallet', value: 20000, description: 'Genuine leather bifold wallet for the modern executive', highlighted: false },
     { name: 'Executive Metal Pen', value: 12000, description: 'Weighted metal pen perfect for signing important documents', highlighted: false },

@@ -583,13 +583,12 @@ I'm ready to complete my order. Please send payment details.`;
             ))}
           </div>
 
-          {/* Chronograph Demo Video */}
-          <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-lg">
+          {/* Chronograph Demo Video - HIDDEN */}
+          {/* <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-lg">
             <video
               className="w-full h-auto"
               controls
               playsInline
-              poster="/products/megir/MEGIR Chronograph Watch 11.jpeg"
             >
               <source
                 src="/products/megir/MEGIR Chronograph Watch 20.mp4"
@@ -600,6 +599,29 @@ I'm ready to complete my order. Please send payment details.`;
             <p className="text-center text-sm text-muted-foreground py-3 bg-background/10">
               Watch the chronograph in action
             </p>
+          </div> */}
+        </div>
+      </section>
+
+      {/* See It Up Close */}
+      <section className="py-16 px-5">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            See It <span className="text-primary">Up Close</span>
+          </h2>
+          <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="aspect-square rounded-xl overflow-hidden border border-border">
+              <img src="/products/megir/MEGIR Chronograph Watch 6.jpeg" alt="MEGIR watch on wrist" className="w-full h-full object-cover" />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden border border-border">
+              <img src="/products/megir/MEGIR Chronograph Watch 7.jpeg" alt="MEGIR chronograph face detail" className="w-full h-full object-cover" />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden border border-border">
+              <img src="/products/megir/MEGIR Chronograph Watch 9.jpeg" alt="MEGIR watch angle view" className="w-full h-full object-cover" />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden border border-border">
+              <img src="/products/megir/MEGIR Chronograph Watch 10.jpeg" alt="MEGIR watch side angle" className="w-full h-full object-cover" />
+            </div>
           </div>
         </div>
       </section>
@@ -660,18 +682,64 @@ I'm ready to complete my order. Please send payment details.`;
             ))}
           </div>
 
-          {/* Unboxing Video */}
-          <div className="mt-10 rounded-xl overflow-hidden border border-border shadow-lg">
-            <video className="w-full h-auto" controls playsInline>
-              <source
-                src="/products/megir/MEGIR Chronograph Watch 21.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-            <p className="text-center text-sm text-muted-foreground py-3 bg-muted/30">
-              Unbox your premium MEGIR watch
+          {/* Premium Packaging & Unboxing Section */}
+          <div className="mt-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-3">
+              Premium <span className="text-primary">Packaging</span> & Unboxing
+            </h3>
+            <p className="text-center text-muted-foreground mb-8">
+              Every watch comes in an original MEGIR gift box - ready to impress
             </p>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              {/* Video 1 */}
+              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  >
+                    <source src="/products/megir/MEGIR Chronograph Watch 20.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+
+              {/* Video 2 */}
+              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  >
+                    <source src="/products/megir/MEGIR Chronograph Watch 21.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+
+              {/* Video 3 */}
+              <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  >
+                    <source src="/products/megir/MEGIR Chronograph Watch 22.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Total Value Box */}
@@ -702,6 +770,42 @@ I'm ready to complete my order. Please send payment details.`;
               </a>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Full Specifications */}
+      <section className="py-16 px-5 bg-muted/30">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Full <span className="text-primary">Specifications</span>
+          </h2>
+
+          <Card className="max-w-2xl mx-auto mb-8">
+            <CardContent className="p-0">
+              {[
+                { label: 'Brand', value: 'MEGIR (Est. 2008)' },
+                { label: 'Movement', value: 'Japanese Quartz' },
+                { label: 'Case Material', value: 'Stainless Steel' },
+                { label: 'Strap Material', value: 'Silicone Rubber' },
+                { label: 'Case Diameter', value: '44mm' },
+                { label: 'Water Resistance', value: '30M (Splash Proof)' },
+                { label: 'Features', value: 'Chronograph, Date, Luminous' },
+                { label: 'Closure', value: 'Pin Buckle' }
+              ].map((spec, i) => (
+                <div
+                  key={i}
+                  className={`flex justify-between p-4 ${i % 2 === 0 ? 'bg-muted/30' : ''} ${i !== 7 ? 'border-b border-border' : ''}`}
+                >
+                  <span className="text-sm text-muted-foreground">{spec.label}</span>
+                  <span className="text-sm font-semibold text-right">{spec.value}</span>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+
+          <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
+            <img src="/products/megir/MEGIR Chronograph Watch 8.jpeg" alt="MEGIR watch features diagram" className="w-full h-full object-cover" />
+          </div>
         </div>
       </section>
 
@@ -738,6 +842,28 @@ I'm ready to complete my order. Please send payment details.`;
               </ul>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Color Comparison */}
+      <section className="py-16 px-5">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Compare <span className="text-primary">Colors</span> Side by Side
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <img src="/products/megir/MEGIR Chronograph Watch 13.jpeg" alt="MEGIR watches color comparison 1" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <img src="/products/megir/MEGIR Chronograph Watch 14.jpeg" alt="MEGIR watches color comparison 2" className="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
+            <img src="/products/megir/MEGIR Chronograph Watch 5.jpeg" alt="MEGIR watch in premium gift box" className="w-full h-full object-cover" />
+          </div>
+          <p className="text-center text-muted-foreground mt-4">Comes in original MEGIR packaging - perfect for gifting</p>
         </div>
       </section>
 
