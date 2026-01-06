@@ -4,10 +4,11 @@ import { createOrder, Order, isSupabaseConfigured } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
+    console.log('📥 Received order request:', JSON.stringify(body, null, 2))
 
     // Check if Supabase is configured
     if (!isSupabaseConfigured()) {
-      console.warn('Supabase not configured - skipping database save')
+      console.warn('⚠️ Supabase not configured - skipping database save')
       return NextResponse.json({
         success: true,
         message: 'Order received (database not configured)'
@@ -44,7 +45,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase
+    console.log('💾 Saving order to database:', orderData)
     const order = await createOrder(orderData)
+    console.log('✅ Order saved successfully! ID:', order.id)
 
     return NextResponse.json({
       success: true,

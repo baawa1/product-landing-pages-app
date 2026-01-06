@@ -138,6 +138,8 @@ export default function GiftBundlePage() {
     }
 
     try {
+      console.log('📦 Submitting order data:', orderData)
+
       const response = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -145,8 +147,13 @@ export default function GiftBundlePage() {
       })
 
       const result = await response.json()
+      console.log('📬 API Response:', result)
+
       if (!response.ok) {
-        console.error('Failed to save order:', result)
+        console.error('❌ Failed to save order:', result)
+        alert(`Failed to save order: ${result.error || 'Unknown error'}`)
+      } else {
+        console.log('✅ Order saved successfully! Order ID:', result.order_id)
       }
 
       const productUrl = window.location.origin + window.location.pathname;
