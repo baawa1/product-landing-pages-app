@@ -6,21 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import {
   Gift,
   Shield,
-  MapPin,
   Heart,
   Clock,
   Cloud,
   Moon,
   CheckCircle2,
-  X,
   Star,
   ChevronDown,
-  Store,
   Phone,
-  Mail,
   Loader2,
   ShoppingCart,
-  Package
+  Package,
+  CreditCard
 } from "lucide-react"
 
 export default function GiftBundlePage() {
@@ -264,21 +261,20 @@ Ready to create the perfect gift!`
               </span>
             </Button>
           </a>
-          <p className="text-sm text-muted-foreground">2-Year Warranty • Pay via Bank Transfer • Delivery in 2-5 Days</p>
 
           {/* Trust Badges */}
           <div className="flex justify-center gap-6 md:gap-8 mt-8 flex-wrap text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
-              7-Day Exchange
+              2-Year Warranty
             </div>
             <div className="flex items-center gap-2">
-              <Heart className="w-5 h-5 text-primary" />
-              Gift-Wrapped
+              <CreditCard className="w-5 h-5 text-primary" />
+              Pay via Bank Transfer
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-primary" />
-              Nationwide Delivery
+              <Package className="w-5 h-5 text-primary" />
+              Delivery in 2-5 Days
             </div>
           </div>
         </div>
