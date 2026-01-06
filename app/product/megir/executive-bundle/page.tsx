@@ -60,47 +60,55 @@ export default function ExecutiveBundlePage() {
       value: 65000,
       description:
         "Japanese Quartz movement. Working chronograph. Stainless steel case. Weather-proof silicone strap.",
+      image: `/products/megir/MEGIR Chronograph Watch ${colorOptions.find(c => c.name === selectedColor)?.images[0] || "15"}.jpeg`,
     },
     {
       name: "Premium Leather Slim Bifold Wallet",
       value: 20000,
       description:
         "Your watch makes the first impression. Your wallet makes the second. Genuine leather bifold.",
+      image: "/products/megir/bifold wallet.jpeg",
     },
     {
       name: "Executive Metal Pen",
       value: 12000,
       description:
         'Weighted metal pen that says "I pay attention to details." Makes signing contracts feel like a power move.',
+      image: "/products/megir/metal pen.png",
     },
     {
       name: "Watch Care & Maintenance Kit",
       value: 8000,
       description:
         "Premium microfiber cloth, mini screwdriver set, and velvet travel pouch.",
+      image: "/products/megir/Watch Care & Maintenance Kit.png",
     },
     {
       name: '"Power Presence" Digital Style Guide',
       value: 15000,
       description:
         "How to dress for authority, match accessories, and control first impressions.",
+      image: "/products/megir/Power.png",
     },
     {
       name: "Extra Silicone Strap (Your Choice)",
       value: 10000,
       description: "One watch. Two looks. Swap in under 2 minutes.",
+      image: "/products/megir/silicone strap.png",
     },
     {
       name: "Premium Cufflinks Set",
       value: 8000,
       description:
         "The finishing touch for formal occasions. Brushed metal matches your MEGIR.",
+      image: "/products/megir/cufflink set.png",
     },
     {
       name: "Extended 2-Year Warranty",
       value: 10000,
       description:
         "If your watch stops working, we repair or replace it. No questions asked.",
+      image: "/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png",
     },
   ];
 
@@ -692,17 +700,24 @@ I'm ready to complete my order. Please send payment details.`;
               <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-5">
                   <div className="flex items-start gap-4">
-                    <div>
-                      <div className="flex items-start justify-between gap-2 mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="w-7 h-7 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shrink-0">
-                            {i + 1}
-                          </span>
-                          <h4 className="font-bold text-sm md:text-base">
-                            {item.name}
-                          </h4>
-                        </div>
-                        <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                    {/* Product Image */}
+                    <div className="w-16 h-16 relative shrink-0 rounded-lg overflow-hidden border border-border bg-muted">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h4 className="font-bold text-sm md:text-base">
+                          {item.name}
+                        </h4>
+                        <span className="text-sm font-semibold text-primary whitespace-nowrap shrink-0">
                           ₦{item.value.toLocaleString()} value
                         </span>
                       </div>
