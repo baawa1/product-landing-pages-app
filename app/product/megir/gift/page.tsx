@@ -6,18 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import {
   Gift,
   Shield,
-  Heart,
   Clock,
   Cloud,
   Moon,
   CheckCircle2,
-  Star,
   ChevronDown,
   Phone,
   Loader2,
   ShoppingCart,
-  Package,
-  CreditCard
+  Package
 } from "lucide-react"
 
 export default function GiftBundlePage() {
@@ -27,8 +24,7 @@ export default function GiftBundlePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
-  const bundlePrice = 79000
-  const originalValue = 148000
+  const bundlePrice = 69000
 
   const colorOptions = [
     { name: 'Navy Blue', color: '#1B3A5F', images: ['15', '3'], note: 'Most popular for gifts' },
@@ -40,14 +36,13 @@ export default function GiftBundlePage() {
   const relationships = ['Husband', 'Boyfriend', 'Fiancé', 'Father', 'Brother', 'Friend']
 
   const bundleItems: Array<{ name: string; value: number; description: string; highlighted: boolean; priceless?: boolean }> = [
-    { name: 'MEGIR Executive Chronograph Watch', value: 65000, description: 'Japanese Quartz movement, working chronograph, stainless steel case, weather-proof silicone strap', highlighted: false },
-    { name: 'Premium Leather Slim Bifold Wallet', value: 20000, description: 'Genuine leather bifold wallet for the modern executive', highlighted: false },
-    { name: 'Executive Metal Pen', value: 12000, description: 'Weighted metal pen perfect for signing important documents', highlighted: false },
-    { name: 'Watch Care & Maintenance Kit', value: 8000, description: 'Microfiber cloth, mini screwdriver set, velvet travel pouch', highlighted: false },
-    { name: '"Power Presence" Digital Style Guide', value: 15000, description: 'Learn how to dress for authority and control first impressions', highlighted: false },
-    { name: 'Extra Silicone Strap (Your Choice)', value: 10000, description: 'Alternative strap in your choice of color for variety', highlighted: false },
-    { name: 'Premium Cufflinks Set', value: 8000, description: 'Brushed metal cufflinks for formal occasions', highlighted: false },
-    { name: 'Extended 2-Year Warranty', value: 10000, description: 'Free repair or replacement for any manufacturing issues', highlighted: false }
+    { name: 'MEGIR Chronograph Watch in Gift Box', value: 65000, description: 'The star of the show. Bold design, working chronograph, stainless steel case. Choose from 4 colors - Navy Blue is our most popular for gifts.', highlighted: false },
+    { name: 'Luxury Gift Wrapping', value: 5000, description: 'Premium paper, satin ribbon, tissue paper, wax seal. When he sees this package, he\'ll know something special is inside. No wrapping stress for you.', highlighted: true },
+    { name: 'Handwritten Personalized Card', value: 3000, description: 'Tell him how you feel - in YOUR words. We write it by hand on a premium card. Personal. Meaningful. Impossible to forget.', highlighted: true },
+    { name: 'Premium Cufflinks Set', value: 10000, description: 'Brushed metal finish in velvet-lined box. For weddings, owambes, important meetings - elevates the gift from "nice watch" to "complete gentleman\'s set."', highlighted: false },
+    { name: 'Designer-Style Cologne Sample', value: 8000, description: 'A 10ml sample of sophisticated men\'s fragrance. The unexpected luxury touch that makes him think "She really thought about this."', highlighted: false },
+    { name: 'Pre-Delivery Video Confirmation', value: 0, description: 'See exactly what he\'ll receive BEFORE we ship. The watch, the wrapped package, your card - you approve it, then we send. Complete peace of mind.', highlighted: true, priceless: true },
+    { name: '1-Year Warranty + 7-Day Exchange', value: 8000, description: 'If anything goes wrong, we fix it. If he\'d prefer a different color, let us know within 7 days - we\'ll swap it. Zero risk.', highlighted: false }
   ]
 
   const scrollToOrderForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -127,34 +122,19 @@ export default function GiftBundlePage() {
       }
 
       const productUrl = window.location.origin + window.location.pathname;
-      const message = `🎁 *NEW GIFT ORDER - MEGIR PERFECT GIFT BUNDLE*
+      const message = `🎁 *NEW PERFECT GIFT BUNDLE ORDER*
 
-👤 *Gift From:*
-Your Name: ${yourName}
-Phone: ${phone}
-Email: ${email || 'Not provided'}
+*Gift Recipient:* ${hisName}
+*Relationship:* ${relationship}
+*Watch Color:* ${color}
 
-🎁 *Gift For:*
-His Name: ${hisName}
-Relationship: ${relationship}
+*Your Name:* ${yourName}
+*Phone:* ${phone}
+*Address:* ${address}, ${state}
 
-📍 *Delivery Info:*
-State: ${state}
-Address: ${address}
+*Card Message:* ${cardMessage || '(To be confirmed)'}
 
-⌚ *Gift Bundle Details:*
-Watch Color: ${color}
-
-Includes:
-✓ MEGIR Chronograph Watch in Gift Box
-✓ Luxury Gift Wrapping
-✓ Handwritten Card: "${cardMessage}"
-✓ Premium Cufflinks Set
-✓ Cologne Sample
-✓ Pre-Delivery Video
-✓ 1-Year Warranty + 7-Day Exchange
-
-💰 *Total: ₦79,000 (47% OFF - Save ₦69,000!) + Delivery*
+*Bundle:* Perfect Gift Bundle (₦69,000)
 
 🔗 *Product Link:* ${productUrl}
 
@@ -169,13 +149,13 @@ Ready to create the perfect gift! Please send payment details.`
       console.error('Error submitting order:', error)
       setIsSubmitting(false)
       const productUrl = window.location.origin + window.location.pathname;
-      const message = `🎁 *NEW GIFT ORDER - MEGIR PERFECT GIFT BUNDLE*
+      const message = `🎁 *NEW PERFECT GIFT BUNDLE ORDER*
 
 Gift From: ${yourName}
 Gift For: ${hisName} (${relationship})
 Watch Color: ${color}
 
-Total: ₦79,000 (47% OFF) + Delivery
+Total: ₦69,000 + Delivery
 
 🔗 *Product Link:* ${productUrl}
 
@@ -194,7 +174,7 @@ Ready to create the perfect gift!`
     <div className="min-h-screen">
       {/* Announcement Bar */}
       <div className="bg-primary text-primary-foreground text-center py-3 px-5 font-semibold text-sm">
-        <span className="animate-pulse">🎁 Complete Gift Package - Ready to Give!</span>
+        <span className="animate-pulse">🎁 Perfect For His Special Day</span>
       </div>
 
       {/* Hero Section */}
@@ -203,7 +183,7 @@ Ready to create the perfect gift!`
 
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="inline-block bg-destructive text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
-            Perfect For His Special Day
+            🎁 Perfect For His Special Day
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
@@ -211,7 +191,7 @@ Ready to create the perfect gift!`
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            A stunning timepiece, beautifully wrapped, with a personal message from you — delivered to your door, ready to give.
+            A stunning timepiece, beautifully wrapped, with a personal message from you - delivered to your door, ready to give.
           </p>
 
           {/* Video Container */}
@@ -234,20 +214,11 @@ Ready to create the perfect gift!`
           {/* Price Section */}
           <Card className="max-w-lg mx-auto mb-5">
             <CardContent className="pt-6">
-              <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
-                <span className="text-4xl font-bold text-primary">₦79,000</span>
-                <span className="bg-destructive/10 text-destructive px-3 py-1.5 rounded-md text-sm font-bold">
-                  SAVE ₦69,000
-                </span>
-              </div>
-
-              <div className="pt-4 border-t border-border text-center">
-                <p className="text-primary font-semibold mb-2">
-                  <Package className="w-5 h-5 inline mr-2" />
-                  Complete 8-Item Gift Bundle
-                </p>
-                <p className="text-sm text-muted-foreground">Everything he needs to look successful</p>
+              <div className="text-center mb-4">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Complete Gift Bundle</p>
+                <p className="text-lg text-muted-foreground line-through mb-2">Value: ₦99,000+</p>
+                <p className="text-5xl font-bold text-primary mb-3">₦69,000</p>
+                <p className="text-sm text-muted-foreground">Ready to give. No wrapping needed.</p>
               </div>
             </CardContent>
           </Card>
@@ -265,40 +236,41 @@ Ready to create the perfect gift!`
           {/* Trust Badges */}
           <div className="flex justify-center gap-6 md:gap-8 mt-8 flex-wrap text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
-              2-Year Warranty
+              <CheckCircle2 className="w-5 h-5 text-primary" />
+              Video preview before shipping
             </div>
             <div className="flex items-center gap-2">
-              <CreditCard className="w-5 h-5 text-primary" />
-              Pay via Bank Transfer
+              <Shield className="w-5 h-5 text-primary" />
+              1-year warranty
             </div>
             <div className="flex items-center gap-2">
               <Package className="w-5 h-5 text-primary" />
-              Delivery in 2-5 Days
+              7-day exchange
             </div>
           </div>
         </div>
       </section>
 
       {/* Empathy Section */}
-      <section className="py-16 px-5 bg-muted/30">
+      <section className="py-16 px-5">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Shopping For Him Is <span className="text-primary">Hard</span>
-          </h2>
-
-          <div className="space-y-6 max-w-2xl mx-auto text-center">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              You&apos;ve given clothes he never wore. Gadgets that collected dust. Cologne that sits unopened.
+          <div className="space-y-6 max-w-2xl mx-auto text-center text-lg leading-relaxed">
+            <p className="text-muted-foreground">Let&apos;s be honest.</p>
+            <p className="text-2xl font-semibold text-primary italic">Shopping for him is hard.</p>
+            <p className="text-muted-foreground">
+              He says &quot;I don&apos;t need anything&quot; but you know he deserves something special. You browse online for hours. Nothing feels right.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              You want to give him something <strong className="text-foreground">meaningful</strong>. Something he&apos;ll actually <strong className="text-foreground">use</strong> and <strong className="text-foreground">love</strong>.
+            <p className="text-muted-foreground">
+              You&apos;ve given clothes he never wore. Gadgets that collected dust. Gift cards that felt... impersonal.
+            </p>
+            <p className="text-muted-foreground">
+              This year, you want different. You want to see his face light up.
             </p>
 
-            <Card className="bg-gradient-to-br from-primary/10 to-transparent border-2 border-primary/30">
+            <Card className="bg-primary text-primary-foreground border-none shadow-lg mt-12">
               <CardContent className="pt-6">
-                <p className="text-xl font-semibold leading-relaxed">
-                  <span className="text-primary">This is that gift.</span> A watch he&apos;ll wear every day. Beautifully packaged. With a personal touch that shows you really care.
+                <p className="text-2xl font-semibold leading-relaxed">
+                  That gift exists.<br />And you just found it.
                 </p>
               </CardContent>
             </Card>
@@ -307,89 +279,71 @@ Ready to create the perfect gift!`
       </section>
 
       {/* What Makes This Different */}
-      <section className="py-16 px-5">
+      <section className="py-16 px-5 bg-muted/30">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Ready to Give, <span className="text-primary">Right Out of the Box</span>
+            This Isn&apos;t Just a <span className="text-primary">Watch</span>
           </h2>
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            No wrapping stress for you. No awkward unwrapping for him. Just perfect.
+            It&apos;s a complete gift experience - ready the moment it arrives.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: Gift,
-                title: "Luxury Gift Wrapping",
-                description: "Ribbon, tissue paper, wax seal. Looks like it came from a high-end boutique."
-              },
-              {
-                icon: Heart,
-                title: "Your Personal Message",
-                description: "We handwrite your message on a beautiful card. He'll know this came from the heart."
-              },
-              {
-                icon: Package,
-                title: "Complete Bundle",
-                description: "Watch, cufflinks, cologne sample. Everything a man needs in one stunning package."
-              },
-              {
-                icon: Shield,
-                title: "Video Preview First",
-                description: "We send you a video of the wrapped package before delivery. See it yourself first."
-              }
-            ].map((feature, i) => (
-              <Card key={i} className="hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Card className="max-w-2xl mx-auto text-center hover:shadow-lg transition-shadow">
+            <CardContent className="pt-6 pb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Gift className="w-8 h-8 text-primary-foreground" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Ready to Give, Right Out of the Box</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Most gifts require work - wrapping paper, hunting for a card, hoping it looks presentable. Not this one. The Perfect Gift Bundle arrives at YOUR door completely ready to hand to HIM. Premium wrapping. Ribbon and tissue. A handwritten card with YOUR message. All you do is smile when he opens it.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* Why He'll Love It */}
-      <section className="py-16 px-5 bg-muted/30">
+      <section className="py-16 px-5">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Why He&apos;ll <span className="text-primary">Love</span> It
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Why He&apos;ll Love This <span className="text-primary">Watch</span>
           </h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Thoughtful details that show you understand him.
+          </p>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
               {
                 icon: Clock,
                 title: "Working Chronograph",
-                description: "All 3 subdials work. Men love functional details."
+                description: "All 3 subdials actually function - he can time workouts, track meetings, feel like he's wearing a serious instrument. Men notice these details."
               },
               {
                 icon: Cloud,
                 title: "Built for Nigerian Weather",
-                description: "Silicone strap won't crack in harmattan or get sticky in Lagos heat."
+                description: "The silicone strap handles humidity and heat without cracking like leather. A practical choice that shows you understand his daily life."
               },
               {
                 icon: Moon,
                 title: "Luminous Hands",
-                description: "He can check the time in the dark. Practical and impressive."
+                description: "He can check time during early mornings or late nights without reaching for his phone. Thoughtful touches like this make a gift feel special."
               },
               {
                 icon: Shield,
                 title: "Built to Last",
-                description: "Stainless steel case. This isn't another gift that breaks in 3 months."
+                description: "Stainless steel case, Japanese movement - this watch will still look great a year from now. He'll be thanking you for a long time."
               }
             ].map((feature, i) => (
-              <Card key={i} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="w-15 h-15 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-5">
-                    <feature.icon className="w-7 h-7 text-primary-foreground" />
+              <Card key={i} className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6 flex gap-4">
+                  <div className="w-12 h-12 bg-linear-to-br from-primary to-primary/70 rounded-lg flex items-center justify-center shrink-0">
+                    <feature.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold mb-2.5">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <div>
+                    <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -398,35 +352,27 @@ Ready to create the perfect gift!`
       </section>
 
       {/* Everything Included */}
-      <section className="py-16 px-5">
+      <section className="py-16 px-5 bg-muted/30">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Everything <span className="text-primary">Included</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10">8 premium items worth ₦148,000 for just ₦79,000</p>
+          <p className="text-center text-muted-foreground mb-10">A complete luxury gift experience.</p>
 
           <div className="space-y-4 max-w-2xl mx-auto">
             {bundleItems.map((item, i) => (
-              <Card key={i} className={`hover:shadow-lg transition-shadow ${item.highlighted ? 'border-2 border-primary/30 bg-gradient-to-r from-primary/5 to-transparent' : ''}`}>
-                <CardContent className="p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                          <CheckCircle2 className="w-5 h-5 text-primary" />
-                        </div>
-                        <h4 className="font-bold text-sm md:text-base">{item.name}</h4>
-                      </div>
-                    </div>
-                    <div className="text-right shrink-0">
-                      {item.priceless ? (
-                        <p className="text-sm font-bold text-primary">Priceless</p>
-                      ) : (
-                        <p className="text-sm font-bold text-primary">₦{item.value.toLocaleString()}</p>
-                      )}
-                      <p className="text-xs text-muted-foreground">Value</p>
-                    </div>
+              <Card key={i} className={`hover:shadow-lg transition-shadow relative ${item.highlighted ? 'bg-linear-to-r from-primary/10 to-primary/5 border-2 border-primary/30' : ''}`}>
+                <CardContent className="p-5 pr-16">
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-muted rounded-full flex items-center justify-center">
+                    <span className="font-bold text-sm text-primary">{i + 1}</span>
                   </div>
+                  <div className="mb-2">
+                    <h4 className="font-bold text-base md:text-lg mb-1">{item.name}</h4>
+                    <p className="text-xs font-semibold text-primary">
+                      {item.priceless ? 'Priceless' : `₦${item.value.toLocaleString()} value`}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -436,15 +382,14 @@ Ready to create the perfect gift!`
           <Card className="max-w-2xl mx-auto mt-8 border-2 border-primary">
             <CardContent className="pt-6">
               <div className="text-center mb-4">
-                <p className="text-sm text-muted-foreground mb-2">Total Value If Bought Separately</p>
-                <p className="text-3xl font-bold line-through text-muted-foreground mb-2">₦148,000</p>
-                <p className="text-sm text-muted-foreground mb-4">Your Complete Gift Bundle Price</p>
-                <p className="text-5xl font-bold text-primary mb-2">₦79,000</p>
-                <p className="text-xl font-semibold text-green-600">You Save ₦69,000 (47% OFF!)</p>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Total Gift Value</p>
+                <p className="text-2xl font-bold line-through text-muted-foreground mb-2">₦99,000+</p>
+                <p className="text-5xl font-bold text-primary mb-3">₦69,000</p>
+                <p className="text-base text-muted-foreground italic mb-4">The easiest &quot;wow&quot; gift you&apos;ll ever give.</p>
               </div>
               <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer block mt-6">
                 <Button size="lg" className="w-full font-bold">
-                  Order His Perfect Gift Now
+                  Order His Gift Now
                 </Button>
               </a>
             </CardContent>
@@ -453,10 +398,10 @@ Ready to create the perfect gift!`
       </section>
 
       {/* Color Options */}
-      <section className="py-16 px-5 bg-muted/30">
+      <section className="py-16 px-5">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Choose <span className="text-primary">His Color</span>
+            Choose <span className="text-primary">His Watch Color</span>
           </h2>
           <p className="text-muted-foreground mb-8">Not sure? Navy Blue is most popular for gifts.</p>
 
@@ -503,35 +448,79 @@ Ready to create the perfect gift!`
         </div>
       </section>
 
+      {/* Perfect Gift Promise Guarantee Section */}
+      <section className="py-16 px-5 bg-primary text-primary-foreground">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">
+            Our &quot;Perfect Gift&quot; <span className="text-white/90">Promise</span>
+          </h2>
+          <p className="text-center text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
+            We&apos;ve removed all the risk from gift-giving.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            {[
+              {
+                title: "Video Preview",
+                description: "See exactly what he'll receive before we ship"
+              },
+              {
+                title: "7-Day Color Exchange",
+                description: "He'd prefer black? We'll swap it free"
+              },
+              {
+                title: "1-Year Warranty",
+                description: "Any manufacturing issue, we fix or replace"
+              },
+              {
+                title: "Physical Store",
+                description: "Real business in Abeokuta you can visit or video call"
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-5 flex items-start gap-3">
+                <div className="w-7 h-7 bg-primary-foreground rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                  <p className="text-sm text-primary-foreground/80 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-16 px-5">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Gift <span className="text-primary">Stories</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            What Other Women <span className="text-primary">Say</span>
           </h2>
+          <p className="text-center text-muted-foreground mb-10">Real gift-givers. Real reactions.</p>
 
           <div className="space-y-6 max-w-2xl mx-auto">
             {[
               {
-                text: "When he opened it on his birthday, his face just lit up. The wrapping, the card, everything was perfect. He keeps telling people about the watch AND the way it was wrapped. Thank you for making me look like the best wife ever!",
-                author: "Chidinma M.",
+                text: "I was nervous ordering a gift online, but the video they sent before shipping made me feel so much better. When my husband opened it on his birthday, his face just lit up. He keeps telling people about the watch AND the way it was wrapped. I looked like a gift-giving genius. 😂",
+                author: "Chidinma A.",
                 location: "Lagos",
-                relationship: "Husband",
-                initials: "CM"
+                occasion: "Husband's 40th",
+                initials: "CA"
               },
               {
-                text: "My boyfriend is so hard to shop for. But this? He loved it. Wears it every day. The cologne sample was a nice touch too. Will definitely order again for next occasion.",
-                author: "Blessing A.",
+                text: "I've bought my boyfriend so many things he never uses. This watch? He wears it every single day. He's already asked me to get him the black one next. The cufflinks were a nice surprise too - he wore them to his sister's wedding.",
+                author: "Blessing O.",
                 location: "Abuja",
-                relationship: "Boyfriend",
-                initials: "BA"
+                occasion: "Boyfriend's Promotion",
+                initials: "BO"
               },
               {
-                text: "Got this for my dad for Father's Day. He's not usually emotional but you could tell he was moved. The personalized card made it extra special. Best Father's Day gift I've ever given him.",
-                author: "Adaeze O.",
-                location: "Enugu",
-                relationship: "Father",
-                initials: "AO"
+                text: "I didn't have time to shop properly for Father's Day. Found this, ordered it, and it arrived beautifully wrapped with the card message I wrote. My dad was so touched. He said it was the most thoughtful gift he's received in years.",
+                author: "Adaeze N.",
+                location: "Port Harcourt",
+                occasion: "Father's Day",
+                initials: "AN"
               }
             ].map((testimonial, i) => (
               <Card key={i} className="relative">
@@ -543,17 +532,15 @@ Ready to create the perfect gift!`
                     {testimonial.text}
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center font-bold text-primary-foreground">
+                    <div className="w-12 h-12 bg-linear-to-br from-primary to-primary/70 rounded-full flex items-center justify-center font-bold text-primary-foreground">
                       {testimonial.initials}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h5 className="font-semibold text-sm">{testimonial.author}</h5>
-                      <p className="text-xs text-muted-foreground">{testimonial.location} • Gift for {testimonial.relationship}</p>
-                      <div className="flex gap-1 mt-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-3.5 h-3.5 fill-primary text-primary" />
-                        ))}
-                      </div>
+                      <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                    </div>
+                    <div className="bg-muted px-3 py-1 rounded-full">
+                      <p className="text-xs font-semibold text-primary uppercase tracking-wide">{testimonial.occasion}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -567,19 +554,19 @@ Ready to create the perfect gift!`
       <section className="py-16 px-5 bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Perfect For <span className="text-primary">Any Occasion</span>
+            Perfect For <span className="text-primary">These Moments</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {[
               { emoji: '🎂', occasion: 'Birthday' },
               { emoji: '💍', occasion: 'Anniversary' },
-              { emoji: '💝', occasion: "Valentine's Day" },
+              { emoji: '❤️', occasion: "Valentine's Day" },
               { emoji: '🎄', occasion: 'Christmas' },
               { emoji: '👔', occasion: "Father's Day" },
-              { emoji: '📈', occasion: 'Promotion' }
+              { emoji: '🎉', occasion: 'Promotion' }
             ].map((item, i) => (
-              <Card key={i}>
+              <Card key={i} className="hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6 text-center">
                   <div className="text-4xl mb-3">{item.emoji}</div>
                   <h4 className="font-bold">{item.occasion}</h4>
@@ -594,30 +581,30 @@ Ready to create the perfect gift!`
       <section className="py-16 px-5">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Gift <span className="text-primary">Questions?</span>
+            Questions Gift-Givers <span className="text-primary">Ask</span>
           </h2>
 
           <div className="space-y-4 max-w-2xl mx-auto">
             {[
               {
                 question: "What if I don't know his wrist size?",
-                answer: "The silicone strap adjusts to fit most wrist sizes (16-22cm). It's designed to be comfortable for most men."
+                answer: "No worries - the silicone strap is adjustable and fits most wrist sizes (16-22cm). The pin buckle allows for precise fitting. This is NOT a bracelet-style watch that requires exact sizing."
               },
               {
-                question: "What if he doesn't like the color?",
-                answer: "We offer a 7-day exchange. If he prefers a different color, just let us know within 7 days and we'll exchange it for free."
+                question: "What if he doesn't like the color I choose?",
+                answer: "We offer a 7-day color exchange. If he'd prefer a different color, contact us within 7 days of delivery and we'll arrange a swap. No hassle."
               },
               {
-                question: "What should I write on the card?",
-                answer: "Keep it personal and heartfelt. Examples: 'Happy Birthday my love! You deserve the world. — Your wife' or 'To my amazing dad, thanks for everything. Love you! — Your daughter'"
+                question: "How do I write the card message?",
+                answer: "After you place your order, you'll receive a WhatsApp message asking for your personalized card text. Just tell us what you want to say - we'll write it by hand on a premium card."
               },
               {
-                question: "How long does delivery take?",
-                answer: "2-5 business days depending on your location. We'll send you a pre-delivery video so you can see the wrapped package before it ships."
+                question: "Will it arrive in time?",
+                answer: "Lagos: 1-2 days. Abuja/Port Harcourt: 2-3 days. Other states: 3-5 days. For guaranteed delivery by a specific date, order at least 5 days in advance."
               },
               {
-                question: "Can I send it directly to him as a surprise?",
-                answer: "Yes! Just provide his delivery address and we'll make sure your card message stays hidden until he opens it."
+                question: "Can I send it directly to him?",
+                answer: "Absolutely! Just enter HIS address as the delivery address. We'll make sure the thank-you card for you isn't visible to him - only the gift and his personalized card."
               }
             ].map((faq, i) => (
               <Card key={i}>
@@ -644,36 +631,24 @@ Ready to create the perfect gift!`
       </section>
 
       {/* Order Form Section */}
-      <section id="order-form" className="py-16 px-5 bg-gradient-to-b from-muted/30 to-background relative">
+      <section id="order-form" className="py-16 px-5 bg-linear-to-b from-muted/30 to-background relative">
         <div className="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10">
           <Card className="max-w-lg mx-auto border-2 border-primary">
             <CardHeader>
               <CardTitle className="text-2xl md:text-3xl font-bold text-center">Order His Perfect Gift</CardTitle>
-              <CardDescription className="text-center">Fill the form below. We&apos;ll confirm via WhatsApp.</CardDescription>
+              <CardDescription className="text-center">We&apos;ll confirm your card message via WhatsApp.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="yourName" className="block mb-2 font-semibold text-sm">Your Name *</label>
-                  <input
-                    type="text"
-                    id="yourName"
-                    name="yourName"
-                    placeholder="Enter your name"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="hisName" className="block mb-2 font-semibold text-sm">His Name *</label>
+                  <label htmlFor="hisName" className="block mb-2 font-semibold text-sm">His Name (for the card) *</label>
                   <input
                     type="text"
                     id="hisName"
                     name="hisName"
-                    placeholder="Enter his name"
+                    placeholder="e.g. Chukwudi"
                     required
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
@@ -701,24 +676,103 @@ Ready to create the perfect gift!`
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block mb-2 font-semibold text-sm">Your WhatsApp Number *</label>
+                  <label htmlFor="color" className="block mb-2 font-semibold text-sm">His Watch Color *</label>
+                  <select
+                    id="color"
+                    name="color"
+                    value={selectedColor}
+                    onChange={(e) => setSelectedColor(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 16px center'
+                    }}
+                  >
+                    {colorOptions.map((option) => (
+                      <option key={option.name} value={option.name}>{option.name} - {option.note}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="occasion" className="block mb-2 font-semibold text-sm">Special Occasion</label>
+                  <select
+                    id="occasion"
+                    name="occasion"
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 16px center'
+                    }}
+                  >
+                    <option value="">Select occasion</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="valentines">Valentine&apos;s Day</option>
+                    <option value="christmas">Christmas</option>
+                    <option value="fathers-day">Father&apos;s Day</option>
+                    <option value="promotion">Promotion / New Job</option>
+                    <option value="just-because">Just Because</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="deliveryDate" className="block mb-2 font-semibold text-sm">When should he receive it? *</label>
                   <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="e.g., 08012345678"
+                    type="date"
+                    id="deliveryDate"
+                    name="deliveryDate"
                     required
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block mb-2 font-semibold text-sm">Your Email (Optional)</label>
+                  <label htmlFor="yourName" className="block mb-2 font-semibold text-sm">Your Full Name *</label>
+                  <input
+                    type="text"
+                    id="yourName"
+                    name="yourName"
+                    placeholder="Your name"
+                    required
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block mb-2 font-semibold text-sm">Your WhatsApp Number *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="e.g. 08012345678"
+                    required
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block mb-2 font-semibold text-sm">Your Email</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="your@email.com"
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="address" className="block mb-2 font-semibold text-sm">Delivery Address *</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Your address or his (if sending directly)"
+                    required
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
@@ -736,7 +790,7 @@ Ready to create the perfect gift!`
                       backgroundPosition: 'right 16px center'
                     }}
                   >
-                    <option value="">Select delivery state</option>
+                    <option value="">Select state</option>
                     {['Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'FCT - Abuja', 'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'].map(state => (
                       <option key={state} value={state}>{state}</option>
                     ))}
@@ -744,70 +798,29 @@ Ready to create the perfect gift!`
                 </div>
 
                 <div>
-                  <label htmlFor="address" className="block mb-2 font-semibold text-sm">Delivery Address *</label>
-                  <textarea
-                    id="address"
-                    name="address"
-                    rows={2}
-                    placeholder="Enter full delivery address"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="color" className="block mb-2 font-semibold text-sm">Watch Color *</label>
-                  <select
-                    id="color"
-                    name="color"
-                    value={selectedColor}
-                    onChange={(e) => setSelectedColor(e.target.value)}
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23888888'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'right 16px center'
-                    }}
-                  >
-                    {colorOptions.map((option) => (
-                      <option key={option.name} value={option.name}>{option.name} — {option.note}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="cardMessage" className="block mb-2 font-semibold text-sm">Your Card Message (Optional)</label>
+                  <label htmlFor="cardMessage" className="block mb-2 font-semibold text-sm">Card Message (optional - we&apos;ll confirm via WhatsApp)</label>
                   <textarea
                     id="cardMessage"
                     name="cardMessage"
                     rows={3}
-                    placeholder="E.g., Happy Birthday my love! You deserve the world. — Your wife"
+                    placeholder="e.g. Happy Birthday my love! You deserve the world. - Your wife"
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                   />
                 </div>
 
                 <Card>
-                  <CardContent className="pt-5 space-y-3">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Bundle Price</span>
-                      <span className="font-semibold">₦79,000</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Total Value</span>
-                      <span className="font-semibold line-through">₦148,000</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">You Save</span>
-                      <span className="font-semibold text-green-600">₦69,000 (47%)</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Delivery</span>
-                      <span className="font-semibold">Calculated after</span>
-                    </div>
-                    <div className="flex justify-between pt-3 border-t border-border">
+                  <CardContent className="pt-5 space-y-2">
+                    <div className="text-xs uppercase tracking-wider text-primary font-bold mb-3">Your Order</div>
+                    <div className="text-sm text-muted-foreground">MEGIR Chronograph Watch</div>
+                    <div className="text-sm text-green-600">✓ Luxury Gift Wrapping</div>
+                    <div className="text-sm text-green-600">✓ Handwritten Personal Card</div>
+                    <div className="text-sm text-green-600">✓ Premium Cufflinks Set</div>
+                    <div className="text-sm text-green-600">✓ Cologne Sample</div>
+                    <div className="text-sm text-green-600">✓ Video Preview Before Shipping</div>
+                    <div className="text-sm text-green-600">✓ 1-Year Warranty</div>
+                    <div className="flex justify-between pt-3 border-t border-border mt-3">
                       <span className="font-bold">Total</span>
-                      <span className="font-bold text-lg text-primary">₦79,000 + Delivery</span>
+                      <span className="font-bold text-lg text-primary">₦69,000 + Delivery</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -830,7 +843,7 @@ Ready to create the perfect gift!`
 
                 <div className="text-center p-4 bg-primary/5 border border-primary/30 rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">🎁 Next Step:</strong> We&apos;ll confirm via WhatsApp and send you a video preview before delivery.
+                    <strong className="text-foreground">What happens next:</strong> We&apos;ll WhatsApp you to confirm your card message and show you a video preview of the complete gift before shipping. Bank transfer details sent via WhatsApp.
                   </p>
                 </div>
               </form>
@@ -843,16 +856,16 @@ Ready to create the perfect gift!`
       <section className="py-16 px-5 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            This Is the Year You Give the <span className="text-primary">Perfect Gift</span>
+            This Is the Year You Give<br />the <span className="text-primary">Perfect Gift</span>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            No more gift stress. No more \"he didn&apos;t like it.\" Just a beautiful, meaningful gift he&apos;ll treasure.
+            No more guessing. No more settling. Just his smile when he opens it.
           </p>
           <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
             <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-4 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
               <span className="flex items-center justify-center gap-2">
                 <Gift className="w-5 h-5" />
-                Order Gift Bundle - ₦79,000
+                Order His Gift - ₦69,000
               </span>
             </Button>
           </a>
@@ -886,7 +899,7 @@ Ready to create the perfect gift!`
               <Button size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
                 <span className="flex items-center justify-center gap-2">
                   <ShoppingCart className="w-5 h-5" />
-                  Order Gift Bundle - ₦79,000 (Save ₦69k!)
+                  Perfect Gift Bundle - ₦69,000
                 </span>
               </Button>
             </a>
