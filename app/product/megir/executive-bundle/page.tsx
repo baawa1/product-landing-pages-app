@@ -28,8 +28,23 @@ export default function ExecutiveBundlePage() {
   const [selectedColor, setSelectedColor] = useState<string>("Navy Blue");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const bundlePrice = 79000;
+
+  const calculatePrice = () => {
+    if (quantity === 1) {
+      return { total: bundlePrice, display: '₦79,000', discount: null }
+    } else if (quantity === 2) {
+      const total = Math.round(bundlePrice * 2 * 0.85)
+      return { total, display: `₦${total.toLocaleString()}`, discount: '15% OFF!' }
+    } else {
+      const total = Math.round(bundlePrice * quantity * 0.70)
+      return { total, display: `₦${total.toLocaleString()}`, discount: '30% OFF!' }
+    }
+  }
+
+  const price = calculatePrice()
 
   const colorOptions = [
     { name: "Navy Blue", color: "#1B3A5F", images: ["15", "3"] },
@@ -168,10 +183,10 @@ export default function ExecutiveBundlePage() {
       address: address,
       product_name: "MEGIR Executive Bundle (8 Items)",
       color: color,
-      quantity: 1,
+      quantity: quantity,
       price: bundlePrice,
-      total_price: bundlePrice,
-      discount: "47% OFF",
+      total_price: price.total,
+      discount: price.discount || "47% OFF",
     };
 
     try {
@@ -208,7 +223,9 @@ Product: MEGIR Executive Bundle (8 Items)
 - Premium Cufflinks
 - 2-Year Extended Warranty
 
-💰 *Total: ₦79,000 (47% OFF - Save ₦69,000!) + Delivery*
+Quantity: ${quantity} ${quantity === 1 ? 'bundle' : 'bundles'}
+
+💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ' (Bundle Discount)'} + Delivery*
 
 I'm ready to complete my order. Please send payment details.`;
 
@@ -217,7 +234,7 @@ I'm ready to complete my order. Please send payment details.`;
       )}`;
       const thankYouURL = `/thank-you?product=MEGIR+Executive+Bundle&color=${encodeURIComponent(
         color as string
-      )}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(
+      )}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(
         whatsappURL
       )}`;
 
@@ -239,8 +256,9 @@ Address: ${address}
 ⌚ *Order Details:*
 Product: MEGIR Executive Bundle (8 Items)
 Watch Color: ${color}
+Quantity: ${quantity} ${quantity === 1 ? 'bundle' : 'bundles'}
 
-💰 *Total: ₦79,000 (47% OFF) + Delivery*
+💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ' (Bundle Discount)'} + Delivery*
 
 I'm ready to complete my order. Please send payment details.`;
 
@@ -1221,19 +1239,57 @@ I'm ready to complete my order. Please send payment details.`;
                   />
                 </div>
 
+                {/* Quantity Selector */}
+                <div>
+                  <label className="block mb-2 font-semibold text-sm">Quantity</label>
+                  <div className="flex items-center gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="w-11 h-11 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                    >
+                      −
+                    </button>
+                    <span className="text-xl font-bold min-w-[40px] text-center">{quantity}</span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="w-11 h-11 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className="mt-3 bg-primary/10 border border-primary/30 rounded-lg p-4 text-center">
+                    <p className="text-sm text-primary font-semibold">
+                      🔥 Buy 2 and get <strong>15% OFF</strong>, 3+ for <strong>30% OFF!</strong>
+                    </p>
+                  </div>
+                </div>
+
                 {/* Order Summary */}
-                <div className="bg-muted rounded-xl p-5">
-                  <div className="flex justify-between py-2 text-sm">
-                    <span>Executive Bundle (8 Items)</span>
-                    <span>₦148,000 value</span>
+                <div className="bg-muted rounded-xl p-5 space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Bundle Price</span>
+                    <span className="font-semibold">
+                      {price.display} {price.discount && <span className="text-primary ml-1">({price.discount})</span>}
+                    </span>
                   </div>
-                  <div className="flex justify-between py-2 text-sm text-green-600">
-                    <span>Bundle Discount</span>
-                    <span>- ₦69,000</span>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Quantity</span>
+                    <span className="font-semibold">{quantity} {quantity === 1 ? 'bundle' : 'bundles'}</span>
                   </div>
-                  <div className="flex justify-between pt-4 mt-2 border-t border-border font-bold text-lg">
-                    <span>Your Total</span>
-                    <span className="text-primary">₦79,000 + Delivery</span>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">7 Premium Bonuses</span>
+                    <span className="font-semibold text-green-600">Worth ₦83,000 ✓</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Delivery</span>
+                    <span className="font-semibold">Calculated after</span>
+                  </div>
+                  <div className="flex justify-between pt-3 border-t border-border">
+                    <span className="font-bold">Total</span>
+                    <span className="font-bold text-lg text-primary">{price.display} + Delivery</span>
                   </div>
                 </div>
 
