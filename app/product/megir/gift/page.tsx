@@ -211,6 +211,12 @@ Ready to create the perfect gift!`
             </div>
           </div>
 
+          {/* Hero Gift Visual Placeholder */}
+          <div className="max-w-md mx-auto mb-8 bg-primary/5 border-2 border-dashed border-primary/30 rounded-2xl p-12 text-center">
+            <span className="block text-primary text-sm font-semibold mb-2">📷 IMAGE: Beautifully wrapped gift package</span>
+            <span className="block text-xs text-muted-foreground opacity-70">Ribbon, tissue, wax seal visible</span>
+          </div>
+
           {/* Price Section */}
           <Card className="max-w-lg mx-auto mb-5">
             <CardContent className="pt-6">
@@ -299,6 +305,15 @@ Ready to create the perfect gift!`
               </p>
             </CardContent>
           </Card>
+
+          {/* Unboxing Sequence Image Placeholder */}
+          <div className="max-w-2xl mx-auto mt-6 bg-primary/8 border-2 border-dashed border-primary/40 rounded-2xl p-10 text-center">
+            <div className="inline-block bg-primary text-primary-foreground text-[10px] font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+              High Priority Image
+            </div>
+            <div className="text-sm font-semibold text-primary mb-1">Unboxing Sequence</div>
+            <div className="text-xs text-muted-foreground">Wrapped → Opening → Revealed watch + accessories</div>
+          </div>
         </div>
       </section>
 
@@ -358,6 +373,15 @@ Ready to create the perfect gift!`
             Everything <span className="text-primary">Included</span>
           </h2>
           <p className="text-center text-muted-foreground mb-10">A complete luxury gift experience.</p>
+
+          {/* Bundle Flat Lay Image Placeholder */}
+          <div className="max-w-2xl mx-auto mb-6 bg-primary/12 border-2 border-dashed border-primary rounded-2xl p-10 text-center">
+            <div className="inline-block bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+              Critical Image
+            </div>
+            <div className="text-sm font-semibold text-primary mb-1">Complete Bundle Flat-Lay</div>
+            <div className="text-xs text-muted-foreground">Watch, cufflinks, cologne, wrapped package, card - all visible</div>
+          </div>
 
           <div className="space-y-4 max-w-2xl mx-auto">
             {bundleItems.map((item, i) => (
