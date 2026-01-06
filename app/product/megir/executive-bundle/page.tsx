@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -1293,21 +1294,40 @@ I'm ready to complete my order. Please send payment details.`;
                   </div>
                 </div>
 
-                {/* Trust Seals Placeholders */}
-                <div className="flex justify-center gap-3 flex-wrap">
-                  {[
-                    "Secure Payment",
-                    "2-Year Warranty",
-                    "Physical Store",
-                    "1000+ Customers",
-                  ].map((seal) => (
-                    <div
-                      key={seal}
-                      className="w-16 h-16 bg-muted border border-dashed border-muted-foreground/30 rounded-lg flex items-center justify-center text-[8px] text-center text-muted-foreground p-1"
-                    >
-                      {seal} Badge
-                    </div>
-                  ))}
+                {/* Trust Seals */}
+                <div className="flex justify-center gap-3 flex-wrap items-center">
+                  <div className="w-16 h-16 relative">
+                    <Image
+                      src="/secure-payment-label-maximum-security-and-reliability-when-paying-online-png.png"
+                      alt="Secure Payment"
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="w-16 h-16 relative">
+                    <Image
+                      src="/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png"
+                      alt="2-Year Warranty"
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="w-16 h-16 relative">
+                    <Image
+                      src="/physical online store.png"
+                      alt="Physical Store"
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/40 rounded-lg flex flex-col items-center justify-center">
+                    <Award className="w-6 h-6 text-primary mb-0.5" />
+                    <span className="text-[9px] font-bold text-primary leading-tight">1000+</span>
+                    <span className="text-[7px] text-primary/80 leading-tight">Customers</span>
+                  </div>
                 </div>
 
                 <Button
