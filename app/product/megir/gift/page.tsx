@@ -112,6 +112,8 @@ export default function GiftBundlePage() {
     const relationship = formData.get('relationship')
     const color = formData.get('color')
     const cardMessage = formData.get('cardMessage') || 'No message'
+    const occasion = formData.get('occasion') || ''
+    const deliveryDate = formData.get('deliveryDate') || ''
 
     const orderData = {
       full_name: yourName,
@@ -126,9 +128,13 @@ export default function GiftBundlePage() {
       total_price: priceData.total,
       discount: priceData.discount,
       discount_amount: priceData.savings,
-      gift_recipient: hisName,
-      gift_relationship: relationship,
-      gift_message: cardMessage
+      metadata: {
+        gift_recipient: hisName,
+        gift_relationship: relationship,
+        gift_message: cardMessage,
+        occasion: occasion,
+        delivery_date: deliveryDate
+      }
     }
 
     try {

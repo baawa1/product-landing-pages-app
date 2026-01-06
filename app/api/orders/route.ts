@@ -38,6 +38,8 @@ export async function POST(request: NextRequest) {
       price: parseFloat(body.price),
       total_price: parseFloat(body.total_price),
       discount: body.discount && body.discount.trim() !== '' ? body.discount : null,
+      discount_amount: body.discount_amount ? parseFloat(body.discount_amount) : null,
+      metadata: body.metadata || {},
       status: 'pending'
     }
 

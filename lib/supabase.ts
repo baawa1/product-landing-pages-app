@@ -37,7 +37,16 @@ export interface Order {
   price: number
   total_price: number
   discount?: string
+  discount_amount?: number
   status?: 'pending' | 'confirmed' | 'shipped' | 'delivered'
+  metadata?: {
+    gift_recipient?: string
+    gift_relationship?: string
+    gift_message?: string
+    occasion?: string
+    delivery_date?: string
+    [key: string]: any // Allow additional custom fields
+  }
 }
 
 // Function to create a new order (uses admin client to bypass RLS)
