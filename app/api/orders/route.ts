@@ -4,7 +4,6 @@ import { createOrder, Order, isSupabaseConfigured } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    console.log('📥 Received order request:', JSON.stringify(body, null, 2))
 
     // Check if Supabase is configured
     if (!isSupabaseConfigured()) {
@@ -30,7 +29,7 @@ export async function POST(request: NextRequest) {
     const orderData: Order = {
       full_name: body.full_name,
       phone: body.phone,
-      email: body.email && body.email.trim() !== '' ? body.email : null,
+      email: body.email && body.email.trim() !== '' ? body.email : undefined,
       state: body.state,
       address: body.address,
       product_name: body.product_name,
@@ -38,16 +37,14 @@ export async function POST(request: NextRequest) {
       quantity: parseInt(body.quantity),
       price: parseFloat(body.price),
       total_price: parseFloat(body.total_price),
-      discount: body.discount && body.discount.trim() !== '' ? body.discount : null,
-      discount_amount: body.discount_amount ? parseFloat(body.discount_amount) : null,
+      discount: body.discount && body.discount.trim() !== '' ? body.discount : undefined,
+      discount_amount: body.discount_amount ? parseFloat(body.discount_amount) : undefined,
       metadata: body.metadata || {},
       status: 'pending'
     }
 
     // Save to Supabase
-    console.log('💾 Saving order to database:', orderData)
     const order = await createOrder(orderData)
-    console.log('✅ Order saved successfully! ID:', order.id)
 
     return NextResponse.json({
       success: true,

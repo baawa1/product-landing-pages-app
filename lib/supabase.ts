@@ -24,7 +24,7 @@ export const isSupabaseConfigured = () => {
 
 // Order type definition
 export interface Order {
-  id?: string
+  id?: number
   created_at?: string
   full_name: string
   phone: string
@@ -69,7 +69,7 @@ export async function createOrder(orderData: Order) {
 }
 
 // Function to get order by ID
-export async function getOrder(orderId: string) {
+export async function getOrder(orderId: number) {
   const { data, error } = await supabase
     .from('orders')
     .select('*')
