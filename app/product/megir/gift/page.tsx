@@ -129,6 +129,7 @@ export default function GiftBundlePage() {
         console.error('Failed to save order:', result)
       }
 
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🎁 *NEW GIFT ORDER - MEGIR PERFECT GIFT BUNDLE*
 
 👤 *Gift From:*
@@ -158,6 +159,8 @@ Includes:
 
 💰 *Total: ₦79,000 (47% OFF - Save ₦69,000!) + Delivery*
 
+🔗 *Product Link:* ${productUrl}
+
 Ready to create the perfect gift! Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
@@ -168,6 +171,7 @@ Ready to create the perfect gift! Please send payment details.`
     } catch (error) {
       console.error('Error submitting order:', error)
       setIsSubmitting(false)
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🎁 *NEW GIFT ORDER - MEGIR PERFECT GIFT BUNDLE*
 
 Gift From: ${yourName}
@@ -175,6 +179,8 @@ Gift For: ${hisName} (${relationship})
 Watch Color: ${color}
 
 Total: ₦79,000 (47% OFF) + Delivery
+
+🔗 *Product Link:* ${productUrl}
 
 Ready to create the perfect gift!`
 

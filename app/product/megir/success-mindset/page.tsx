@@ -118,6 +118,7 @@ export default function SuccessMindsetPage() {
         console.error('Failed to save order:', result)
       }
 
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR SUCCESS MINDSET BUNDLE*
 
 👤 *Customer Details:*
@@ -142,6 +143,8 @@ Product: MEGIR Success Mindset Bundle (8 Items)
 
 💰 *Total: ₦79,000 (47% OFF - Save ₦69,000!) + Delivery*
 
+🔗 *Product Link:* ${productUrl}
+
 I'm ready to complete my order. Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
@@ -152,6 +155,7 @@ I'm ready to complete my order. Please send payment details.`
     } catch (error) {
       console.error('Error submitting order:', error)
       setIsSubmitting(false)
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR SUCCESS MINDSET BUNDLE*
 
 👤 *Customer Details:*
@@ -168,6 +172,8 @@ Product: MEGIR Success Mindset Bundle (8 Items)
 Watch Color: ${color}
 
 💰 *Total: ₦79,000 (47% OFF) + Delivery*
+
+🔗 *Product Link:* ${productUrl}
 
 I'm ready to complete my order. Please send payment details.`
 

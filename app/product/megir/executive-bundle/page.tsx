@@ -35,17 +35,25 @@ export default function ExecutiveBundlePage() {
 
   const calculatePrice = () => {
     if (quantity === 1) {
-      return { total: bundlePrice, display: '₦79,000', discount: null }
+      return { total: bundlePrice, display: "₦79,000", discount: null };
     } else if (quantity === 2) {
-      const total = Math.round(bundlePrice * 2 * 0.85)
-      return { total, display: `₦${total.toLocaleString()}`, discount: '15% OFF!' }
+      const total = Math.round(bundlePrice * 2 * 0.85);
+      return {
+        total,
+        display: `₦${total.toLocaleString()}`,
+        discount: "15% OFF!",
+      };
     } else {
-      const total = Math.round(bundlePrice * quantity * 0.70)
-      return { total, display: `₦${total.toLocaleString()}`, discount: '30% OFF!' }
+      const total = Math.round(bundlePrice * quantity * 0.7);
+      return {
+        total,
+        display: `₦${total.toLocaleString()}`,
+        discount: "30% OFF!",
+      };
     }
-  }
+  };
 
-  const price = calculatePrice()
+  const price = calculatePrice();
 
   const colorOptions = [
     { name: "Navy Blue", color: "#1B3A5F", images: ["15", "3"] },
@@ -60,7 +68,9 @@ export default function ExecutiveBundlePage() {
       value: 65000,
       description:
         "Japanese Quartz movement. Working chronograph. Stainless steel case. Weather-proof silicone strap.",
-      image: `/products/megir/MEGIR Chronograph Watch ${colorOptions.find(c => c.name === selectedColor)?.images[0] || "15"}.jpeg`,
+      image: `/products/megir/MEGIR Chronograph Watch ${
+        colorOptions.find((c) => c.name === selectedColor)?.images[0] || "15"
+      }.jpeg`,
     },
     {
       name: "Premium Leather Slim Bifold Wallet",
@@ -108,7 +118,8 @@ export default function ExecutiveBundlePage() {
       value: 10000,
       description:
         "If your watch stops working, we repair or replace it. No questions asked.",
-      image: "/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png",
+      image:
+        "/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png",
     },
   ];
 
@@ -210,6 +221,7 @@ export default function ExecutiveBundlePage() {
         console.error("Failed to save order:", result);
       }
 
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR EXECUTIVE BUNDLE*
 
 👤 *Customer Details:*
@@ -232,9 +244,13 @@ Product: MEGIR Executive Bundle (8 Items)
 - Premium Cufflinks
 - 2-Year Extended Warranty
 
-Quantity: ${quantity} ${quantity === 1 ? 'bundle' : 'bundles'}
+Quantity: ${quantity} ${quantity === 1 ? "bundle" : "bundles"}
 
-💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ' (Bundle Discount)'} + Delivery*
+💰 *Total: ${price.display}${
+        price.discount ? " (" + price.discount + ")" : " (Bundle Discount)"
+      } + Delivery*
+
+🔗 *Product Link:* ${productUrl}
 
 I'm ready to complete my order. Please send payment details.`;
 
@@ -243,14 +259,15 @@ I'm ready to complete my order. Please send payment details.`;
       )}`;
       const thankYouURL = `/thank-you?product=MEGIR+Executive+Bundle&color=${encodeURIComponent(
         color as string
-      )}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(
-        whatsappURL
-      )}`;
+      )}&quantity=${quantity}&total=${
+        price.total
+      }&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`;
 
       window.location.href = thankYouURL;
     } catch (error) {
       console.error("Error submitting order:", error);
       setIsSubmitting(false);
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR EXECUTIVE BUNDLE*
 
 👤 *Customer Details:*
@@ -265,9 +282,13 @@ Address: ${address}
 ⌚ *Order Details:*
 Product: MEGIR Executive Bundle (8 Items)
 Watch Color: ${color}
-Quantity: ${quantity} ${quantity === 1 ? 'bundle' : 'bundles'}
+Quantity: ${quantity} ${quantity === 1 ? "bundle" : "bundles"}
 
-💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ' (Bundle Discount)'} + Delivery*
+💰 *Total: ${price.display}${
+        price.discount ? " (" + price.discount + ")" : " (Bundle Discount)"
+      } + Delivery*
+
+🔗 *Product Link:* ${productUrl}
 
 I'm ready to complete my order. Please send payment details.`;
 
@@ -323,16 +344,20 @@ I'm ready to complete my order. Please send payment details.`;
               <Card className="hidden md:block mb-6 bg-background/5 border-primary/30">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                    <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
-                    <span className="text-4xl font-bold text-primary">₦79,000</span>
+                    <span className="text-2xl text-muted-foreground line-through">
+                      ₦148,000
+                    </span>
+                    <span className="text-4xl font-bold text-primary">
+                      ₦79,000
+                    </span>
                     <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
                       SAVE ₦69,000
                     </span>
                   </div>
 
                   <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
-                    <Gift className="w-6 h-6" />
-                    7 Premium Bonuses Included (Worth ₦83,000)
+                    <Gift className="w-6 h-6" />7 Premium Bonuses Included
+                    (Worth ₦83,000)
                   </div>
                 </CardContent>
               </Card>
@@ -353,13 +378,7 @@ I'm ready to complete my order. Please send payment details.`;
 
             {/* Hero Video */}
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <video
-                className="w-full h-auto"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
+              <video className="w-full h-auto" autoPlay muted loop playsInline>
                 <source
                   src="/products/megir/MEGIR Chronograph Watch 19.mp4"
                   type="video/mp4"
@@ -372,16 +391,20 @@ I'm ready to complete my order. Please send payment details.`;
             <Card className="md:hidden mb-6 bg-background/5 border-primary/30">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                  <span className="text-2xl text-muted-foreground line-through">₦148,000</span>
-                  <span className="text-4xl font-bold text-primary">₦79,000</span>
+                  <span className="text-2xl text-muted-foreground line-through">
+                    ₦148,000
+                  </span>
+                  <span className="text-4xl font-bold text-primary">
+                    ₦79,000
+                  </span>
                   <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
                     SAVE ₦69,000
                   </span>
                 </div>
 
                 <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
-                  <Gift className="w-6 h-6" />
-                  7 Premium Bonuses Included (Worth ₦83,000)
+                  <Gift className="w-6 h-6" />7 Premium Bonuses Included (Worth
+                  ₦83,000)
                 </div>
               </CardContent>
             </Card>
@@ -653,16 +676,32 @@ I'm ready to complete my order. Please send payment details.`;
           </h2>
           <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 6.jpeg" alt="MEGIR watch on wrist" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 6.jpeg"
+                alt="MEGIR watch on wrist"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 7.jpeg" alt="MEGIR chronograph face detail" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 7.jpeg"
+                alt="MEGIR chronograph face detail"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 9.jpeg" alt="MEGIR watch angle view" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 9.jpeg"
+                alt="MEGIR watch angle view"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 10.jpeg" alt="MEGIR watch side angle" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 10.jpeg"
+                alt="MEGIR watch side angle"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -743,7 +782,10 @@ I'm ready to complete my order. Please send payment details.`;
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {/* Video 1 */}
               <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                <div
+                  className="relative bg-black"
+                  style={{ aspectRatio: "720/1280" }}
+                >
                   <video
                     className="absolute inset-0 w-full h-full object-cover"
                     autoPlay
@@ -752,14 +794,20 @@ I'm ready to complete my order. Please send payment details.`;
                     playsInline
                     controls
                   >
-                    <source src="/products/megir/MEGIR Chronograph Watch 20.mp4" type="video/mp4" />
+                    <source
+                      src="/products/megir/MEGIR Chronograph Watch 20.mp4"
+                      type="video/mp4"
+                    />
                   </video>
                 </div>
               </div>
 
               {/* Video 2 */}
               <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                <div
+                  className="relative bg-black"
+                  style={{ aspectRatio: "720/1280" }}
+                >
                   <video
                     className="absolute inset-0 w-full h-full object-cover"
                     autoPlay
@@ -768,14 +816,20 @@ I'm ready to complete my order. Please send payment details.`;
                     playsInline
                     controls
                   >
-                    <source src="/products/megir/MEGIR Chronograph Watch 21.mp4" type="video/mp4" />
+                    <source
+                      src="/products/megir/MEGIR Chronograph Watch 21.mp4"
+                      type="video/mp4"
+                    />
                   </video>
                 </div>
               </div>
 
               {/* Video 3 */}
               <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-                <div className="relative bg-black" style={{ aspectRatio: '720/1280' }}>
+                <div
+                  className="relative bg-black"
+                  style={{ aspectRatio: "720/1280" }}
+                >
                   <video
                     className="absolute inset-0 w-full h-full object-cover"
                     autoPlay
@@ -784,7 +838,10 @@ I'm ready to complete my order. Please send payment details.`;
                     playsInline
                     controls
                   >
-                    <source src="/products/megir/MEGIR Chronograph Watch 22.mp4" type="video/mp4" />
+                    <source
+                      src="/products/megir/MEGIR Chronograph Watch 22.mp4"
+                      type="video/mp4"
+                    />
                   </video>
                 </div>
               </div>
@@ -832,28 +889,38 @@ I'm ready to complete my order. Please send payment details.`;
           <Card className="max-w-2xl mx-auto mb-8">
             <CardContent className="p-0">
               {[
-                { label: 'Brand', value: 'MEGIR (Est. 2008)' },
-                { label: 'Movement', value: 'Japanese Quartz' },
-                { label: 'Case Material', value: 'Stainless Steel' },
-                { label: 'Strap Material', value: 'Silicone Rubber' },
-                { label: 'Case Diameter', value: '44mm' },
-                { label: 'Water Resistance', value: '30M (Splash Proof)' },
-                { label: 'Features', value: 'Chronograph, Date, Luminous' },
-                { label: 'Closure', value: 'Pin Buckle' }
+                { label: "Brand", value: "MEGIR (Est. 2008)" },
+                { label: "Movement", value: "Japanese Quartz" },
+                { label: "Case Material", value: "Stainless Steel" },
+                { label: "Strap Material", value: "Silicone Rubber" },
+                { label: "Case Diameter", value: "44mm" },
+                { label: "Water Resistance", value: "30M (Splash Proof)" },
+                { label: "Features", value: "Chronograph, Date, Luminous" },
+                { label: "Closure", value: "Pin Buckle" },
               ].map((spec, i) => (
                 <div
                   key={i}
-                  className={`flex justify-between p-4 ${i % 2 === 0 ? 'bg-muted/30' : ''} ${i !== 7 ? 'border-b border-border' : ''}`}
+                  className={`flex justify-between p-4 ${
+                    i % 2 === 0 ? "bg-muted/30" : ""
+                  } ${i !== 7 ? "border-b border-border" : ""}`}
                 >
-                  <span className="text-sm text-muted-foreground">{spec.label}</span>
-                  <span className="text-sm font-semibold text-right">{spec.value}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {spec.label}
+                  </span>
+                  <span className="text-sm font-semibold text-right">
+                    {spec.value}
+                  </span>
                 </div>
               ))}
             </CardContent>
           </Card>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
-            <img src="/products/megir/MEGIR Chronograph Watch 8.jpeg" alt="MEGIR watch features diagram" className="w-full h-full object-cover" />
+            <img
+              src="/products/megir/MEGIR Chronograph Watch 8.jpeg"
+              alt="MEGIR watch features diagram"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -902,17 +969,31 @@ I'm ready to complete my order. Please send payment details.`;
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 13.jpeg" alt="MEGIR watches color comparison 1" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 13.jpeg"
+                alt="MEGIR watches color comparison 1"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 14.jpeg" alt="MEGIR watches color comparison 2" className="w-full h-full object-cover" />
+              <img
+                src="/products/megir/MEGIR Chronograph Watch 14.jpeg"
+                alt="MEGIR watches color comparison 2"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
-            <img src="/products/megir/MEGIR Chronograph Watch 5.jpeg" alt="MEGIR watch in premium gift box" className="w-full h-full object-cover" />
+            <img
+              src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+              alt="MEGIR watch in premium gift box"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <p className="text-center text-muted-foreground mt-4">Comes in original MEGIR packaging - perfect for gifting</p>
+          <p className="text-center text-muted-foreground mt-4">
+            Comes in original MEGIR packaging - perfect for gifting
+          </p>
         </div>
       </section>
 
@@ -1257,7 +1338,9 @@ I'm ready to complete my order. Please send payment details.`;
 
                 {/* Quantity Selector */}
                 <div>
-                  <label className="block mb-2 font-semibold text-sm">Quantity</label>
+                  <label className="block mb-2 font-semibold text-sm">
+                    Quantity
+                  </label>
                   <div className="flex items-center gap-4">
                     <button
                       type="button"
@@ -1266,7 +1349,9 @@ I'm ready to complete my order. Please send payment details.`;
                     >
                       −
                     </button>
-                    <span className="text-xl font-bold min-w-[40px] text-center">{quantity}</span>
+                    <span className="text-xl font-bold min-w-[40px] text-center">
+                      {quantity}
+                    </span>
                     <button
                       type="button"
                       onClick={() => setQuantity(quantity + 1)}
@@ -1278,7 +1363,8 @@ I'm ready to complete my order. Please send payment details.`;
 
                   <div className="mt-3 bg-primary/10 border border-primary/30 rounded-lg p-4 text-center">
                     <p className="text-sm text-primary font-semibold">
-                      🔥 Buy 2 and get <strong>15% OFF</strong>, 3+ for <strong>30% OFF!</strong>
+                      🔥 Buy 2 and get <strong>15% OFF</strong>, 3+ for{" "}
+                      <strong>30% OFF!</strong>
                     </p>
                   </div>
                 </div>
@@ -1288,16 +1374,27 @@ I'm ready to complete my order. Please send payment details.`;
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Bundle Price</span>
                     <span className="font-semibold">
-                      {price.display} {price.discount && <span className="text-primary ml-1">({price.discount})</span>}
+                      {price.display}{" "}
+                      {price.discount && (
+                        <span className="text-primary ml-1">
+                          ({price.discount})
+                        </span>
+                      )}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Quantity</span>
-                    <span className="font-semibold">{quantity} {quantity === 1 ? 'bundle' : 'bundles'}</span>
+                    <span className="font-semibold">
+                      {quantity} {quantity === 1 ? "bundle" : "bundles"}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">7 Premium Bonuses</span>
-                    <span className="font-semibold text-green-600">Worth ₦83,000 ✓</span>
+                    <span className="text-muted-foreground">
+                      7 Premium Bonuses
+                    </span>
+                    <span className="font-semibold text-green-600">
+                      Worth ₦83,000 ✓
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Delivery</span>
@@ -1305,7 +1402,9 @@ I'm ready to complete my order. Please send payment details.`;
                   </div>
                   <div className="flex justify-between pt-3 border-t border-border">
                     <span className="font-bold">Total</span>
-                    <span className="font-bold text-lg text-primary">{price.display} + Delivery</span>
+                    <span className="font-bold text-lg text-primary">
+                      {price.display} + Delivery
+                    </span>
                   </div>
                 </div>
 
@@ -1340,8 +1439,12 @@ I'm ready to complete my order. Please send payment details.`;
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/40 rounded-lg flex flex-col items-center justify-center">
                     <Award className="w-6 h-6 text-primary mb-0.5" />
-                    <span className="text-[9px] font-bold text-primary leading-tight">1000+</span>
-                    <span className="text-[7px] text-primary/80 leading-tight">Customers</span>
+                    <span className="text-[9px] font-bold text-primary leading-tight">
+                      1000+
+                    </span>
+                    <span className="text-[7px] text-primary/80 leading-tight">
+                      Customers
+                    </span>
                   </div>
                 </div>
 

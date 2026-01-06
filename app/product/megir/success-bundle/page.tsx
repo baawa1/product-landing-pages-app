@@ -134,6 +134,7 @@ export default function MegirWatchPage() {
       }
 
       // Create WhatsApp message
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
 
 👤 *Customer Details:*
@@ -152,6 +153,8 @@ Quantity: ${quantity}
 Free Gift: Premium Cufflinks ✓
 
 💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ''} + Delivery*
+
+🔗 *Product Link:* ${productUrl}
 
 I'm ready to complete my order. Please send payment details.`
 
@@ -166,6 +169,7 @@ I'm ready to complete my order. Please send payment details.`
       console.error('Error submitting order:', error)
       setIsSubmitting(false)
       // Fallback to direct WhatsApp if database fails
+      const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
 
 👤 *Customer Details:*
@@ -184,6 +188,8 @@ Quantity: ${quantity}
 Free Gift: Premium Cufflinks ✓
 
 💰 *Total: ${price.display}${price.discount ? ' (' + price.discount + ')' : ''} + Delivery*
+
+🔗 *Product Link:* ${productUrl}
 
 I'm ready to complete my order. Please send payment details.`
 
