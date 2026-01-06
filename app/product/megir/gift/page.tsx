@@ -21,10 +21,25 @@ export default function GiftBundlePage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [selectedColor, setSelectedColor] = useState<string>('Navy Blue')
   const [selectedRelationship, setSelectedRelationship] = useState<string>('Husband')
+  const [quantity, setQuantity] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
-  const bundlePrice = 69000
+  const bundlePrice = 79000
+
+  const calculatePrice = () => {
+    if (quantity === 1) {
+      return { total: bundlePrice, display: "₦79,000", discount: null, savings: null }
+    } else if (quantity === 2) {
+      const total = Math.round(bundlePrice * 2 * 0.85) // 15% off
+      const savings = (bundlePrice * 2) - total
+      return { total, display: `₦${total.toLocaleString()}`, discount: "15% OFF!", savings }
+    } else {
+      const total = Math.round(bundlePrice * quantity * 0.7) // 30% off
+      const savings = (bundlePrice * quantity) - total
+      return { total, display: `₦${total.toLocaleString()}`, discount: "30% OFF!", savings }
+    }
+  }
 
   const colorOptions = [
     { name: 'Navy Blue', color: '#1B3A5F', images: ['15', '3'], note: 'Most popular for gifts' },
@@ -69,10 +84,14 @@ export default function GiftBundlePage() {
       if (heroSection && orderForm) {
         const heroBottom = heroSection.getBoundingClientRect().bottom
         const formTop = orderForm.getBoundingClientRect().top
-        setShowFloatingButton(heroBottom < 0 && formTop > 100)
+        const windowHeight = window.innerHeight
+
+        // Show button when hero is scrolled past and form is not yet visible or partially visible
+        setShowFloatingButton(heroBottom < 0 && formTop > windowHeight * 0.2)
       }
     }
 
+    handleScroll() // Check on mount
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -82,6 +101,8 @@ export default function GiftBundlePage() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
+    const formQuantity = parseInt(formData.get('quantity') as string) || quantity
+    const priceData = calculatePrice()
     const yourName = formData.get('yourName')
     const phone = formData.get('phone')
     const email = formData.get('email') || ''
@@ -100,10 +121,11 @@ export default function GiftBundlePage() {
       address: address,
       product_name: 'MEGIR Perfect Gift Bundle',
       color: color,
-      quantity: 1,
+      quantity: formQuantity,
       price: bundlePrice,
-      total_price: bundlePrice,
-      discount: null,
+      total_price: priceData.total,
+      discount: priceData.discount,
+      discount_amount: priceData.savings,
       gift_recipient: hisName,
       gift_relationship: relationship,
       gift_message: cardMessage
@@ -124,6 +146,9 @@ export default function GiftBundlePage() {
       const productUrl = window.location.origin + window.location.pathname;
       const message = `🎁 *NEW PERFECT GIFT BUNDLE ORDER*
 
+*Quantity:* ${formQuantity} gift${formQuantity > 1 ? 's' : ''}
+${priceData.discount ? `*Discount:* ${priceData.discount} (Save ₦${priceData.savings?.toLocaleString()})` : ''}
+
 *Gift Recipient:* ${hisName}
 *Relationship:* ${relationship}
 *Watch Color:* ${color}
@@ -134,32 +159,38 @@ export default function GiftBundlePage() {
 
 *Card Message:* ${cardMessage || '(To be confirmed)'}
 
-*Bundle:* Perfect Gift Bundle (₦69,000)
+*Bundle Price:* ₦${bundlePrice.toLocaleString()} each
+*Total:* ${priceData.display}${priceData.savings ? ` (You save ₦${priceData.savings.toLocaleString()})` : ''} + Delivery
 
 🔗 *Product Link:* ${productUrl}
 
-Ready to create the perfect gift! Please send payment details.`
+Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}! Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=${formQuantity}&total=${priceData.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
 
       window.location.href = thankYouURL
 
     } catch (error) {
       console.error('Error submitting order:', error)
       setIsSubmitting(false)
+      const formQuantity = parseInt((new FormData(e.currentTarget)).get('quantity') as string) || quantity
+      const priceData = calculatePrice()
       const productUrl = window.location.origin + window.location.pathname;
       const message = `🎁 *NEW PERFECT GIFT BUNDLE ORDER*
+
+*Quantity:* ${formQuantity} gift${formQuantity > 1 ? 's' : ''}
+${priceData.discount ? `*Discount:* ${priceData.discount}` : ''}
 
 Gift From: ${yourName}
 Gift For: ${hisName} (${relationship})
 Watch Color: ${color}
 
-Total: ₦69,000 + Delivery
+*Total:* ${priceData.display} + Delivery
 
 🔗 *Product Link:* ${productUrl}
 
-Ready to create the perfect gift!`
+Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
       window.open(whatsappURL, '_blank')
@@ -211,10 +242,16 @@ Ready to create the perfect gift!`
             </div>
           </div>
 
-          {/* Hero Gift Visual Placeholder */}
-          <div className="max-w-md mx-auto mb-8 bg-primary/5 border-2 border-dashed border-primary/30 rounded-2xl p-12 text-center">
-            <span className="block text-primary text-sm font-semibold mb-2">📷 IMAGE: Beautifully wrapped gift package</span>
-            <span className="block text-xs text-muted-foreground opacity-70">Ribbon, tissue, wax seal visible</span>
+          {/* Hero Gift Visual */}
+          <div className="max-w-md mx-auto mb-8 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg">
+            <img
+              src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+              alt="MEGIR watch in premium gift box"
+              className="w-full h-auto object-cover"
+            />
+            <div className="bg-primary/10 p-3 text-center">
+              <p className="text-sm font-semibold text-primary">Premium Gift Box Included</p>
+            </div>
           </div>
 
           {/* Price Section */}
@@ -222,8 +259,20 @@ Ready to create the perfect gift!`
             <CardContent className="pt-6">
               <div className="text-center mb-4">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Complete Gift Bundle</p>
-                <p className="text-lg text-muted-foreground line-through mb-2">Value: ₦99,000+</p>
-                <p className="text-5xl font-bold text-primary mb-3">₦69,000</p>
+                <p className="text-lg text-muted-foreground line-through mb-2">Value: ₦148,000</p>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <p className="text-5xl font-bold text-primary">{calculatePrice().display}</p>
+                  {calculatePrice().discount && (
+                    <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {calculatePrice().discount}
+                    </span>
+                  )}
+                </div>
+                {calculatePrice().savings && (
+                  <p className="text-sm font-semibold text-green-600 mb-2">
+                    You save ₦{calculatePrice().savings?.toLocaleString()}!
+                  </p>
+                )}
                 <p className="text-sm text-muted-foreground">Ready to give. No wrapping needed.</p>
               </div>
             </CardContent>
@@ -306,13 +355,28 @@ Ready to create the perfect gift!`
             </CardContent>
           </Card>
 
-          {/* Unboxing Sequence Image Placeholder */}
-          <div className="max-w-2xl mx-auto mt-6 bg-primary/8 border-2 border-dashed border-primary/40 rounded-2xl p-10 text-center">
-            <div className="inline-block bg-primary text-primary-foreground text-[10px] font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-              High Priority Image
+          {/* Unboxing - All Colors Available */}
+          <div className="max-w-2xl mx-auto mt-6">
+            <h3 className="text-xl font-bold text-center mb-4 text-primary">Choose Any Color - All Beautifully Packaged</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { img: '1', color: 'Pure White' },
+                { img: '2', color: 'Teal' },
+                { img: '3', color: 'Navy Blue' },
+                { img: '4', color: 'Classic Black' }
+              ].map((item) => (
+                <div key={item.img} className="relative rounded-lg overflow-hidden border border-border shadow-md hover:shadow-lg transition-shadow">
+                  <img
+                    src={`/products/megir/MEGIR Chronograph Watch ${item.img}.jpeg`}
+                    alt={`${item.color} MEGIR watch`}
+                    className="w-full aspect-square object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
+                    <p className="text-white text-xs font-semibold text-center">{item.color}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="text-sm font-semibold text-primary mb-1">Unboxing Sequence</div>
-            <div className="text-xs text-muted-foreground">Wrapped → Opening → Revealed watch + accessories</div>
           </div>
         </div>
       </section>
@@ -366,21 +430,51 @@ Ready to create the perfect gift!`
         </div>
       </section>
 
-      {/* Everything Included */}
+      {/* See the Quality Up Close */}
       <section className="py-16 px-5 bg-muted/30">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            See the <span className="text-primary">Quality</span> Up Close
+          </h2>
+          <p className="text-center text-muted-foreground mb-10">Premium craftsmanship in every detail.</p>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            {[
+              { img: '6', caption: 'Precision Engineering' },
+              { img: '7', caption: 'Detailed Chronograph' },
+              { img: '9', caption: 'Elegant Design' },
+              { img: '10', caption: 'Premium Materials' }
+            ].map((item) => (
+              <div key={item.img} className="rounded-xl overflow-hidden border border-border shadow-md hover:shadow-xl transition-shadow">
+                <img
+                  src={`/products/megir/MEGIR Chronograph Watch ${item.img}.jpeg`}
+                  alt={item.caption}
+                  className="w-full aspect-square object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Everything Included */}
+      <section className="py-16 px-5">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Everything <span className="text-primary">Included</span>
           </h2>
           <p className="text-center text-muted-foreground mb-10">A complete luxury gift experience.</p>
 
-          {/* Bundle Flat Lay Image Placeholder */}
-          <div className="max-w-2xl mx-auto mb-6 bg-primary/12 border-2 border-dashed border-primary rounded-2xl p-10 text-center">
-            <div className="inline-block bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-              Critical Image
+          {/* Bundle Flat Lay - Premium Presentation */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <h3 className="text-xl font-bold text-center mb-4 text-primary">Premium Presentation - Every Detail Matters</h3>
+            <div className="aspect-video rounded-xl border-2 border-dashed border-primary/30 bg-muted/30 flex items-center justify-center">
+              <div className="text-center p-6">
+                <Package className="w-12 h-12 text-primary/40 mx-auto mb-3" />
+                <p className="text-sm text-muted-foreground">Product tray image will be added here</p>
+              </div>
             </div>
-            <div className="text-sm font-semibold text-primary mb-1">Complete Bundle Flat-Lay</div>
-            <div className="text-xs text-muted-foreground">Watch, cufflinks, cologne, wrapped package, card - all visible</div>
+            <p className="text-center text-sm text-muted-foreground mt-4">Each bundle arrives in a premium gift box with ribbon, tissue paper, and wax seal</p>
           </div>
 
           <div className="space-y-4 max-w-2xl mx-auto">
@@ -407,13 +501,25 @@ Ready to create the perfect gift!`
             <CardContent className="pt-6">
               <div className="text-center mb-4">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Total Gift Value</p>
-                <p className="text-2xl font-bold line-through text-muted-foreground mb-2">₦99,000+</p>
-                <p className="text-5xl font-bold text-primary mb-3">₦69,000</p>
+                <p className="text-2xl font-bold line-through text-muted-foreground mb-2">₦148,000</p>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <p className="text-5xl font-bold text-primary">{calculatePrice().display}</p>
+                  {calculatePrice().discount && (
+                    <span className="bg-green-500 text-white text-sm font-bold px-3 py-1.5 rounded-full">
+                      {calculatePrice().discount}
+                    </span>
+                  )}
+                </div>
+                {calculatePrice().savings && quantity > 1 && (
+                  <p className="text-base font-semibold text-green-600 mb-2">
+                    You save ₦{calculatePrice().savings?.toLocaleString()} on {quantity} gifts!
+                  </p>
+                )}
                 <p className="text-base text-muted-foreground italic mb-4">The easiest &quot;wow&quot; gift you&apos;ll ever give.</p>
               </div>
               <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer block mt-6">
                 <Button size="lg" className="w-full font-bold">
-                  Order His Gift Now
+                  Order {quantity > 1 ? `${quantity} Gifts` : 'His Gift'} Now
                 </Button>
               </a>
             </CardContent>
@@ -574,8 +680,69 @@ Ready to create the perfect gift!`
         </div>
       </section>
 
-      {/* Perfect Occasions */}
+      {/* Visit Our Physical Store */}
       <section className="py-16 px-5 bg-muted/30">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Visit Our <span className="text-primary">Physical Store</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-10">Real business you can visit or video call</p>
+
+          {/* Store Photos - 3 images */}
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {[
+              { src: '/Store full building picture.jpeg', alt: 'BaaWA Store Building' },
+              { src: '/Store front with bill board.jpg', alt: 'Store Front' },
+              { src: '/Baawa store table.png', alt: 'Store Interior' }
+            ].map((photo, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-border shadow-md">
+                <img src={photo.src} alt={photo.alt} className="w-full aspect-video object-cover" />
+              </div>
+            ))}
+          </div>
+
+          {/* Store Videos - 2 videos */}
+          <div className="grid md:grid-cols-2 gap-4 mb-8">
+            {[
+              { src: '/Store shelf.mp4', label: 'Product Display' },
+              { src: '/Store table.mp4', label: 'Store Walkthrough' }
+            ].map((video, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-border shadow-md">
+                <div className="relative bg-black" style={{ aspectRatio: '16/9' }}>
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    controls
+                    playsInline
+                  >
+                    <source src={video.src} type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Contact Info */}
+          <Card className="max-w-lg mx-auto text-center">
+            <CardContent className="pt-6">
+              <h3 className="font-bold text-lg mb-3">BaaWA Accessories</h3>
+              <p className="text-sm text-muted-foreground mb-2">📍 Abeokuta, Ogun State, Nigeria</p>
+              <p className="text-sm mb-2">
+                <a href="https://wa.me/2348062605012" className="text-primary hover:underline font-semibold">
+                  WhatsApp: +234-806-260-5012
+                </a>
+              </p>
+              <p className="text-sm">
+                <a href="mailto:Sales@baawa.ng" className="text-primary hover:underline">
+                  Sales@baawa.ng
+                </a>
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Perfect Occasions */}
+      <section className="py-16 px-5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
             Perfect For <span className="text-primary">These Moments</span>
@@ -832,9 +999,62 @@ Ready to create the perfect gift!`
                   />
                 </div>
 
+                <div>
+                  <label className="block mb-2 font-semibold text-sm">How many gifts? *</label>
+                  <div className="flex items-center gap-4 mb-2">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="w-10 h-10 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center font-bold transition-colors"
+                    >
+                      -
+                    </button>
+                    <div className="flex-1 text-center">
+                      <span className="text-3xl font-bold text-primary">{quantity}</span>
+                      <span className="block text-xs text-muted-foreground mt-1">
+                        {quantity === 1 ? 'gift' : 'gifts'}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="w-10 h-10 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center font-bold transition-colors"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  {/* Bulk Discount Visual Feedback */}
+                  {quantity >= 2 && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                      <p className="text-sm font-bold text-green-700">{calculatePrice().discount}</p>
+                      <p className="text-xs text-green-600">Save ₦{calculatePrice().savings?.toLocaleString()} on {quantity} gifts</p>
+                    </div>
+                  )}
+
+                  {/* Discount Tier Info */}
+                  {quantity === 1 && (
+                    <div className="text-center p-3 bg-primary/5 rounded-lg">
+                      <p className="text-xs text-muted-foreground">
+                        💡 Buy 2 gifts and save 15% | Buy 3+ and save 30%
+                      </p>
+                    </div>
+                  )}
+
+                  <input type="hidden" name="quantity" value={quantity} />
+                </div>
+
                 <Card>
                   <CardContent className="pt-5 space-y-2">
                     <div className="text-xs uppercase tracking-wider text-primary font-bold mb-3">Your Order</div>
+
+                    {/* Quantity Display */}
+                    <div className="flex justify-between text-sm mb-2 pb-2 border-b border-border">
+                      <span className="text-muted-foreground">Quantity</span>
+                      <span className="font-semibold">{quantity} gift{quantity > 1 ? 's' : ''}</span>
+                    </div>
+
+                    {/* Items Included */}
                     <div className="text-sm text-muted-foreground">MEGIR Chronograph Watch</div>
                     <div className="text-sm text-green-600">✓ Luxury Gift Wrapping</div>
                     <div className="text-sm text-green-600">✓ Handwritten Personal Card</div>
@@ -842,9 +1062,33 @@ Ready to create the perfect gift!`
                     <div className="text-sm text-green-600">✓ Cologne Sample</div>
                     <div className="text-sm text-green-600">✓ Video Preview Before Shipping</div>
                     <div className="text-sm text-green-600">✓ 1-Year Warranty</div>
-                    <div className="flex justify-between pt-3 border-t border-border mt-3">
-                      <span className="font-bold">Total</span>
-                      <span className="font-bold text-lg text-primary">₦69,000 + Delivery</span>
+
+                    {/* Pricing Breakdown */}
+                    <div className="pt-3 border-t border-border mt-3 space-y-1">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">
+                          {quantity}x ₦{bundlePrice.toLocaleString()}
+                        </span>
+                        <span className="text-muted-foreground">
+                          ₦{(bundlePrice * quantity).toLocaleString()}
+                        </span>
+                      </div>
+
+                      {calculatePrice().discount && (
+                        <div className="flex justify-between text-sm">
+                          <span className="text-green-600 font-semibold">{calculatePrice().discount}</span>
+                          <span className="text-green-600 font-semibold">
+                            -₦{calculatePrice().savings?.toLocaleString()}
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="flex justify-between pt-2 border-t border-border">
+                        <span className="font-bold">Total</span>
+                        <span className="font-bold text-lg text-primary">
+                          {calculatePrice().display} + Delivery
+                        </span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -880,16 +1124,25 @@ Ready to create the perfect gift!`
       <section className="py-16 px-5 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            This Is the Year You Give<br />the <span className="text-primary">Perfect Gift</span>
+            This Is the Year You Give<br />the <span className="text-primary">Perfect Gift{quantity > 1 ? 's' : ''}</span>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            No more guessing. No more settling. Just his smile when he opens it.
+            No more guessing. No more settling. Just {quantity > 1 ? 'their smiles' : 'his smile'} when {quantity > 1 ? 'they open them' : 'he opens it'}.
           </p>
+
+          {/* Show savings reminder if bulk order */}
+          {calculatePrice().discount && (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 max-w-md mx-auto">
+              <p className="text-green-700 font-bold">{calculatePrice().discount}</p>
+              <p className="text-sm text-green-600">You&apos;re saving ₦{calculatePrice().savings?.toLocaleString()} on {quantity} gifts!</p>
+            </div>
+          )}
+
           <a href="#order-form" onClick={scrollToOrderForm} className="cursor-pointer">
             <Button size="lg" className="text-sm md:text-base font-bold py-5 md:py-7 px-4 md:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
               <span className="flex items-center justify-center gap-2">
                 <Gift className="w-5 h-5" />
-                Order His Gift - ₦69,000
+                Order {quantity > 1 ? `${quantity} Gifts` : 'His Gift'} - {calculatePrice().display}
               </span>
             </Button>
           </a>
@@ -923,7 +1176,15 @@ Ready to create the perfect gift!`
               <Button size="lg" className="w-full text-sm md:text-base font-bold py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer">
                 <span className="flex items-center justify-center gap-2">
                   <ShoppingCart className="w-5 h-5" />
-                  Perfect Gift Bundle - ₦69,000
+                  <span className="flex items-center gap-2">
+                    {quantity > 1 ? `${quantity} Gifts` : 'Perfect Gift Bundle'}
+                    {calculatePrice().discount && (
+                      <span className="ml-1 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+                        {calculatePrice().discount}
+                      </span>
+                    )}
+                    <span className="ml-1">- {calculatePrice().display}</span>
+                  </span>
                 </span>
               </Button>
             </a>
