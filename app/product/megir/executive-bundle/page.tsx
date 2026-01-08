@@ -70,48 +70,48 @@ export default function ExecutiveBundlePage() {
         "Japanese Quartz movement. Working chronograph. Stainless steel case. Weather-proof silicone strap.",
       image: `/products/megir/MEGIR Chronograph Watch ${
         colorOptions.find((c) => c.name === selectedColor)?.images[0] || "15"
-      }.jpeg`,
+      }.webp`,
     },
     {
       name: "Premium Leather Slim Bifold Wallet",
       value: 20000,
       description:
         "Your watch makes the first impression. Your wallet makes the second. Genuine leather bifold.",
-      image: "/products/megir/bifold wallet.jpeg",
+      image: "/products/megir/bifold wallet.webp",
     },
     {
       name: "Executive Metal Pen",
       value: 12000,
       description:
         'Weighted metal pen that says "I pay attention to details." Makes signing contracts feel like a power move.',
-      image: "/products/megir/metal pen.png",
+      image: "/products/megir/metal pen.webp",
     },
     {
       name: "Watch Care & Maintenance Kit",
       value: 8000,
       description:
         "Premium microfiber cloth, mini screwdriver set, and velvet travel pouch.",
-      image: "/products/megir/Watch Care & Maintenance Kit.png",
+      image: "/products/megir/Watch Care & Maintenance Kit.webp",
     },
     {
       name: '"Power Presence" Digital Style Guide',
       value: 15000,
       description:
         "How to dress for authority, match accessories, and control first impressions.",
-      image: "/products/megir/luxury_watch_ebook_cover.png",
+      image: "/products/megir/luxury_watch_ebook_cover.webp",
     },
     {
       name: "Extra Silicone Strap (Your Choice)",
       value: 10000,
       description: "One watch. Two looks. Swap in under 2 minutes.",
-      image: "/products/megir/silicone strap.png",
+      image: "/products/megir/silicone strap.webp",
     },
     {
       name: "Premium Cufflinks Set",
       value: 8000,
       description:
         "The finishing touch for formal occasions. Brushed metal matches your MEGIR.",
-      image: "/products/megir/cufflink set.png",
+      image: "/products/megir/cufflink set.webp",
     },
     {
       name: "Extended 2-Year Warranty",
@@ -459,9 +459,10 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="my-8 grid grid-cols-2 gap-4">
             <div className="rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
               <img
-                src="/products/megir/damaged watch.jpg"
+                src="/products/megir/damaged watch.webp"
                 alt="Damaged cheap watch"
                 className="w-full h-full object-cover aspect-square"
+                loading="lazy"
               />
               <p className="text-center text-sm text-destructive py-2 bg-destructive/5 font-medium">
                 Before
@@ -469,7 +470,7 @@ I'm ready to complete my order. Please send payment details.`;
             </div>
             <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 5.webp"
                 alt="MEGIR Premium Watch"
                 className="w-full h-full object-cover aspect-square"
               />
@@ -499,7 +500,7 @@ I'm ready to complete my order. Please send payment details.`;
           {/* Lifestyle Image */}
           <div className="my-8 rounded-xl overflow-hidden border border-border shadow-lg">
             <img
-              src="/products/megir/MEGIR Chronograph Watch life style image 1.jpeg"
+              src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
               alt="Professional man wearing MEGIR watch"
               className="w-full h-auto object-cover"
             />
@@ -598,7 +599,7 @@ I'm ready to complete my order. Please send payment details.`;
                 title: "Working Chronograph",
                 description:
                   "All 3 subdials actually function. Time events, track hours, and check dates, not just printed circles like cheap watches.",
-                image: "/products/megir/MEGIR Chronograph Watch 6.jpeg",
+                image: "/products/megir/MEGIR Chronograph Watch 6.webp",
                 imageAlt: "MEGIR chronograph close-up",
               },
               {
@@ -606,7 +607,7 @@ I'm ready to complete my order. Please send payment details.`;
                 title: "Stainless Steel Case",
                 description:
                   "Brushed stainless steel resists scratches and daily wear. This is real metal, not painted plastic pretending to be premium.",
-                image: "/products/megir/MEGIR Chronograph Watch 7.jpeg",
+                image: "/products/megir/MEGIR Chronograph Watch 7.webp",
                 imageAlt: "MEGIR watch features explanation",
               },
               {
@@ -677,28 +678,28 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 6.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 6.webp"
                 alt="MEGIR watch on wrist"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 7.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 7.webp"
                 alt="MEGIR chronograph face detail"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 9.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 9.webp"
                 alt="MEGIR watch angle view"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 10.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 10.webp"
                 alt="MEGIR watch side angle"
                 className="w-full h-full object-cover"
               />
@@ -719,11 +720,28 @@ I'm ready to complete my order. Please send payment details.`;
 
           {/* Complete Bundle Flat-Lay */}
           <div className="mb-10 rounded-xl overflow-hidden border border-primary/30 shadow-2xl">
-            <img
-              src="/products/megir/Product Bundle.png"
-              alt="Complete Executive Bundle - All 8 items"
-              className="w-full h-auto object-cover"
-            />
+            <picture>
+              <source
+                srcSet="/products/megir/Product Bundle-mobile.webp"
+                media="(max-width: 640px)"
+                type="image/webp"
+              />
+              <source
+                srcSet="/products/megir/Product Bundle-tablet.webp"
+                media="(max-width: 1024px)"
+                type="image/webp"
+              />
+              <source
+                srcSet="/products/megir/Product Bundle.webp"
+                type="image/webp"
+              />
+              <img
+                src="/products/megir/Product Bundle.png"
+                alt="Complete Executive Bundle - All 8 items"
+                className="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </picture>
             <p className="text-center text-sm text-muted-foreground py-3 bg-muted/30">
               Everything included in your Executive Bundle
             </p>
@@ -913,7 +931,7 @@ I'm ready to complete my order. Please send payment details.`;
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
             <img
-              src="/products/megir/MEGIR Chronograph Watch 8.jpeg"
+              src="/products/megir/MEGIR Chronograph Watch 8.webp"
               alt="MEGIR watch features diagram"
               className="w-full h-full object-cover"
             />
@@ -940,18 +958,42 @@ I'm ready to complete my order. Please send payment details.`;
               {/* Warranty Documentation */}
               <div className="grid md:grid-cols-2 gap-4 my-6">
                 <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
-                  <img
-                    src="/products/megir/Warranty Card.png"
-                    alt="MEGIR Limited Warranty Card"
-                    className="w-full h-auto object-cover"
-                  />
+                  <picture>
+                    <source
+                      srcSet="/products/megir/Warranty Card-mobile.webp"
+                      media="(max-width: 640px)"
+                      type="image/webp"
+                    />
+                    <source
+                      srcSet="/products/megir/Warranty Card.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="/products/megir/Warranty Card.png"
+                      alt="MEGIR Limited Warranty Card"
+                      className="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </picture>
                 </div>
                 <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
-                  <img
-                    src="/products/megir/Warranty Cert.jpg"
-                    alt="MEGIR Certificate of Authenticity"
-                    className="w-full h-auto object-cover"
-                  />
+                  <picture>
+                    <source
+                      srcSet="/products/megir/Warranty Cert-mobile.webp"
+                      media="(max-width: 640px)"
+                      type="image/webp"
+                    />
+                    <source
+                      srcSet="/products/megir/Warranty Cert.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      src="/products/megir/Warranty Cert.jpg"
+                      alt="MEGIR Certificate of Authenticity"
+                      className="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </picture>
                 </div>
               </div>
 
@@ -984,14 +1026,14 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 13.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 13.webp"
                 alt="MEGIR watches color comparison 1"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
               <img
-                src="/products/megir/MEGIR Chronograph Watch 14.jpeg"
+                src="/products/megir/MEGIR Chronograph Watch 14.webp"
                 alt="MEGIR watches color comparison 2"
                 className="w-full h-full object-cover"
               />
@@ -1000,7 +1042,7 @@ I'm ready to complete my order. Please send payment details.`;
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
             <img
-              src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+              src="/products/megir/MEGIR Chronograph Watch 5.webp"
               alt="MEGIR watch in premium gift box"
               className="w-full h-full object-cover"
             />
@@ -1085,7 +1127,7 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
               <img
-                src="/Store full building picture.jpeg"
+                src="/Store full building picture.webp"
                 alt="BaaWA store building"
                 className="w-full h-full object-cover aspect-video"
               />
@@ -1493,7 +1535,7 @@ I'm ready to complete my order. Please send payment details.`;
         {/* Background Image */}
         <div className="absolute inset-0 opacity-20">
           <img
-            src="/products/megir/MEGIR Chronograph Watch life style image 1.jpeg"
+            src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
             alt=""
             className="w-full h-full object-cover"
           />
