@@ -169,13 +169,13 @@ export default function ExecutiveBundlePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.querySelector("section");
+      const productRevealSection = document.getElementById("product-reveal");
       const orderForm = document.getElementById("order-form");
 
-      if (heroSection && orderForm) {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (productRevealSection && orderForm) {
+        const revealBottom = productRevealSection.getBoundingClientRect().bottom;
         const formTop = orderForm.getBoundingClientRect().top;
-        setShowFloatingButton(heroBottom < 0 && formTop > 100);
+        setShowFloatingButton(revealBottom < 0 && formTop > 100);
       }
     };
 
@@ -339,88 +339,7 @@ I'm ready to complete my order. Please send payment details.`;
                 The executive timepiece Nigerian professionals are switching to,
                 without paying Rolex prices.
               </p>
-
-              {/* Price Card - Desktop only */}
-              <Card className="hidden md:block mb-6 bg-background/5 border-primary/30">
-                <CardContent className="pt-6">
-                  <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                    <span className="text-2xl text-muted-foreground line-through">
-                      ₦148,000
-                    </span>
-                    <span className="text-4xl font-bold text-primary">
-                      ₦79,000
-                    </span>
-                    <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
-                      SAVE ₦69,000
-                    </span>
-                  </div>
-
-                  <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
-                    <Gift className="w-6 h-6" />7 Premium Bonuses Included
-                    (Worth ₦83,000)
-                  </div>
-                </CardContent>
-              </Card>
-
-              <a
-                href="#order-form"
-                onClick={scrollToOrderForm}
-                className="cursor-pointer hidden md:block"
-              >
-                <Button
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
-                >
-                  Claim Your Executive Bundle
-                </Button>
-              </a>
             </div>
-
-            {/* Hero Video */}
-            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <video className="w-full h-auto" autoPlay muted loop playsInline>
-                <source
-                  src="/products/megir/MEGIR Chronograph Watch 19.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-
-            {/* Price Card - Mobile only */}
-            <Card className="md:hidden mb-6 bg-background/5 border-primary/30">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
-                  <span className="text-2xl text-muted-foreground line-through">
-                    ₦148,000
-                  </span>
-                  <span className="text-4xl font-bold text-primary">
-                    ₦79,000
-                  </span>
-                  <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
-                    SAVE ₦69,000
-                  </span>
-                </div>
-
-                <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
-                  <Gift className="w-6 h-6" />7 Premium Bonuses Included (Worth
-                  ₦83,000)
-                </div>
-              </CardContent>
-            </Card>
-
-            <a
-              href="#order-form"
-              onClick={scrollToOrderForm}
-              className="cursor-pointer block md:hidden"
-            >
-              <Button
-                size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
-              >
-                Claim Your Executive Bundle
-              </Button>
-            </a>
           </div>
 
           {/* Trust Badges */}
@@ -455,32 +374,7 @@ I'm ready to complete my order. Please send payment details.`;
             </p>
           </div>
 
-          {/* Contrast Image - Damaged vs Premium */}
-          <div className="my-8 grid grid-cols-2 gap-4">
-            <div className="rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
-              <img
-                src="/products/megir/damaged watch.webp"
-                alt="Damaged cheap watch"
-                className="w-full h-full object-cover aspect-square"
-                loading="lazy"
-              />
-              <p className="text-center text-sm text-destructive py-2 bg-destructive/5 font-medium">
-                Before
-              </p>
-            </div>
-            <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
-              <img
-                src="/products/megir/MEGIR Chronograph Watch 5.webp"
-                alt="MEGIR Premium Watch"
-                className="w-full h-full object-cover aspect-square"
-              />
-              <p className="text-center text-sm text-primary py-2 bg-primary/5 font-medium">
-                After
-              </p>
-            </div>
-          </div>
-
-          <div className="prose prose-lg mx-auto text-center">
+          <div className="prose prose-lg mx-auto text-center mt-8">
             <p className="text-lg text-muted-foreground">
               Suddenly you&apos;re conscious of it. That cheap-looking watch. The one
               that stopped keeping accurate time two months ago. The scratched
@@ -563,6 +457,88 @@ I'm ready to complete my order. Please send payment details.`;
         </div>
       </section>
 
+      {/* Product Reveal Section */}
+      <section id="product-reveal" className="py-16 px-5 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-12">
+            {/* Hero Video */}
+            <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
+              <video className="w-full h-auto" autoPlay muted loop playsInline>
+                <source
+                  src="/products/megir/MEGIR Chronograph Watch 19.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            {/* 4 Color Variants Grid */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                Available in 4 Premium Colors
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[
+                  { num: 1, name: "Navy Blue", image: "MEGIR Chronograph Watch 1.jpeg" },
+                  { num: 2, name: "Classic Black", image: "MEGIR Chronograph Watch 2.jpeg" },
+                  { num: 3, name: "Pure White", image: "MEGIR Chronograph Watch 3.jpeg" },
+                  { num: 4, name: "Teal", image: "MEGIR Chronograph Watch 4.jpeg" },
+                ].map((color) => (
+                  <div key={color.num} className="text-center">
+                    <div className="rounded-xl overflow-hidden border border-border shadow-lg mb-3">
+                      <img
+                        src={`/products/megir/${color.image}`}
+                        alt={`MEGIR Chronograph ${color.name}`}
+                        className="w-full h-full object-cover aspect-square"
+                      />
+                    </div>
+                    <p className="text-sm font-medium text-foreground">{color.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Card */}
+            <Card className="max-w-xl mx-auto bg-muted/30 border-primary/30">
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-center gap-4 flex-wrap mb-4">
+                  <span className="text-2xl text-muted-foreground line-through">
+                    ₦148,000
+                  </span>
+                  <span className="text-4xl font-bold text-primary">
+                    ₦79,000
+                  </span>
+                  <span className="bg-green-500/10 text-green-600 px-3 py-1.5 rounded-md text-sm font-bold">
+                    SAVE ₦69,000
+                  </span>
+                </div>
+
+                <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
+                  <Gift className="w-6 h-6" />7 Premium Bonuses Included
+                  (Worth ₦83,000)
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* CTA Button */}
+            <div className="max-w-xl mx-auto">
+              <a
+                href="#order-form"
+                onClick={scrollToOrderForm}
+                className="cursor-pointer block"
+              >
+                <Button
+                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
+                >
+                  Claim Your Executive Bundle
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Introduction */}
       <section className="py-16 px-5 bg-foreground text-background">
         <div className="max-w-3xl mx-auto">
@@ -575,22 +551,6 @@ I'm ready to complete my order. Please send payment details.`;
             because it looks like ₦500,000 but costs a fraction of that.
           </p>
 
-          {/* All 4 Colors Grid */}
-          <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((num) => (
-              <div
-                key={num}
-                className="rounded-xl overflow-hidden border border-border shadow-lg"
-              >
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${num}.jpeg`}
-                  alt={`MEGIR Chronograph color variant ${num}`}
-                  className="w-full h-full object-cover aspect-square"
-                />
-              </div>
-            ))}
-          </div>
-
           {/* Features Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -599,7 +559,7 @@ I'm ready to complete my order. Please send payment details.`;
                 title: "Working Chronograph",
                 description:
                   "All 3 subdials actually function. Time events, track hours, and check dates, not just printed circles like cheap watches.",
-                image: "/products/megir/MEGIR Chronograph Watch 6.webp",
+                image: "/products/megir/MEGIR Chronograph Watch 5-desktop.webp",
                 imageAlt: "MEGIR chronograph close-up",
               },
               {
@@ -732,11 +692,11 @@ I'm ready to complete my order. Please send payment details.`;
                 type="image/webp"
               />
               <source
-                srcSet="/products/megir/Product Bundle.webp"
+                srcSet="/products/megir/Product Bundle-desktop.webp"
                 type="image/webp"
               />
               <img
-                src="/products/megir/Product Bundle.png"
+                src="/products/megir/Product Bundle-desktop.webp"
                 alt="Complete Executive Bundle - All 8 items"
                 className="w-full h-auto object-cover"
                 loading="eager"
@@ -969,7 +929,7 @@ I'm ready to complete my order. Please send payment details.`;
                       type="image/webp"
                     />
                     <img
-                      src="/products/megir/Warranty Card.png"
+                      src="/products/megir/Warranty Card.webp"
                       alt="MEGIR Limited Warranty Card"
                       className="w-full h-auto object-cover"
                       loading="lazy"
@@ -988,7 +948,7 @@ I'm ready to complete my order. Please send payment details.`;
                       type="image/webp"
                     />
                     <img
-                      src="/products/megir/Warranty Cert.jpg"
+                      src="/products/megir/Warranty Cert.webp"
                       alt="MEGIR Certificate of Authenticity"
                       className="w-full h-auto object-cover"
                       loading="lazy"
@@ -1127,7 +1087,7 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
               <img
-                src="/Store full building picture.webp"
+                src="/Store full building picture.jpeg"
                 alt="BaaWA store building"
                 className="w-full h-full object-cover aspect-video"
               />
