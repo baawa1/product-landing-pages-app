@@ -98,7 +98,7 @@ export default function ExecutiveBundlePage() {
       value: 15000,
       description:
         "How to dress for authority, match accessories, and control first impressions.",
-      image: "/products/megir/Power.png",
+      image: "/products/megir/luxury_watch_ebook_cover.png",
     },
     {
       name: "Extra Silicone Strap (Your Choice)",
@@ -447,7 +447,7 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="prose prose-lg mx-auto text-center">
             <p className="text-xl">You know that moment.</p>
             <p className="text-lg text-muted-foreground">
-              You're in a meeting. Or at a networking event. Maybe an owambe
+              You&apos;re in a meeting. Or at a networking event. Maybe an owambe
               where you need to impress.
             </p>
             <p className="text-lg text-muted-foreground">
@@ -481,7 +481,7 @@ I'm ready to complete my order. Please send payment details.`;
 
           <div className="prose prose-lg mx-auto text-center">
             <p className="text-lg text-muted-foreground">
-              Suddenly you're conscious of it. That cheap-looking watch. The one
+              Suddenly you&apos;re conscious of it. That cheap-looking watch. The one
               that stopped keeping accurate time two months ago. The scratched
               face. The cracked strap.
             </p>
@@ -508,7 +508,7 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="prose prose-lg mx-auto text-center">
             <p className="text-lg text-muted-foreground">
               <em className="text-primary">
-                "That's probably a ₦500,000 Rolex. I can't afford that."
+                &ldquo;That&apos;s probably a ₦500,000 Rolex. I can&apos;t afford that.&rdquo;
               </em>
             </p>
           </div>
@@ -516,8 +516,8 @@ I'm ready to complete my order. Please send payment details.`;
           {/* Highlight Box */}
           <div className="bg-primary text-primary-foreground rounded-xl p-6 text-center my-10">
             <p className="text-lg font-medium">
-              Here's what he knows that you don't:{" "}
-              <strong>He didn't pay anywhere close to ₦500,000.</strong>
+              Here&apos;s what he knows that you don&apos;t:{" "}
+              <strong>He didn&apos;t pay anywhere close to ₦500,000.</strong>
             </p>
           </div>
         </div>
@@ -546,9 +546,9 @@ I'm ready to complete my order. Please send payment details.`;
           <div className="space-y-4">
             {[
               "Your 'affordable' watch stops working after 2-3 months (again)",
-              "Lagos humidity and harmattan dust have destroyed every leather strap you've owned",
-              "You can't afford ₦500k for a Rolex, but you're tired of looking cheap",
-              "You've been scammed buying 'original' watches online before",
+              "Lagos humidity and harmattan dust have destroyed every leather strap you&apos;ve owned",
+              "You can&apos;t afford ₦500k for a Rolex, but you&apos;re tired of looking cheap",
+              "You&apos;ve been scammed buying 'original' watches online before",
             ].map((problem, i) => (
               <div
                 key={i}
@@ -717,20 +717,16 @@ I'm ready to complete my order. Please send payment details.`;
             Everything you need to walk into any room with confidence.
           </p>
 
-          {/* Bundle Watches in Boxes Grid */}
-          <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[15, 16, 17, 18].map((num) => (
-              <div
-                key={num}
-                className="rounded-xl overflow-hidden border border-border shadow-lg"
-              >
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${num}.jpeg`}
-                  alt="MEGIR watch in premium box"
-                  className="w-full h-full object-cover aspect-square"
-                />
-              </div>
-            ))}
+          {/* Complete Bundle Flat-Lay */}
+          <div className="mb-10 rounded-xl overflow-hidden border border-primary/30 shadow-2xl">
+            <img
+              src="/products/megir/Product Bundle.png"
+              alt="Complete Executive Bundle - All 8 items"
+              className="w-full h-auto object-cover"
+            />
+            <p className="text-center text-sm text-muted-foreground py-3 bg-muted/30">
+              Everything included in your Executive Bundle
+            </p>
           </div>
 
           {/* Value Items */}
@@ -934,12 +930,30 @@ I'm ready to complete my order. Please send payment details.`;
                 <Shield className="w-10 h-10 text-primary-foreground" />
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Our "Respect Guaranteed" Promise
+                Our &ldquo;Respect Guaranteed&rdquo; Promise
               </h3>
               <p className="text-muted-foreground mb-6">
                 If your watch stops working within 2 years (for ANY
-                manufacturing reason) we'll repair or replace it. Free.
+                manufacturing reason) we&apos;ll repair or replace it. Free.
               </p>
+
+              {/* Warranty Documentation */}
+              <div className="grid md:grid-cols-2 gap-4 my-6">
+                <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
+                  <img
+                    src="/products/megir/Warranty Card.png"
+                    alt="MEGIR Limited Warranty Card"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
+                  <img
+                    src="/products/megir/Warranty Cert.jpg"
+                    alt="MEGIR Certificate of Authenticity"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
 
               <ul className="text-left space-y-3 max-w-md mx-auto">
                 {[
@@ -1017,13 +1031,13 @@ I'm ready to complete my order. Please send payment details.`;
                 initials: "AO",
               },
               {
-                text: "Bought the white one for my husband's birthday. The packaging impressed me first. Then my husband's face when he opened it. He's worn it every day since. Already planning to get him the black one.",
+                text: "Bought the white one for my husband&apos;s birthday. The packaging impressed me first. Then my husband&apos;s face when he opened it. He&apos;s worn it every day since. Already planning to get him the black one.",
                 author: "Funke E.",
                 location: "Abuja",
                 initials: "FE",
               },
               {
-                text: "I've bought 3 'chronograph' watches before. All had fake subdials. This MEGIR? All three subdials work. I use the stopwatch for gym sessions. My friends keep thinking it cost ₦200k+.",
+                text: "I&apos;ve bought 3 'chronograph' watches before. All had fake subdials. This MEGIR? All three subdials work. I use the stopwatch for gym sessions. My friends keep thinking it cost ₦200k+.",
                 author: "Chukwuemeka E.",
                 location: "Port Harcourt",
                 initials: "CE",
@@ -1032,7 +1046,7 @@ I'm ready to complete my order. Please send payment details.`;
               <Card key={i} className="bg-background/5 border-border">
                 <CardContent className="pt-6">
                   <p className="text-muted-foreground mb-5 leading-relaxed italic">
-                    "{testimonial.text}"
+                    &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-lg font-bold text-primary-foreground">
@@ -1064,7 +1078,7 @@ I'm ready to complete my order. Please send payment details.`;
             Visit Our <span className="text-primary">Physical Store</span>
           </h2>
           <p className="text-center text-muted-foreground mb-10">
-            We're not hiding behind a PO Box. Come see us in Abeokuta.
+            We&apos;re not hiding behind a PO Box. Come see us in Abeokuta.
           </p>
 
           {/* Store Photos Gallery */}
@@ -1165,7 +1179,7 @@ I'm ready to complete my order. Please send payment details.`;
                 Claim Your Executive Bundle
               </CardTitle>
               <CardDescription>
-                Fill out the form. We'll confirm via WhatsApp within 1 hour.
+                Fill out the form. We&apos;ll confirm via WhatsApp within 1 hour.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -1490,7 +1504,7 @@ I'm ready to complete my order. Please send payment details.`;
             One Year From Today...
           </h2>
           <p className="text-muted-foreground mb-8 text-lg">
-            You'll either be the same man wearing the same forgettable watch...
+            You&apos;ll either be the same man wearing the same forgettable watch...
             or the one who walks into rooms with quiet confidence.
           </p>
           <a

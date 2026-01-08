@@ -14,7 +14,6 @@ import {
   Star,
   Store,
   Phone,
-  Mail,
   Loader2,
   ShoppingCart,
   Award,
@@ -22,13 +21,11 @@ import {
 } from "lucide-react"
 
 export default function SuccessMindsetPage() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [selectedColor, setSelectedColor] = useState<string>('Navy Blue')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
   const bundlePrice = 79000
-  const originalValue = 148000
 
   const colorOptions = [
     { name: 'Navy Blue', color: '#1B3A5F', images: ['15', '3'] },
@@ -282,7 +279,7 @@ I'm ready to complete my order. Please send payment details.`
 
           <div className="space-y-6 max-w-2xl mx-auto text-center">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              They think you need to <strong className="text-foreground">"make it"</strong> before you can <strong className="text-foreground">look</strong> like you&apos;ve made it.
+              They think you need to <strong className="text-foreground">&ldquo;make it&rdquo;</strong> before you can <strong className="text-foreground">look</strong> like you&apos;ve made it.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               So they wait. They wear average. They blend in. And they wonder why opportunities pass them by.

@@ -45,7 +45,7 @@ export interface Order {
     gift_message?: string
     occasion?: string
     delivery_date?: string
-    [key: string]: any // Allow additional custom fields
+    [key: string]: string | undefined // Allow additional custom fields
   }
 }
 
