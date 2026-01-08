@@ -173,7 +173,8 @@ export default function ExecutiveBundlePage() {
       const orderForm = document.getElementById("order-form");
 
       if (productRevealSection && orderForm) {
-        const revealBottom = productRevealSection.getBoundingClientRect().bottom;
+        const revealBottom =
+          productRevealSection.getBoundingClientRect().bottom;
         const formTop = orderForm.getBoundingClientRect().top;
         setShowFloatingButton(revealBottom < 0 && formTop > 100);
       }
@@ -335,7 +336,7 @@ I'm ready to complete my order. Please send payment details.`;
                 <span className="text-primary">Embarrass You</span>
               </h1>
 
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl text-background font-medium mb-8 leading-relaxed">
                 The executive timepiece Nigerian professionals are switching to,
                 without paying Rolex prices.
               </p>
@@ -343,18 +344,18 @@ I'm ready to complete my order. Please send payment details.`;
           </div>
 
           {/* Trust Badges */}
-          <div className="flex justify-center gap-6 md:gap-8 mt-10 flex-wrap text-sm text-muted-foreground">
+          <div className="flex justify-center gap-6 md:gap-8 mt-10 flex-wrap text-sm md:text-base text-background font-medium">
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
-              2-Year Warranty
+              <span>2-Year Warranty</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-primary" />
-              Physical Store in Abeokuta
+              <span>Physical Store in Abeokuta</span>
             </div>
             <div className="flex items-center gap-2">
               <Award className="w-5 h-5 text-primary" />
-              Secure Bank Transfer
+              <span>Secure Bank Transfer</span>
             </div>
           </div>
         </div>
@@ -363,31 +364,38 @@ I'm ready to complete my order. Please send payment details.`;
       {/* Problem Agitation Section */}
       <section className="py-16 px-5">
         <div className="max-w-2xl mx-auto">
-          <div className="prose prose-lg mx-auto text-center">
-            <p className="text-xl">You know that moment.</p>
-            <p className="text-lg text-muted-foreground">
-              You&apos;re in a meeting. Or at a networking event. Maybe an owambe
-              where you need to impress.
+          <div className="prose prose-lg mx-auto text-center space-y-6">
+            <p className="text-xl md:text-2xl font-bold text-foreground">
+              You know that moment.
             </p>
-            <p className="text-lg text-muted-foreground">
-              And you notice someone glance at your wrist.
+            <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
+              You&apos;re in a meeting. Or at a networking event. Maybe an
+              owambe where you need to impress.
+            </p>
+            <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
+              And you notice someone{" "}
+              <strong className="text-primary">glance at your wrist.</strong>
             </p>
           </div>
 
-          <div className="prose prose-lg mx-auto text-center mt-8">
-            <p className="text-lg text-muted-foreground">
-              Suddenly you&apos;re conscious of it. That cheap-looking watch. The one
-              that stopped keeping accurate time two months ago. The scratched
-              face. The cracked strap.
+          <div className="prose prose-lg mx-auto text-center mt-12 space-y-6">
+            <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
+              Suddenly you&apos;re conscious of it.{" "}
+              <strong>That cheap-looking watch.</strong> The one that stopped
+              keeping accurate time two months ago.{" "}
+              <strong>The scratched face. The cracked strap.</strong>
             </p>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
               You paid ₦15,000 for it.{" "}
-              <em className="text-primary">And it shows.</em>
+              <strong className="text-primary">And it shows.</strong>
             </p>
-            <p className="text-lg text-muted-foreground">
-              Meanwhile, the man across the table (the one everyone seems to
-              respect before he even speaks) has a timepiece that catches the
-              light just right. Bold. Sophisticated. Confident.
+            <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
+              Meanwhile, <strong>the man across the table</strong> (the one
+              everyone seems to respect before he even speaks) has a timepiece
+              that catches the light just right.{" "}
+              <strong className="text-primary">
+                Bold. Sophisticated. Confident.
+              </strong>
             </p>
           </div>
 
@@ -401,18 +409,21 @@ I'm ready to complete my order. Please send payment details.`;
           </div>
 
           <div className="prose prose-lg mx-auto text-center">
-            <p className="text-lg text-muted-foreground">
-              <em className="text-primary">
-                &ldquo;That&apos;s probably a ₦500,000 Rolex. I can&apos;t afford that.&rdquo;
-              </em>
+            <p className="text-lg md:text-xl text-foreground font-medium italic leading-relaxed">
+              <strong className="text-primary">
+                &ldquo;That&apos;s probably a ₦500,000 Rolex. I can&apos;t
+                afford that.&rdquo;
+              </strong>
             </p>
           </div>
 
           {/* Highlight Box */}
-          <div className="bg-primary text-primary-foreground rounded-xl p-6 text-center my-10">
-            <p className="text-lg font-medium">
+          <div className="bg-primary text-primary-foreground rounded-xl p-6 md:p-8 text-center my-10">
+            <p className="text-lg md:text-2xl font-bold leading-relaxed">
               Here&apos;s what he knows that you don&apos;t:{" "}
-              <strong>He didn&apos;t pay anywhere close to ₦500,000.</strong>
+              <span className="block mt-2">
+                He didn&apos;t pay anywhere close to ₦500,000.
+              </span>
             </p>
           </div>
         </div>
@@ -424,13 +435,13 @@ I'm ready to complete my order. Please send payment details.`;
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Sound <span className="text-primary">Familiar?</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10">
+          <p className="text-center text-foreground text-lg md:text-xl font-medium mb-10 leading-relaxed">
             These are the frustrations Nigerian professionals deal with every
             day.
           </p>
 
           {/* Damaged Watch Close-up */}
-          <div className="max-w-sm mx-auto mb-8 rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
+          <div className="max-w-sm mx-auto mb-10 rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
             <img
               src="/products/megir/damaged watch 2.webp"
               alt="Close-up of damaged watch"
@@ -438,7 +449,7 @@ I'm ready to complete my order. Please send payment details.`;
             />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             {[
               "Your 'affordable' watch stops working after 2-3 months (again)",
               "Lagos humidity and harmattan dust have destroyed every leather strap you&apos;ve owned",
@@ -447,10 +458,10 @@ I'm ready to complete my order. Please send payment details.`;
             ].map((problem, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 p-5 bg-background border border-border rounded-xl shadow-sm"
+                className="flex items-start gap-4 p-5 md:p-6 bg-background border border-border rounded-xl shadow-sm"
               >
                 <X className="w-6 h-6 text-destructive shrink-0 mt-0.5" />
-                <p className="text-muted-foreground">{problem}</p>
+                <p className="text-foreground text-base md:text-lg font-medium leading-relaxed">{problem}</p>
               </div>
             ))}
           </div>
@@ -479,10 +490,26 @@ I'm ready to complete my order. Please send payment details.`;
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {[
-                  { num: 1, name: "Navy Blue", image: "MEGIR Chronograph Watch 1.jpeg" },
-                  { num: 2, name: "Classic Black", image: "MEGIR Chronograph Watch 2.jpeg" },
-                  { num: 3, name: "Pure White", image: "MEGIR Chronograph Watch 3.jpeg" },
-                  { num: 4, name: "Teal", image: "MEGIR Chronograph Watch 4.jpeg" },
+                  {
+                    num: 1,
+                    name: "Navy Blue",
+                    image: "MEGIR Chronograph Watch 1.jpeg",
+                  },
+                  {
+                    num: 2,
+                    name: "Classic Black",
+                    image: "MEGIR Chronograph Watch 2.jpeg",
+                  },
+                  {
+                    num: 3,
+                    name: "Pure White",
+                    image: "MEGIR Chronograph Watch 3.jpeg",
+                  },
+                  {
+                    num: 4,
+                    name: "Teal",
+                    image: "MEGIR Chronograph Watch 4.jpeg",
+                  },
                 ].map((color) => (
                   <div key={color.num} className="text-center">
                     <div className="rounded-xl overflow-hidden border border-border shadow-lg mb-3">
@@ -492,7 +519,9 @@ I'm ready to complete my order. Please send payment details.`;
                         className="w-full h-full object-cover aspect-square"
                       />
                     </div>
-                    <p className="text-sm font-medium text-foreground">{color.name}</p>
+                    <p className="text-sm font-medium text-foreground">
+                      {color.name}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -514,8 +543,8 @@ I'm ready to complete my order. Please send payment details.`;
                 </div>
 
                 <div className="pt-4 border-t border-primary/20 flex items-center justify-center gap-2.5 text-primary font-semibold">
-                  <Gift className="w-6 h-6" />7 Premium Bonuses Included
-                  (Worth ₦83,000)
+                  <Gift className="w-6 h-6" />7 Premium Bonuses Included (Worth
+                  ₦83,000)
                 </div>
               </CardContent>
             </Card>
@@ -546,7 +575,7 @@ I'm ready to complete my order. Please send payment details.`;
             Introducing the MEGIR{" "}
             <span className="text-primary">Executive Chronograph</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+          <p className="text-center text-lg md:text-xl font-medium mb-10 max-w-xl mx-auto leading-relaxed">
             The timepiece Nigerian professionals are quietly switching to,
             because it looks like ₦500,000 but costs a fraction of that.
           </p>
@@ -600,8 +629,10 @@ I'm ready to complete my order. Please send payment details.`;
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-lg md:text-xl font-bold mb-3 text-background">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-background/90 font-medium leading-relaxed">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -825,16 +856,20 @@ I'm ready to complete my order. Please send payment details.`;
           {/* Total Value Box */}
           <Card className="max-w-2xl mx-auto mt-10 bg-foreground text-background border-0">
             <CardContent className="pt-8 text-center">
-              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">
+              <p className="text-sm md:text-base uppercase tracking-widest text-background/80 font-semibold mb-2">
                 Total Bundle Value
               </p>
-              <p className="text-2xl text-muted-foreground line-through mb-1">
+              <p className="text-2xl md:text-3xl text-background/70 line-through mb-1 font-semibold">
                 ₦148,000
               </p>
-              <p className="text-5xl font-bold text-primary mb-6">₦79,000</p>
-              <p className="text-lg mb-6">
+              <p className="text-5xl md:text-6xl font-bold text-primary mb-6">
+                ₦79,000
+              </p>
+              <p className="text-lg md:text-2xl mb-6 text-background font-medium">
                 Your investment today:{" "}
-                <span className="text-primary font-bold text-3xl">₦79,000</span>
+                <span className="text-primary font-bold text-3xl md:text-4xl">
+                  ₦79,000
+                </span>
               </p>
               <a
                 href="#order-form"
@@ -910,7 +945,7 @@ I'm ready to complete my order. Please send payment details.`;
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Our &ldquo;Respect Guaranteed&rdquo; Promise
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-foreground text-base md:text-lg mb-6 font-medium leading-relaxed">
                 If your watch stops working within 2 years (for ANY
                 manufacturing reason) we&apos;ll repair or replace it. Free.
               </p>
@@ -968,7 +1003,9 @@ I'm ready to complete my order. Please send payment details.`;
                     <span className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center shrink-0">
                       <CheckCircle2 className="w-4 h-4 text-white" />
                     </span>
-                    <span className="text-sm">{item}</span>
+                    <span className="text-sm md:text-base font-medium">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -1020,7 +1057,7 @@ I'm ready to complete my order. Please send payment details.`;
             What Nigerian <span className="text-primary">Professionals</span>{" "}
             Say
           </h2>
-          <p className="text-center text-muted-foreground mb-10">
+          <p className="text-center text-background text-lg md:text-xl font-medium mb-10 leading-relaxed">
             Real customers. Real results. Real respect.
           </p>
 
@@ -1047,7 +1084,7 @@ I'm ready to complete my order. Please send payment details.`;
             ].map((testimonial, i) => (
               <Card key={i} className="bg-background/5 border-border">
                 <CardContent className="pt-6">
-                  <p className="text-muted-foreground mb-5 leading-relaxed italic">
+                  <p className="text-background mb-5 text-base md:text-lg leading-relaxed italic font-medium">
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <div className="flex items-center gap-3">
@@ -1055,14 +1092,14 @@ I'm ready to complete my order. Please send payment details.`;
                       {testimonial.initials}
                     </div>
                     <div className="grow">
-                      <h5 className="font-semibold text-sm">
+                      <h5 className="font-bold text-sm md:text-base text-background">
                         {testimonial.author}
                       </h5>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs md:text-sm text-background/80 font-medium">
                         {testimonial.location}
                       </p>
                     </div>
-                    <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
+                    <span className="bg-green-600 text-white text-xs md:text-sm font-semibold px-3 py-1 rounded-full shrink-0">
                       Verified Buyer
                     </span>
                   </div>
@@ -1109,28 +1146,32 @@ I'm ready to complete my order. Please send payment details.`;
           </div>
 
           {/* Contact Info */}
-          <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-lg mx-auto">
             <Card className="text-center">
-              <CardContent className="pt-5">
-                <div className="text-2xl mb-2">📍</div>
-                <p className="font-semibold text-sm">Location</p>
-                <p className="text-xs text-muted-foreground">
+              <CardContent className="pt-5 pb-5">
+                <div className="text-3xl mb-2">📍</div>
+                <p className="font-semibold text-base">Location</p>
+                <p className="text-sm text-muted-foreground mt-1">
                   Abeokuta, Ogun State
                 </p>
               </CardContent>
             </Card>
             <Card className="text-center">
-              <CardContent className="pt-5">
-                <div className="text-2xl mb-2">📱</div>
-                <p className="font-semibold text-sm">WhatsApp</p>
-                <p className="text-xs text-primary">+234-806-260-5012</p>
+              <CardContent className="pt-5 pb-5">
+                <div className="text-3xl mb-2">📱</div>
+                <p className="font-semibold text-base">WhatsApp</p>
+                <p className="text-sm text-primary font-medium mt-1">
+                  +234-806-260-5012
+                </p>
               </CardContent>
             </Card>
             <Card className="text-center">
-              <CardContent className="pt-5">
-                <div className="text-2xl mb-2">✉️</div>
-                <p className="font-semibold text-sm">Email</p>
-                <p className="text-xs text-primary">Sales@baawa.ng</p>
+              <CardContent className="pt-5 pb-5">
+                <div className="text-3xl mb-2">✉️</div>
+                <p className="font-semibold text-base">Email</p>
+                <p className="text-sm text-primary font-medium mt-1">
+                  Sales@baawa.ng
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -1181,7 +1222,8 @@ I'm ready to complete my order. Please send payment details.`;
                 Claim Your Executive Bundle
               </CardTitle>
               <CardDescription>
-                Fill out the form. We&apos;ll confirm via WhatsApp within 1 hour.
+                Fill out the form. We&apos;ll confirm via WhatsApp within 1
+                hour.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -1425,42 +1467,50 @@ I'm ready to complete my order. Please send payment details.`;
                 </div>
 
                 {/* Trust Seals */}
-                <div className="flex justify-center gap-3 flex-wrap items-center">
-                  <div className="w-16 h-16 relative">
-                    <Image
-                      src="/secure-payment-label-maximum-security-and-reliability-when-paying-online-png.png"
-                      alt="Secure Payment"
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-sm mx-auto">
+                  <div className="flex justify-center items-center">
+                    <div className="w-16 h-16 relative">
+                      <Image
+                        src="/secure-payment-label-maximum-security-and-reliability-when-paying-online-png.png"
+                        alt="Secure Payment"
+                        width={64}
+                        height={64}
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
-                  <div className="w-16 h-16 relative">
-                    <Image
-                      src="/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png"
-                      alt="2-Year Warranty"
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
+                  <div className="flex justify-center items-center">
+                    <div className="w-16 h-16 relative">
+                      <Image
+                        src="/pngtree-golden-2-year-warranty-badge-logo-labels-with-ribbons-png-image_7597425.png"
+                        alt="2-Year Warranty"
+                        width={64}
+                        height={64}
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
-                  <div className="w-16 h-16 relative">
-                    <Image
-                      src="/physical online store.png"
-                      alt="Physical Store"
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
+                  <div className="flex justify-center items-center">
+                    <div className="w-16 h-16 relative">
+                      <Image
+                        src="/physical online store.png"
+                        alt="Physical Store"
+                        width={64}
+                        height={64}
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/40 rounded-lg flex flex-col items-center justify-center">
-                    <Award className="w-6 h-6 text-primary mb-0.5" />
-                    <span className="text-[9px] font-bold text-primary leading-tight">
-                      1000+
-                    </span>
-                    <span className="text-[7px] text-primary/80 leading-tight">
-                      Customers
-                    </span>
+                  <div className="flex justify-center items-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/40 rounded-lg flex flex-col items-center justify-center">
+                      <Award className="w-6 h-6 text-primary mb-0.5" />
+                      <span className="text-[9px] font-bold text-primary leading-tight">
+                        1000+
+                      </span>
+                      <span className="text-[7px] text-primary/80 leading-tight">
+                        Customers
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -1493,7 +1543,7 @@ I'm ready to complete my order. Please send payment details.`;
       {/* Final CTA */}
       <section className="py-16 px-5 bg-foreground text-background text-center relative overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-10">
           <img
             src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
             alt=""
@@ -1502,23 +1552,29 @@ I'm ready to complete my order. Please send payment details.`;
         </div>
 
         <div className="max-w-xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             One Year From Today...
           </h2>
-          <p className="text-muted-foreground mb-8 text-lg">
-            You&apos;ll either be the same man wearing the same forgettable watch...
-            or the one who walks into rooms with quiet confidence.
+          <p className="text-background mb-8 text-lg md:text-xl font-medium leading-relaxed">
+            You&apos;ll either be the same man wearing the same forgettable
+            watch... or{" "}
+            <strong className="text-primary">
+              the one who walks into rooms with quiet confidence.
+            </strong>
           </p>
           <a
             href="#order-form"
             onClick={scrollToOrderForm}
-            className="cursor-pointer inline-block"
+            className="cursor-pointer block w-full"
           >
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 px-10 rounded-full"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 px-6 sm:px-10 rounded-full text-sm sm:text-base"
             >
-              Claim Your Executive Bundle — ₦79,000
+              <span className="block sm:inline">
+                Claim Your Executive Bundle
+              </span>
+              <span className="block sm:inline sm:ml-2">— ₦79,000</span>
             </Button>
           </a>
         </div>
@@ -1529,10 +1585,10 @@ I'm ready to complete my order. Please send payment details.`;
         <p className="text-2xl font-bold text-primary mb-5">
           BaaWA Accessories
         </p>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-background text-sm md:text-base font-medium">
           📍 Abeokuta, Ogun State, Nigeria
         </p>
-        <p className="text-muted-foreground text-sm mt-5">
+        <p className="text-background/80 text-sm md:text-base mt-5">
           © {new Date().getFullYear()} BaaWA Accessories. All rights reserved.
         </p>
       </footer>
