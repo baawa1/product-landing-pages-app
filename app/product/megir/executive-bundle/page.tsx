@@ -34,6 +34,20 @@ export default function ExecutiveBundlePage() {
   // Stock status flag - change to true when product is out of stock
   const isOutOfStock = true;
 
+  // Dynamic stock counter - decreases over time
+  const [remainingStock] = useState(() => {
+    const startDate = new Date("2026-01-01").getTime(); // Campaign start date
+    const startingStock = 100; // Initial stock count
+    const dailyDecrease = 2; // Units sold per day (average)
+
+    const now = Date.now();
+    const daysPassed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+    const stockSold = daysPassed * dailyDecrease;
+    const remaining = Math.max(15, startingStock - stockSold); // Never go below 15
+
+    return remaining;
+  }); // Initialization function runs once on mount
+
   const bundlePrice = 79000;
 
   const calculatePrice = () => {
@@ -315,8 +329,8 @@ I'm ready to complete my order. Please send payment details.`;
       {/* Urgency Banner */}
       <div className="bg-destructive text-destructive-foreground text-center py-3 px-5 font-semibold text-sm">
         <span className="animate-pulse">
-          ⚡ <strong>47 Executive Bundles</strong> remaining at this price.
-          Limited bonus stock.
+          ⚡ <strong>{remainingStock} Executive Bundles</strong> remaining at
+          this price. Limited bonus stock.
         </span>
       </div>
 
@@ -411,6 +425,7 @@ I'm ready to complete my order. Please send payment details.`;
               src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
               alt="Professional man wearing MEGIR watch"
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
           </div>
 
@@ -452,6 +467,7 @@ I'm ready to complete my order. Please send payment details.`;
               src="/products/megir/damaged watch 2.webp"
               alt="Close-up of damaged watch"
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
           </div>
 
@@ -525,6 +541,7 @@ I'm ready to complete my order. Please send payment details.`;
                         src={`/products/megir/${color.image}`}
                         alt={`MEGIR Chronograph ${color.name}`}
                         className="w-full h-full object-cover aspect-square"
+                        loading="lazy"
                       />
                     </div>
                     <p className="text-sm font-medium text-foreground">
@@ -635,6 +652,7 @@ I'm ready to complete my order. Please send payment details.`;
                       src={feature.image}
                       alt={feature.imageAlt}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <h3 className="text-lg md:text-xl font-bold mb-3 text-background">
@@ -680,6 +698,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 6.webp"
                 alt="MEGIR watch on wrist"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
@@ -687,6 +706,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 7.webp"
                 alt="MEGIR chronograph face detail"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
@@ -694,6 +714,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 9.webp"
                 alt="MEGIR watch angle view"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
@@ -701,6 +722,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 10.webp"
                 alt="MEGIR watch side angle"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -937,6 +959,7 @@ I'm ready to complete my order. Please send payment details.`;
               src="/products/megir/MEGIR Chronograph Watch 8.webp"
               alt="MEGIR watch features diagram"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -1034,6 +1057,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 13.webp"
                 alt="MEGIR watches color comparison 1"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
@@ -1041,6 +1065,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/products/megir/MEGIR Chronograph Watch 14.webp"
                 alt="MEGIR watches color comparison 2"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -1050,6 +1075,7 @@ I'm ready to complete my order. Please send payment details.`;
               src="/products/megir/MEGIR Chronograph Watch 5.webp"
               alt="MEGIR watch in premium gift box"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <p className="text-center text-muted-foreground mt-4">
@@ -1135,6 +1161,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/Store full building picture.jpeg"
                 alt="BaaWA store building"
                 className="w-full h-full object-cover aspect-video"
+                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
@@ -1142,6 +1169,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/Store front with bill board.jpg"
                 alt="BaaWA store front with billboard"
                 className="w-full h-full object-cover aspect-video"
+                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
@@ -1149,6 +1177,7 @@ I'm ready to complete my order. Please send payment details.`;
                 src="/Baawa store table.png"
                 alt="BaaWA store display table"
                 className="w-full h-full object-cover aspect-video"
+                loading="lazy"
               />
             </div>
           </div>
@@ -1199,16 +1228,25 @@ I'm ready to complete my order. Please send payment details.`;
                 <button
                   onClick={() => toggleFaq(index)}
                   className="w-full p-5 flex justify-between items-center gap-4 text-left font-semibold hover:bg-muted/50 transition-colors"
+                  aria-expanded={activeFaq === index}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-question-${index}`}
                 >
                   <span>{item.question}</span>
                   <ChevronDown
                     className={`w-5 h-5 text-primary transition-transform shrink-0 ${
                       activeFaq === index ? "rotate-180" : ""
                     }`}
+                    aria-hidden="true"
                   />
                 </button>
                 {activeFaq === index && (
-                  <div className="px-5 pb-5 text-muted-foreground text-sm leading-relaxed">
+                  <div
+                    id={`faq-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${index}`}
+                    className="px-5 pb-5 text-muted-foreground text-sm leading-relaxed"
+                  >
                     {item.answer}
                   </div>
                 )}
@@ -1383,10 +1421,15 @@ I'm ready to complete my order. Please send payment details.`;
                             ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/50"
                         }`}
+                        aria-label={`Select ${option.name} color${
+                          selectedColor === option.name ? ", currently selected" : ""
+                        }`}
+                        aria-pressed={selectedColor === option.name}
                       >
                         <div
                           className="w-10 h-10 rounded-lg border border-border"
                           style={{ backgroundColor: option.color }}
+                          aria-hidden="true"
                         />
                         <span className="text-sm font-medium">
                           {option.name}
@@ -1411,7 +1454,8 @@ I'm ready to complete my order. Please send payment details.`;
                     <button
                       type="button"
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="w-11 h-11 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                      className="w-12 h-12 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                      aria-label="Decrease quantity"
                     >
                       −
                     </button>
@@ -1421,7 +1465,8 @@ I'm ready to complete my order. Please send payment details.`;
                     <button
                       type="button"
                       onClick={() => setQuantity(quantity + 1)}
-                      className="w-11 h-11 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                      className="w-12 h-12 bg-input border border-border rounded-lg hover:border-primary transition-colors flex items-center justify-center text-xl font-semibold"
+                      aria-label="Increase quantity"
                     >
                       +
                     </button>
@@ -1556,6 +1601,7 @@ I'm ready to complete my order. Please send payment details.`;
             src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
             alt=""
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 

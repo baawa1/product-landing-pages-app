@@ -1,6 +1,6 @@
 # BaaWA Landing Page - Custom Skills
 
-This directory contains 12 custom Claude Code skills designed specifically for the BaaWA Accessories landing page project.
+This directory contains 13 custom Claude Code skills designed specifically for the BaaWA Accessories landing page project.
 
 ## 🔒 Security Skills
 
@@ -310,6 +310,36 @@ Ask Claude: "Run accessibility audit"
 
 ---
 
+### 13. `/review-ui-ux`
+Comprehensive UI/UX review and conversion optimization.
+
+**What it does:**
+- Audits conversion optimization (CRO)
+- Analyzes performance issues
+- Checks mobile responsiveness
+- Reviews visual hierarchy
+- Evaluates trust signals
+- Analyzes form UX
+- Tests accessibility (WCAG 2.1)
+- Provides prioritized recommendations
+- Generates detailed score report
+
+**When to use:**
+- Before launching new pages
+- After design changes
+- Optimizing conversion rates
+- Getting design feedback
+- Monthly UX reviews
+
+**Usage:**
+```
+Ask Claude: "Review UI/UX of the executive bundle page"
+Ask Claude: "Review my landing page UX"
+Ask Claude: "Optimize conversion for product pages"
+```
+
+---
+
 ## Quick Reference
 
 ### Security & Pre-Deployment
@@ -338,6 +368,7 @@ Ask Claude: "Run accessibility audit"
 ```
 /optimize-images    → Compress images
 /check-accessibility → A11y audit
+/review-ui-ux        → UI/UX review & CRO
 ```
 
 ---
@@ -349,11 +380,12 @@ Ask Claude: "Run accessibility audit"
 2. `/check-orders` - Monitor sales
 
 ### Before Deployment
-1. `/security-audit` - Check for vulnerabilities
-2. `/validate-env` - Ensure config is correct
-3. `/deploy-preview` - Full pre-deployment check
-4. `/optimize-images` - Ensure images optimized
-5. `/check-accessibility` - Verify accessibility
+1. `/review-ui-ux` - Review page UX and conversion
+2. `/security-audit` - Check for vulnerabilities
+3. `/validate-env` - Ensure config is correct
+4. `/deploy-preview` - Full pre-deployment check
+5. `/optimize-images` - Ensure images optimized
+6. `/check-accessibility` - Verify accessibility
 
 ### After Database Changes
 1. `/db-migrate` - Apply schema changes
@@ -361,9 +393,10 @@ Ask Claude: "Run accessibility audit"
 3. `/test-order-flow` - Test everything still works
 
 ### Performance Optimization
-1. `/analyze-conversions` - Find bottlenecks
-2. `/optimize-images` - Reduce load times
-3. `/check-accessibility` - Improve UX
+1. `/review-ui-ux` - Full UX audit with recommendations
+2. `/analyze-conversions` - Find bottlenecks
+3. `/optimize-images` - Reduce load times
+4. `/check-accessibility` - Improve UX
 
 ---
 
@@ -409,7 +442,9 @@ Claude will automatically invoke the appropriate skill.
 │   └── SKILL.md
 ├── optimize-images/
 │   └── SKILL.md
-└── check-accessibility/
+├── check-accessibility/
+│   └── SKILL.md
+└── review-ui-ux/
     └── SKILL.md
 ```
 
@@ -438,9 +473,10 @@ Claude will automatically invoke the appropriate skill.
 3. `/deploy-preview` (prevents issues)
 
 **Nice to Have:**
-1. `/check-orders` (business insights)
-2. `/optimize-images` (performance)
-3. `/analyze-conversions` (growth)
+1. `/review-ui-ux` (conversion optimization)
+2. `/check-orders` (business insights)
+3. `/optimize-images` (performance)
+4. `/analyze-conversions` (growth)
 
 ---
 
