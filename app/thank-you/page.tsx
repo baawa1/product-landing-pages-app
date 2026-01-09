@@ -15,13 +15,17 @@ function ThankYouContent() {
   const quantity = searchParams.get('quantity') || '1'
   const total = searchParams.get('total') || ''
   const whatsappUrl = searchParams.get('whatsapp') || ''
+  const stockStatus = searchParams.get('stockStatus') || 'in-stock'
+  const isOutOfStock = stockStatus === 'out-of-stock'
 
   useEffect(() => {
     // Fire analytics events
     if (typeof window !== 'undefined') {
+      const eventName = isOutOfStock ? 'order_waitlist' : 'purchase'
+
       // Google Analytics 4
       if (window.gtag) {
-        window.gtag('event', 'purchase', {
+        window.gtag('event', eventName, {
           transaction_id: Date.now().toString(),
           value: parseFloat(total),
           currency: 'NGN',
@@ -36,7 +40,7 @@ function ThankYouContent() {
 
       // Facebook Pixel
       if (window.fbq) {
-        window.fbq('track', 'Purchase', {
+        window.fbq('track', isOutOfStock ? 'AddToWaitlist' : 'Purchase', {
           value: parseFloat(total),
           currency: 'NGN',
           content_name: productName,
@@ -51,7 +55,7 @@ function ThankYouContent() {
       // Google Tag Manager
       if (window.dataLayer) {
         window.dataLayer.push({
-          event: 'purchase',
+          event: eventName,
           ecommerce: {
             transaction_id: Date.now().toString(),
             value: parseFloat(total),
@@ -66,7 +70,7 @@ function ThankYouContent() {
         })
       }
     }
-  }, [productName, color, quantity, total])
+  }, [productName, color, quantity, total, isOutOfStock])
 
   useEffect(() => {
     if (countdown <= 0 && whatsappUrl) {
@@ -88,11 +92,27 @@ function ThankYouContent() {
       <div className="max-w-2xl mx-auto">
         {/* Success Icon */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mb-4 animate-bounce">
-            <CheckCircle2 className="w-12 h-12 text-white" />
+          <div className={`inline-flex items-center justify-center w-20 h-20 ${
+            isOutOfStock ? 'bg-amber-500' : 'bg-green-500'
+          } rounded-full mb-4 ${
+            isOutOfStock ? 'animate-pulse' : 'animate-bounce'
+          }`}>
+            {isOutOfStock ? (
+              <Clock className="w-12 h-12 text-white" />
+            ) : (
+              <CheckCircle2 className="w-12 h-12 text-white" />
+            )}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Order Received!</h1>
-          <p className="text-muted-foreground">Thank you for your order. We&apos;ve received your request.</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">
+            {isOutOfStock
+              ? 'Order Noted - Temporarily Out of Stock'
+              : 'Order Received!'}
+          </h1>
+          <p className="text-muted-foreground">
+            {isOutOfStock
+              ? 'Thank you for your interest! Due to high demand, this item is currently out of stock.'
+              : "Thank you for your order. We've received your request."}
+          </p>
         </div>
 
         {/* Order Summary Card */}
@@ -132,39 +152,81 @@ function ThankYouContent() {
           <CardContent className="pt-6">
             <h2 className="text-xl font-bold mb-4">What Happens Next?</h2>
             <div className="space-y-4">
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
-                  1
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">WhatsApp Confirmation</h3>
-                  <p className="text-sm text-muted-foreground">
-                    You&apos;ll be redirected to WhatsApp to confirm your order with our team
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
-                  2
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Payment Details</h3>
-                  <p className="text-sm text-muted-foreground">
-                    We&apos;ll send you our bank account details via WhatsApp for payment
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
-                  3
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Fast Delivery</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Your order ships within 24 hours of payment confirmation
-                  </p>
-                </div>
-              </div>
+              {isOutOfStock ? (
+                <>
+                  {/* Out of Stock Steps */}
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      1
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Order Saved</h3>
+                      <p className="text-sm text-muted-foreground">
+                        We&apos;ve saved your details and order preferences
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      2
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Restock Notification</h3>
+                      <p className="text-sm text-muted-foreground">
+                        You&apos;ll be the first to know when we restock (usually 5-7 days)
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      3
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">WhatsApp Update</h3>
+                      <p className="text-sm text-muted-foreground">
+                        We&apos;ll contact you via WhatsApp to confirm availability
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* In Stock Steps */}
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      1
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">WhatsApp Confirmation</h3>
+                      <p className="text-sm text-muted-foreground">
+                        You&apos;ll be redirected to WhatsApp to confirm your order with our team
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      2
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Payment Details</h3>
+                      <p className="text-sm text-muted-foreground">
+                        We&apos;ll send you our bank account details via WhatsApp for payment
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      3
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Fast Delivery</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Your order ships within 24 hours of payment confirmation
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -175,7 +237,11 @@ function ThankYouContent() {
             <CardContent className="pt-6 text-center">
               <div className="flex items-center justify-center gap-2 mb-3">
                 <Clock className="w-5 h-5 text-primary" />
-                <p className="font-semibold">Redirecting to WhatsApp in {countdown} seconds...</p>
+                <p className="font-semibold">
+                  {isOutOfStock
+                    ? `Connecting to WhatsApp in ${countdown} seconds...`
+                    : `Redirecting to WhatsApp in ${countdown} seconds...`}
+                </p>
               </div>
 
               {/* Progress Bar */}
@@ -191,7 +257,9 @@ function ThankYouContent() {
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                Continue to WhatsApp Now
+                {isOutOfStock
+                  ? 'Contact Us About Availability'
+                  : 'Continue to WhatsApp Now'}
               </a>
             </CardContent>
           </Card>

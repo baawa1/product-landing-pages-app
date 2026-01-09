@@ -29,6 +29,9 @@ export default function MegirWatchPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
+  // Stock status flag - change to true when product is out of stock
+  const isOutOfStock = false
+
   const pricePerUnit = 57000
 
   const colorOptions = [
@@ -113,7 +116,8 @@ export default function MegirWatchPage() {
       quantity: quantity,
       price: pricePerUnit,
       total_price: price.total,
-      discount: price.discount
+      discount: price.discount,
+      stockStatus: isOutOfStock ? 'out-of-stock' : 'in-stock'
     }
 
     try {
@@ -161,7 +165,7 @@ I'm ready to complete my order. Please send payment details.`
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
 
       // Redirect to thank you page with order details
-      const thankYouURL = `/thank-you?product=MEGIR+Chronograph+Watch&color=${encodeURIComponent(color as string)}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+      const thankYouURL = `/thank-you?product=MEGIR+Chronograph+Watch&color=${encodeURIComponent(color as string)}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}`
 
       window.location.href = thankYouURL
 

@@ -25,6 +25,9 @@ export default function GiftBundlePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
+  // Stock status flag - change to true when product is out of stock
+  const isOutOfStock = false
+
   const bundlePrice = 79000
 
   const calculatePrice = () => {
@@ -134,7 +137,8 @@ export default function GiftBundlePage() {
         gift_message: cardMessage,
         occasion: occasion,
         delivery_date: deliveryDate
-      }
+      },
+      stockStatus: isOutOfStock ? 'out-of-stock' : 'in-stock'
     }
 
     try {
@@ -180,7 +184,7 @@ ${priceData.discount ? `*Discount:* ${priceData.discount} (Save ₦${priceData.s
 Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}! Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=${formQuantity}&total=${priceData.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=${formQuantity}&total=${priceData.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}`
 
       window.location.href = thankYouURL
 

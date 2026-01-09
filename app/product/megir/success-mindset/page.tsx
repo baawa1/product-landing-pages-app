@@ -25,6 +25,9 @@ export default function SuccessMindsetPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
 
+  // Stock status flag - change to true when product is out of stock
+  const isOutOfStock = false
+
   const bundlePrice = 79000
 
   const colorOptions = [
@@ -100,7 +103,8 @@ export default function SuccessMindsetPage() {
       quantity: 1,
       price: bundlePrice,
       total_price: bundlePrice,
-      discount: '47% OFF'
+      discount: '47% OFF',
+      stockStatus: isOutOfStock ? 'out-of-stock' : 'in-stock'
     }
 
     try {
@@ -145,7 +149,7 @@ Product: MEGIR Success Mindset Bundle (8 Items)
 I'm ready to complete my order. Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      const thankYouURL = `/thank-you?product=MEGIR+Success+Mindset+Bundle&color=${encodeURIComponent(color as string)}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`
+      const thankYouURL = `/thank-you?product=MEGIR+Success+Mindset+Bundle&color=${encodeURIComponent(color as string)}&quantity=1&total=${bundlePrice}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}`
 
       window.location.href = thankYouURL
 

@@ -38,7 +38,7 @@ export interface Order {
   total_price: number
   discount?: string
   discount_amount?: number
-  status?: 'pending' | 'confirmed' | 'shipped' | 'delivered'
+  status?: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'out-of-stock'
   metadata?: {
     gift_recipient?: string
     gift_relationship?: string

@@ -31,6 +31,9 @@ export default function ExecutiveBundlePage() {
   const [showFloatingButton, setShowFloatingButton] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
+  // Stock status flag - change to true when product is out of stock
+  const isOutOfStock = true;
+
   const bundlePrice = 79000;
 
   const calculatePrice = () => {
@@ -208,6 +211,7 @@ export default function ExecutiveBundlePage() {
       price: bundlePrice,
       total_price: price.total,
       discount: price.discount || "47% OFF",
+      stockStatus: isOutOfStock ? "out-of-stock" : "in-stock",
     };
 
     try {
@@ -262,7 +266,9 @@ I'm ready to complete my order. Please send payment details.`;
         color as string
       )}&quantity=${quantity}&total=${
         price.total
-      }&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}`;
+      }&phone=${phone}&whatsapp=${encodeURIComponent(
+        whatsappURL
+      )}&stockStatus=${isOutOfStock ? "out-of-stock" : "in-stock"}`;
 
       window.location.href = thankYouURL;
     } catch (error) {
@@ -315,7 +321,7 @@ I'm ready to complete my order. Please send payment details.`;
       </div>
 
       {/* Hero Section */}
-      <section className="py-10 md:py-16 px-5 bg-foreground text-background relative overflow-hidden">
+      <section className="py-20 md:py-30 px-5 bg-foreground text-background relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -461,7 +467,9 @@ I'm ready to complete my order. Please send payment details.`;
                 className="flex items-start gap-4 p-5 md:p-6 bg-background border border-border rounded-xl shadow-sm"
               >
                 <X className="w-6 h-6 text-destructive shrink-0 mt-0.5" />
-                <p className="text-foreground text-base md:text-lg font-medium leading-relaxed">{problem}</p>
+                <p className="text-foreground text-base md:text-lg font-medium leading-relaxed">
+                  {problem}
+                </p>
               </div>
             ))}
           </div>

@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       discount: body.discount && body.discount.trim() !== '' ? body.discount : undefined,
       discount_amount: body.discount_amount ? parseFloat(body.discount_amount) : undefined,
       metadata: body.metadata || {},
-      status: 'pending'
+      status: body.stockStatus === 'out-of-stock' ? 'out-of-stock' : 'pending'
     }
 
     // Save to Supabase
