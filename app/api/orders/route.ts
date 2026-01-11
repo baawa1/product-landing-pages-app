@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createOrder, Order, isSupabaseConfigured } from '@/lib/supabase'
+import { createOrder, Order, isSupabaseConfigured, getOrdersTableName } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,8 +43,12 @@ export async function POST(request: NextRequest) {
       status: body.stockStatus === 'out-of-stock' ? 'out-of-stock' : 'pending'
     }
 
+    // Determine which table to use based on hostname
+    const hostname = request.headers.get('host')
+    const tableName = getOrdersTableName(hostname)
+
     // Save to Supabase
-    const order = await createOrder(orderData)
+    const order = await createOrder(orderData, tableName)
 
     return NextResponse.json({
       success: true,
