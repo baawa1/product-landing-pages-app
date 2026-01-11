@@ -16,12 +16,14 @@ function ThankYouContent() {
   const total = searchParams.get('total') || ''
   const whatsappUrl = searchParams.get('whatsapp') || ''
   const stockStatus = searchParams.get('stockStatus') || 'in-stock'
+  const orderId = searchParams.get('order_id') || ''
   const isOutOfStock = stockStatus === 'out-of-stock'
 
   useEffect(() => {
     // Fire analytics events
     if (typeof window !== 'undefined') {
-      const eventName = isOutOfStock ? 'order_waitlist' : 'purchase'
+      // Always fire 'purchase' event (out-of-stock is just for testing)
+      const eventName = 'purchase'
 
       // Google Analytics 4
       if (window.gtag) {
@@ -38,26 +40,12 @@ function ThankYouContent() {
         })
       }
 
-      // Facebook Pixel
-      if (window.fbq) {
-        window.fbq('track', isOutOfStock ? 'AddToWaitlist' : 'Purchase', {
-          value: parseFloat(total),
-          currency: 'NGN',
-          content_name: productName,
-          content_type: 'product',
-          contents: [{
-            id: productName,
-            quantity: parseInt(quantity)
-          }]
-        })
-      }
-
       // Google Tag Manager
       if (window.dataLayer) {
         window.dataLayer.push({
           event: eventName,
           ecommerce: {
-            transaction_id: Date.now().toString(),
+            transaction_id: orderId || Date.now().toString(),
             value: parseFloat(total),
             currency: 'NGN',
             items: [{
@@ -70,7 +58,7 @@ function ThankYouContent() {
         })
       }
     }
-  }, [productName, color, quantity, total, isOutOfStock])
+  }, [productName, color, quantity, total, isOutOfStock, orderId])
 
   useEffect(() => {
     if (countdown <= 0 && whatsappUrl) {
@@ -297,8 +285,6 @@ declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag?: (...args: any[]) => void
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    fbq?: (...args: any[]) => void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer?: any[]
   }

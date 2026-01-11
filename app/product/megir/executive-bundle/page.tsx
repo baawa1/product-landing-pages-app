@@ -240,6 +240,9 @@ export default function ExecutiveBundlePage() {
         console.error("Failed to save order:", result);
       }
 
+      const orderId = result.order_id || Date.now().toString();
+      console.log('✅ Order created with ID:', orderId);
+
       const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR EXECUTIVE BUNDLE*
 
@@ -282,7 +285,7 @@ I'm ready to complete my order. Please send payment details.`;
         price.total
       }&phone=${phone}&whatsapp=${encodeURIComponent(
         whatsappURL
-      )}&stockStatus=${isOutOfStock ? "out-of-stock" : "in-stock"}`;
+      )}&stockStatus=${isOutOfStock ? "out-of-stock" : "in-stock"}&order_id=${orderId}`;
 
       window.location.href = thankYouURL;
     } catch (error) {

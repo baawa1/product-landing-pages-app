@@ -160,6 +160,9 @@ export default function GiftBundlePage() {
         console.log('✅ Order saved successfully! Order ID:', result.order_id)
       }
 
+      const orderId = result.order_id || Date.now().toString();
+      console.log('✅ Order created with ID:', orderId);
+
       const productUrl = window.location.origin + window.location.pathname;
       const message = `🎁 *NEW PERFECT GIFT BUNDLE ORDER*
 
@@ -184,7 +187,7 @@ ${priceData.discount ? `*Discount:* ${priceData.discount} (Save ₦${priceData.s
 Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}! Please send payment details.`
 
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
-      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=${formQuantity}&total=${priceData.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}`
+      const thankYouURL = `/thank-you?product=MEGIR+Perfect+Gift+Bundle&color=${encodeURIComponent(color as string)}&quantity=${formQuantity}&total=${priceData.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}&order_id=${orderId}`
 
       window.location.href = thankYouURL
 

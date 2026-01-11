@@ -137,6 +137,9 @@ export default function MegirWatchPage() {
         // Continue to WhatsApp even if database fails
       }
 
+      const orderId = result.order_id || Date.now().toString();
+      console.log('✅ Order created with ID:', orderId);
+
       // Create WhatsApp message
       const productUrl = window.location.origin + window.location.pathname;
       const message = `🛍️ *NEW ORDER - MEGIR CHRONOGRAPH WATCH*
@@ -165,7 +168,7 @@ I'm ready to complete my order. Please send payment details.`
       const whatsappURL = `https://wa.me/2348062605012?text=${encodeURIComponent(message)}`
 
       // Redirect to thank you page with order details
-      const thankYouURL = `/thank-you?product=MEGIR+Chronograph+Watch&color=${encodeURIComponent(color as string)}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}`
+      const thankYouURL = `/thank-you?product=MEGIR+Chronograph+Watch&color=${encodeURIComponent(color as string)}&quantity=${quantity}&total=${price.total}&phone=${phone}&whatsapp=${encodeURIComponent(whatsappURL)}&stockStatus=${isOutOfStock ? 'out-of-stock' : 'in-stock'}&order_id=${orderId}`
 
       window.location.href = thankYouURL
 
