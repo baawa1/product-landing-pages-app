@@ -85,12 +85,52 @@ export default function SuccessMindsetPage() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
-    const fullName = formData.get('fullName')
-    const phone = formData.get('phone')
-    const email = formData.get('email') || ''
-    const state = formData.get('state')
-    const address = formData.get('address')
-    const color = formData.get('color')
+    const fullName = formData.get('fullName') as string
+    const phone = formData.get('phone') as string
+    const email = (formData.get('email') as string) || ''
+    const state = formData.get('state') as string
+    const address = formData.get('address') as string
+    const color = formData.get('color') as string
+
+    // Client-side validation for better UX
+    if (!fullName || fullName.trim().length < 2) {
+      alert("Please enter your full name (at least 2 characters)")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!/^[a-zA-Z\s'-]+$/.test(fullName)) {
+      alert("Name can only contain letters, spaces, hyphens, and apostrophes")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!phone || phone.trim().length < 10) {
+      alert("Please enter a valid Nigerian phone number")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (email && email.trim() !== "") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address")
+        setIsSubmitting(false)
+        return
+      }
+    }
+
+    if (!address || address.trim().length < 10) {
+      alert("Please enter a complete delivery address (at least 10 characters)")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (/<script|javascript:|onerror=/i.test(address)) {
+      alert("Address contains invalid characters")
+      setIsSubmitting(false)
+      return
+    }
 
     const orderData = {
       full_name: fullName,
@@ -116,7 +156,11 @@ export default function SuccessMindsetPage() {
 
       const result = await response.json()
       if (!response.ok) {
-        console.error('Failed to save order:', result)
+        // Show user-friendly error message
+        const errorMessage = result.message || "Failed to submit order. Please try again."
+        alert(errorMessage)
+        setIsSubmitting(false)
+        return
       }
 
       const orderId = result.order_id || Date.now().toString();

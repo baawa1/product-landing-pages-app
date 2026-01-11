@@ -106,17 +106,57 @@ export default function GiftBundlePage() {
     const formData = new FormData(e.currentTarget)
     const formQuantity = parseInt(formData.get('quantity') as string) || quantity
     const priceData = calculatePrice()
-    const yourName = formData.get('yourName')
-    const phone = formData.get('phone')
-    const email = formData.get('email') || ''
-    const state = formData.get('state')
-    const address = formData.get('address')
+    const yourName = formData.get('yourName') as string
+    const phone = formData.get('phone') as string
+    const email = (formData.get('email') as string) || ''
+    const state = formData.get('state') as string
+    const address = formData.get('address') as string
     const hisName = formData.get('hisName')
     const relationship = formData.get('relationship')
     const color = formData.get('color')
     const cardMessage = formData.get('cardMessage') || 'No message'
     const occasion = formData.get('occasion') || ''
     const deliveryDate = formData.get('deliveryDate') || ''
+
+    // Client-side validation for better UX
+    if (!yourName || yourName.trim().length < 2) {
+      alert("Please enter your full name (at least 2 characters)")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!/^[a-zA-Z\s'-]+$/.test(yourName)) {
+      alert("Name can only contain letters, spaces, hyphens, and apostrophes")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!phone || phone.trim().length < 10) {
+      alert("Please enter a valid Nigerian phone number")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (email && email.trim() !== "") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address")
+        setIsSubmitting(false)
+        return
+      }
+    }
+
+    if (!address || address.trim().length < 10) {
+      alert("Please enter a complete delivery address (at least 10 characters)")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (/<script|javascript:|onerror=/i.test(address)) {
+      alert("Address contains invalid characters")
+      setIsSubmitting(false)
+      return
+    }
 
     const orderData = {
       full_name: yourName,
@@ -154,11 +194,14 @@ export default function GiftBundlePage() {
       console.log('📬 API Response:', result)
 
       if (!response.ok) {
-        console.error('❌ Failed to save order:', result)
-        alert(`Failed to save order: ${result.error || 'Unknown error'}`)
-      } else {
-        console.log('✅ Order saved successfully! Order ID:', result.order_id)
+        // Show user-friendly error message
+        const errorMessage = result.message || "Failed to submit order. Please try again."
+        alert(errorMessage)
+        setIsSubmitting(false)
+        return
       }
+
+      console.log('✅ Order saved successfully! Order ID:', result.order_id)
 
       const orderId = result.order_id || Date.now().toString();
       console.log('✅ Order created with ID:', orderId);
