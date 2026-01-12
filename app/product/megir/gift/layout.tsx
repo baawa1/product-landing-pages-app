@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "Shopping for him is hard. This is the perfect gift - beautifully wrapped MEGIR watch + cufflinks + cologne sample. Complete gift bundle at ₦69,000.",
     images: [
       {
-        url: '/products/megir/MEGIR Chronograph Watch 5.jpeg',
+        url: '/products/megir/MEGIR Chronograph Watch 5.webp',
         width: 1200,
         height: 630,
         alt: 'MEGIR Perfect Gift Bundle',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "The Perfect Gift For Him - MEGIR Gift Bundle | BaaWA Accessories",
     description: "Shopping for him is hard. This is the perfect gift - beautifully wrapped MEGIR watch + cufflinks + cologne sample. Complete gift bundle at ₦69,000.",
-    images: ['/products/megir/MEGIR Chronograph Watch 5.jpeg'],
+    images: ['/products/megir/MEGIR Chronograph Watch 5.webp'],
   },
 }
 

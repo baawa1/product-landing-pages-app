@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import {
@@ -377,16 +378,16 @@ I'm ready to complete my order. Please send payment details.`
           </h2>
           <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 6.jpeg" alt="MEGIR watch on wrist" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 6.webp" alt="MEGIR watch on wrist" width={600} height={600} className="w-full h-full object-cover" />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 7.jpeg" alt="MEGIR chronograph face detail" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 7.webp" alt="MEGIR chronograph face detail" width={600} height={600} className="w-full h-full object-cover" />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 9.jpeg" alt="MEGIR watch angle view" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 9.webp" alt="MEGIR watch angle view" width={600} height={600} className="w-full h-full object-cover" />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img src="/products/megir/MEGIR Chronograph Watch 10.jpeg" alt="MEGIR watch side angle" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 10.webp" alt="MEGIR watch side angle" width={600} height={600} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -444,10 +445,10 @@ I'm ready to complete my order. Please send payment details.`
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 11.jpeg" alt="MEGIR watch detail shot" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 11.webp" alt="MEGIR watch detail shot" width={600} height={600} className="w-full h-full object-cover" />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 12.jpeg" alt="MEGIR watch craftsmanship" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 12.webp" alt="MEGIR watch craftsmanship" width={600} height={600} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -502,9 +503,11 @@ I'm ready to complete my order. Please send payment details.`
                 }`}
                 onClick={() => handleColorSelect(option.name)}
               >
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.jpeg`}
+                <Image
+                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.webp`}
                   alt={`${option.name} MEGIR watch in box`}
+                  width={300}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
                 {selectedColor === option.name && (
@@ -549,7 +552,7 @@ I'm ready to complete my order. Please send payment details.`
           </Card>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
-            <img src="/products/megir/MEGIR Chronograph Watch 8.jpeg" alt="MEGIR watch features diagram" className="w-full h-full object-cover" />
+            <Image src="/products/megir/MEGIR Chronograph Watch 8.webp" alt="MEGIR watch features diagram" width={600} height={600} className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -562,15 +565,15 @@ I'm ready to complete my order. Please send payment details.`
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 13.jpeg" alt="MEGIR watches color comparison 1" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 13.webp" alt="MEGIR watches color comparison 1" width={600} height={600} className="w-full h-full object-cover" />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/products/megir/MEGIR Chronograph Watch 14.jpeg" alt="MEGIR watches color comparison 2" className="w-full h-full object-cover" />
+              <Image src="/products/megir/MEGIR Chronograph Watch 14.webp" alt="MEGIR watches color comparison 2" width={600} height={600} className="w-full h-full object-cover" />
             </div>
           </div>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
-            <img src="/products/megir/MEGIR Chronograph Watch 5.jpeg" alt="MEGIR watch in premium gift box" className="w-full h-full object-cover" />
+            <Image src="/products/megir/MEGIR Chronograph Watch 5.webp" alt="MEGIR watch in premium gift box" width={600} height={600} className="w-full h-full object-cover" />
           </div>
           <p className="text-center text-muted-foreground mt-4">Comes in original MEGIR packaging - perfect for gifting</p>
         </div>
@@ -853,13 +856,13 @@ I'm ready to complete my order. Please send payment details.`
           {/* Store Images */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Store full building picture.jpeg" alt="BaaWA Accessories store building in Abeokuta" className="w-full h-full object-cover aspect-video" />
+              <Image src="/Store full building picture.webp" alt="BaaWA Accessories store building in Abeokuta" width={600} height={400} className="w-full h-full object-cover aspect-video" />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Store front with bill board.jpg" alt="BaaWA store front with billboard" className="w-full h-full object-cover aspect-video" />
+              <Image src="/Store front with bill board.webp" alt="BaaWA store front with billboard" width={600} height={400} className="w-full h-full object-cover aspect-video" />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img src="/Baawa store table.png" alt="BaaWA store display table" className="w-full h-full object-cover aspect-video" />
+              <Image src="/Baawa store table.webp" alt="BaaWA store display table" width={600} height={400} className="w-full h-full object-cover aspect-video" />
             </div>
           </div>
 
@@ -1194,9 +1197,11 @@ I'm ready to complete my order. Please send payment details.`
       {/* Footer */}
       <footer className="py-10 px-5 bg-muted/30 border-t border-border text-center">
         <div className="max-w-3xl mx-auto">
-          <img
-            src="/logo/baawa-logo-brand-color.png"
+          <Image
+            src="/logo/baawa-logo-brand-color.webp"
             alt="BaaWA Accessories"
+            width={120}
+            height={40}
             className="h-8 md:h-10 mx-auto mb-6"
           />
           <p className="text-sm text-muted-foreground mb-2">

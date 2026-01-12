@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const sharp = require('sharp')
 const fs = require('fs')
 const path = require('path')
@@ -11,9 +10,16 @@ const SIZES = {
   desktop: 1920
 }
 
-async function optimizeImage(inputPath, outputDir) {
+async function optimizeImage(inputPath) {
   const filename = path.basename(inputPath, path.extname(inputPath))
   const dir = path.dirname(inputPath)
+
+  // Check if WebP version already exists
+  const webpPath = path.join(dir, `${filename}.webp`)
+  if (fs.existsSync(webpPath)) {
+    console.log(`⏭️  Skipping: ${filename} (WebP already exists)`)
+    return null
+  }
 
   console.log(`\n🖼️  Optimizing: ${inputPath}`)
 
@@ -23,7 +29,6 @@ async function optimizeImage(inputPath, outputDir) {
     const originalSize = originalStats.size
 
     // Convert to WebP (default size)
-    const webpPath = path.join(dir, `${filename}.webp`)
     await sharp(inputPath)
       .webp({ quality: QUALITY })
       .toFile(webpPath)
@@ -61,7 +66,7 @@ async function optimizeImage(inputPath, outputDir) {
 }
 
 async function optimizeAllImages() {
-  const productsDir = path.join(process.cwd(), 'public/products')
+  const publicDir = path.join(process.cwd(), 'public')
 
   // Find all images
   const findImages = (dir) => {
@@ -75,14 +80,17 @@ async function optimizeAllImages() {
       if (stat.isDirectory()) {
         files.push(...findImages(fullPath))
       } else if (/\.(jpg|jpeg|png)$/i.test(item)) {
-        files.push(fullPath)
+        // Skip favicon and apple-touch-icon (no need to optimize)
+        if (!item.includes('favicon') && !item.includes('apple-touch-icon')) {
+          files.push(fullPath)
+        }
       }
     })
 
     return files
   }
 
-  const images = findImages(productsDir)
+  const images = findImages(publicDir)
 
   console.log(`\n🚀 Starting optimization...`)
   console.log(`Found ${images.length} images to optimize\n`)

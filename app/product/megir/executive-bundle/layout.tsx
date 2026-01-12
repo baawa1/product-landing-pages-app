@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "Get the complete Executive Bundle - MEGIR Chronograph Watch + 7 premium accessories. Save ₦69,000 today. Only ₦79,000 for everything.",
     images: [
       {
-        url: '/products/megir/MEGIR Chronograph Watch 8.jpeg',
+        url: '/products/megir/MEGIR Chronograph Watch 8.webp',
         width: 1200,
         height: 630,
         alt: 'MEGIR Executive Bundle',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "MEGIR Executive Bundle - 8 Premium Items | BaaWA Accessories",
     description: "Get the complete Executive Bundle - MEGIR Chronograph Watch + 7 premium accessories. Save ₦69,000 today. Only ₦79,000 for everything.",
-    images: ['/products/megir/MEGIR Chronograph Watch 8.jpeg'],
+    images: ['/products/megir/MEGIR Chronograph Watch 8.webp'],
   },
 }
 

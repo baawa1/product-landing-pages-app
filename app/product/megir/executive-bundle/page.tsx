@@ -468,11 +468,12 @@ I'm ready to complete my order. Please send payment details.`;
 
           {/* Lifestyle Image */}
           <div className="my-8 rounded-xl overflow-hidden border border-border shadow-lg">
-            <img
+            <Image
               src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
               alt="Professional man wearing MEGIR watch"
+              width={1200}
+              height={800}
               className="w-full h-auto object-cover"
-              loading="lazy"
             />
           </div>
 
@@ -510,11 +511,12 @@ I'm ready to complete my order. Please send payment details.`;
 
           {/* Damaged Watch Close-up */}
           <div className="max-w-sm mx-auto mb-10 rounded-xl overflow-hidden border border-destructive/30 shadow-lg">
-            <img
+            <Image
               src="/products/megir/damaged watch 2.webp"
               alt="Close-up of damaged watch"
+              width={600}
+              height={600}
               className="w-full h-auto object-cover"
-              loading="lazy"
             />
           </div>
 
@@ -564,31 +566,32 @@ I'm ready to complete my order. Please send payment details.`;
                   {
                     num: 1,
                     name: "Navy Blue",
-                    image: "MEGIR Chronograph Watch 1.jpeg",
+                    image: "MEGIR Chronograph Watch 1.webp",
                   },
                   {
                     num: 2,
                     name: "Classic Black",
-                    image: "MEGIR Chronograph Watch 2.jpeg",
+                    image: "MEGIR Chronograph Watch 2.webp",
                   },
                   {
                     num: 3,
                     name: "Pure White",
-                    image: "MEGIR Chronograph Watch 3.jpeg",
+                    image: "MEGIR Chronograph Watch 3.webp",
                   },
                   {
                     num: 4,
                     name: "Teal",
-                    image: "MEGIR Chronograph Watch 4.jpeg",
+                    image: "MEGIR Chronograph Watch 4.webp",
                   },
                 ].map((color) => (
                   <div key={color.num} className="text-center">
                     <div className="rounded-xl overflow-hidden border border-border shadow-lg mb-3">
-                      <img
+                      <Image
                         src={`/products/megir/${color.image}`}
                         alt={`MEGIR Chronograph ${color.name}`}
+                        width={400}
+                        height={400}
                         className="w-full h-full object-cover aspect-square"
-                        loading="lazy"
                       />
                     </div>
                     <p className="text-sm font-medium text-foreground">
@@ -695,11 +698,12 @@ I'm ready to complete my order. Please send payment details.`;
                 <CardContent className="pt-6">
                   {/* Feature Image */}
                   <div className="rounded-lg overflow-hidden mb-4">
-                    <img
+                    <Image
                       src={feature.image}
                       alt={feature.imageAlt}
+                      width={600}
+                      height={400}
                       className="w-full h-full object-cover"
-                      loading="lazy"
                     />
                   </div>
                   <h3 className="text-lg md:text-xl font-bold mb-3 text-background">
@@ -741,35 +745,39 @@ I'm ready to complete my order. Please send payment details.`;
           </h2>
           <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 6.webp"
                 alt="MEGIR watch on wrist"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 7.webp"
                 alt="MEGIR chronograph face detail"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 9.webp"
                 alt="MEGIR watch angle view"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden border border-border">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 10.webp"
                 alt="MEGIR watch side angle"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
           </div>
@@ -788,28 +796,14 @@ I'm ready to complete my order. Please send payment details.`;
 
           {/* Complete Bundle Flat-Lay */}
           <div className="mb-10 rounded-xl overflow-hidden border border-primary/30 shadow-2xl">
-            <picture>
-              <source
-                srcSet="/products/megir/Product Bundle-mobile.webp"
-                media="(max-width: 640px)"
-                type="image/webp"
-              />
-              <source
-                srcSet="/products/megir/Product Bundle-tablet.webp"
-                media="(max-width: 1024px)"
-                type="image/webp"
-              />
-              <source
-                srcSet="/products/megir/Product Bundle-desktop.webp"
-                type="image/webp"
-              />
-              <img
-                src="/products/megir/Product Bundle-desktop.webp"
-                alt="Complete Executive Bundle - All 8 items"
-                className="w-full h-auto object-cover"
-                loading="eager"
-              />
-            </picture>
+            <Image
+              src="/products/megir/Product Bundle.webp"
+              alt="Complete Executive Bundle - All 8 items"
+              width={1200}
+              height={800}
+              priority
+              className="w-full h-auto object-cover"
+            />
             <p className="text-center text-sm text-muted-foreground py-3 bg-muted/30">
               Everything included in your Executive Bundle
             </p>
@@ -1002,11 +996,12 @@ I'm ready to complete my order. Please send payment details.`;
           </Card>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
-            <img
+            <Image
               src="/products/megir/MEGIR Chronograph Watch 8.webp"
               alt="MEGIR watch features diagram"
+              width={800}
+              height={800}
               className="w-full h-full object-cover"
-              loading="lazy"
             />
           </div>
         </div>
@@ -1031,42 +1026,22 @@ I'm ready to complete my order. Please send payment details.`;
               {/* Warranty Documentation */}
               <div className="grid md:grid-cols-2 gap-4 my-6">
                 <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
-                  <picture>
-                    <source
-                      srcSet="/products/megir/Warranty Card-mobile.webp"
-                      media="(max-width: 640px)"
-                      type="image/webp"
-                    />
-                    <source
-                      srcSet="/products/megir/Warranty Card.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      src="/products/megir/Warranty Card.webp"
-                      alt="MEGIR Limited Warranty Card"
-                      className="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </picture>
+                  <Image
+                    src="/products/megir/Warranty Card.webp"
+                    alt="MEGIR Limited Warranty Card"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                  />
                 </div>
                 <div className="rounded-xl overflow-hidden border border-primary/30 shadow-lg">
-                  <picture>
-                    <source
-                      srcSet="/products/megir/Warranty Cert-mobile.webp"
-                      media="(max-width: 640px)"
-                      type="image/webp"
-                    />
-                    <source
-                      srcSet="/products/megir/Warranty Cert.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      src="/products/megir/Warranty Cert.webp"
-                      alt="MEGIR Certificate of Authenticity"
-                      className="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </picture>
+                  <Image
+                    src="/products/megir/Warranty Cert.webp"
+                    alt="MEGIR Certificate of Authenticity"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                  />
                 </div>
               </div>
 
@@ -1100,29 +1075,32 @@ I'm ready to complete my order. Please send payment details.`;
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 13.webp"
                 alt="MEGIR watches color comparison 1"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img
+              <Image
                 src="/products/megir/MEGIR Chronograph Watch 14.webp"
                 alt="MEGIR watches color comparison 2"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
           </div>
 
           <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
-            <img
+            <Image
               src="/products/megir/MEGIR Chronograph Watch 5.webp"
               alt="MEGIR watch in premium gift box"
+              width={800}
+              height={800}
               className="w-full h-full object-cover"
-              loading="lazy"
             />
           </div>
           <p className="text-center text-muted-foreground mt-4">
@@ -1204,27 +1182,30 @@ I'm ready to complete my order. Please send payment details.`;
           {/* Store Photos Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img
-                src="/Store full building picture.jpeg"
+              <Image
+                src="/Store full building picture.webp"
                 alt="BaaWA store building"
+                width={600}
+                height={400}
                 className="w-full h-full object-cover aspect-video"
-                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img
-                src="/Store front with bill board.jpg"
+              <Image
+                src="/Store front with bill board.webp"
                 alt="BaaWA store front with billboard"
+                width={600}
+                height={400}
                 className="w-full h-full object-cover aspect-video"
-                loading="lazy"
               />
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-              <img
-                src="/Baawa store table.png"
+              <Image
+                src="/Baawa store table.webp"
                 alt="BaaWA store display table"
+                width={600}
+                height={400}
                 className="w-full h-full object-cover aspect-video"
-                loading="lazy"
               />
             </div>
           </div>
@@ -1644,11 +1625,11 @@ I'm ready to complete my order. Please send payment details.`;
       <section className="py-16 px-5 bg-foreground text-background text-center relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10">
-          <img
+          <Image
             src="/products/megir/MEGIR Chronograph Watch life style image 1.webp"
             alt=""
-            className="w-full h-full object-cover"
-            loading="lazy"
+            fill
+            className="object-cover"
           />
         </div>
 

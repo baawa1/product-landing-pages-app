@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "You don't need ₦700k to command respect. The MEGIR Chronograph - premium quality at ₦57,000. Look successful while building wealth.",
     images: [
       {
-        url: '/products/megir/MEGIR Chronograph Watch 8.jpeg',
+        url: '/products/megir/MEGIR Chronograph Watch 8.webp',
         width: 1200,
         height: 630,
         alt: 'MEGIR Premium Chronograph Watch',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Dress For Where You're Going - MEGIR Chronograph | BaaWA Accessories",
     description: "You don't need ₦700k to command respect. The MEGIR Chronograph - premium quality at ₦57,000. Look successful while building wealth.",
-    images: ['/products/megir/MEGIR Chronograph Watch 8.jpeg'],
+    images: ['/products/megir/MEGIR Chronograph Watch 8.webp'],
   },
 }
 

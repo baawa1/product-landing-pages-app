@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import {
@@ -307,9 +308,12 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
 
           {/* Hero Gift Visual */}
           <div className="max-w-md mx-auto mb-8 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg">
-            <img
-              src="/products/megir/MEGIR Chronograph Watch 5.jpeg"
+            <Image
+              src="/products/megir/MEGIR Chronograph Watch 5.webp"
               alt="MEGIR watch in premium gift box"
+              width={800}
+              height={800}
+              priority
               className="w-full h-auto object-cover"
             />
             <div className="bg-primary/10 p-3 text-center">
@@ -429,9 +433,11 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
                 { img: '4', color: 'Classic Black' }
               ].map((item) => (
                 <div key={item.img} className="relative rounded-lg overflow-hidden border border-border shadow-md hover:shadow-lg transition-shadow">
-                  <img
-                    src={`/products/megir/MEGIR Chronograph Watch ${item.img}.jpeg`}
+                  <Image
+                    src={`/products/megir/MEGIR Chronograph Watch ${item.img}.webp`}
                     alt={`${item.color} MEGIR watch`}
+                    width={400}
+                    height={400}
                     className="w-full aspect-square object-cover"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
@@ -509,9 +515,11 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
               { img: '10', caption: 'Premium Materials' }
             ].map((item) => (
               <div key={item.img} className="rounded-xl overflow-hidden border border-border shadow-md hover:shadow-xl transition-shadow">
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${item.img}.jpeg`}
+                <Image
+                  src={`/products/megir/MEGIR Chronograph Watch ${item.img}.webp`}
                   alt={item.caption}
+                  width={600}
+                  height={600}
                   className="w-full aspect-square object-cover"
                 />
               </div>
@@ -628,9 +636,11 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
                     )}
                   </div>
                   <div className="aspect-square rounded-lg overflow-hidden">
-                    <img
-                      src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.jpeg`}
+                    <Image
+                      src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.webp`}
                       alt={`${option.name} MEGIR watch`}
+                      width={300}
+                      height={300}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -754,12 +764,18 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
           {/* Store Photos - 3 images */}
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             {[
-              { src: '/Store full building picture.jpeg', alt: 'BaaWA Store Building' },
-              { src: '/Store front with bill board.jpg', alt: 'Store Front' },
-              { src: '/Baawa store table.png', alt: 'Store Interior' }
+              { src: '/Store full building picture.webp', alt: 'BaaWA Store Building' },
+              { src: '/Store front with bill board.webp', alt: 'Store Front' },
+              { src: '/Baawa store table.webp', alt: 'Store Interior' }
             ].map((photo, i) => (
               <div key={i} className="rounded-xl overflow-hidden border border-border shadow-md">
-                <img src={photo.src} alt={photo.alt} className="w-full aspect-video object-cover" />
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={600}
+                  height={400}
+                  className="w-full aspect-video object-cover"
+                />
               </div>
             ))}
           </div>
@@ -1215,9 +1231,11 @@ Ready to create the perfect gift${formQuantity > 1 ? 's' : ''}!`
       {/* Footer */}
       <footer className="py-10 px-5 bg-muted/30 border-t border-border text-center">
         <div className="max-w-3xl mx-auto">
-          <img
-            src="/logo/baawa-logo-brand-color.png"
+          <Image
+            src="/logo/baawa-logo-brand-color.webp"
             alt="BaaWA Accessories"
+            width={120}
+            height={40}
             className="h-8 md:h-10 mx-auto mb-6"
           />
           <p className="text-sm text-muted-foreground mb-2">

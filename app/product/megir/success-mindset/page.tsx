@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import {
@@ -574,9 +575,11 @@ I'm ready to complete my order. Please send payment details.`
                 }`}
                 onClick={() => handleColorSelect(option.name)}
               >
-                <img
-                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.jpeg`}
+                <Image
+                  src={`/products/megir/MEGIR Chronograph Watch ${option.images[0]}.webp`}
                   alt={`${option.name} MEGIR watch in box`}
+                  width={300}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
                 {selectedColor === option.name && (
@@ -912,9 +915,11 @@ I'm ready to complete my order. Please send payment details.`
       {/* Footer */}
       <footer className="py-10 px-5 bg-muted/30 border-t border-border text-center">
         <div className="max-w-3xl mx-auto">
-          <img
-            src="/logo/baawa-logo-brand-color.png"
+          <Image
+            src="/logo/baawa-logo-brand-color.webp"
             alt="BaaWA Accessories"
+            width={120}
+            height={40}
             className="h-8 md:h-10 mx-auto mb-6"
           />
           <p className="text-sm text-muted-foreground mb-2">

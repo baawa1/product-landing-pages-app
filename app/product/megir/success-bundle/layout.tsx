@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "Shop the MEGIR Premium Chronograph Watch at BaaWA. Stylish, durable, and affordable luxury watch delivered across Nigeria.",
     images: [
       {
-        url: '/products/megir/MEGIR Chronograph Watch 8.jpeg',
+        url: '/products/megir/MEGIR Chronograph Watch 8.webp',
         width: 1200,
         height: 630,
         alt: 'MEGIR Premium Chronograph Watch',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "BaaWA Accessories - MEGIR Premium Chronograph Watch",
     description: "Shop the MEGIR Premium Chronograph Watch at BaaWA. Stylish, durable, and affordable luxury watch delivered across Nigeria.",
-    images: ['/products/megir/MEGIR Chronograph Watch 8.jpeg'],
+    images: ['/products/megir/MEGIR Chronograph Watch 8.webp'],
   },
 }
 
