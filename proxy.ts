@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next()
 
   // CORS Headers - only allow requests from your domain
@@ -53,7 +53,7 @@ export function middleware(request: NextRequest) {
   return response
 }
 
-// Apply middleware to API routes
+// Apply proxy to API routes
 export const config = {
   matcher: '/api/:path*',
 }

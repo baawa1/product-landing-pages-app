@@ -81,10 +81,7 @@ export interface Order {
 export async function createOrder(orderData: Order, tableName: 'orders' | 'test_orders' = 'orders') {
   const { data, error } = await supabaseAdmin
     .from(tableName)
-    .insert([{
-      ...orderData,
-      status: 'pending'
-    }])
+    .insert([orderData])
     .select()
     .single()
 

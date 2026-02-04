@@ -5,6 +5,32 @@ import { useSearchParams } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle2, Phone, Package, Clock } from "lucide-react"
 
+const WHATSAPP_PHONE = '2348062605012'
+
+function getSafeWhatsAppUrl(rawUrl: string | null): string {
+  if (!rawUrl) return ''
+
+  try {
+    const url = new URL(rawUrl)
+    if (url.protocol !== 'https:') return ''
+
+    if (url.hostname === 'wa.me' && url.pathname === `/${WHATSAPP_PHONE}`) {
+      return url.toString()
+    }
+
+    if (url.hostname === 'api.whatsapp.com' && url.pathname === '/send') {
+      const phone = url.searchParams.get('phone')?.replace(/\D/g, '')
+      if (phone === WHATSAPP_PHONE) {
+        return url.toString()
+      }
+    }
+  } catch {
+    return ''
+  }
+
+  return ''
+}
+
 function ThankYouContent() {
   const searchParams = useSearchParams()
   const [countdown, setCountdown] = useState(10)
@@ -14,7 +40,7 @@ function ThankYouContent() {
   const color = searchParams.get('color') || ''
   const quantity = searchParams.get('quantity') || '1'
   const total = searchParams.get('total') || ''
-  const whatsappUrl = searchParams.get('whatsapp') || ''
+  const whatsappUrl = getSafeWhatsAppUrl(searchParams.get('whatsapp'))
   const stockStatus = searchParams.get('stockStatus') || 'in-stock'
   const orderId = searchParams.get('order_id') || ''
   const isOutOfStock = stockStatus === 'out-of-stock'
