@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   title: "BaaWA Accessories - Premium Watches & Accessories",
   description: "Shop premium watches and accessories at BaaWA. Quality products delivered across Nigeria.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   icons: {
     icon: '/favicon.png',
     apple: '/apple-touch-icon.png',
